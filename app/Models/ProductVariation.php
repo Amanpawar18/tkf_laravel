@@ -21,4 +21,12 @@ class ProductVariation extends Model
         return $this->hasMany(ProductVariationImage::class, 'variation_id', 'id');
     }
 
+    public function delete()
+    {
+        $this->images()->delete();
+        parent::delete();
+
+        return true;
+    }
+
 }

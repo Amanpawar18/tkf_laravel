@@ -6,6 +6,7 @@
     <section class="product-detail-main">
         <div class="row">
             <div class="col-lg-6 product-detail-gallery">
+                @if(count($product->productVariations))
                 @foreach ($product->productVariations as $key => $variation)
                 <div id="productDetailCarousel-{{$variation->id}}"
                     class="productDetailCarousel carousel carousel-dark slide carousel-fade {{ $loop->first ? '' : 'd-none' }} "
@@ -47,6 +48,10 @@
                     </div>
                 </div>
                 @endforeach
+                @else
+                <img src="{{$product->image_path}}" style="height: 450px !important"
+                    class="d-block object-fit-contain w-100" alt="...">
+                @endif
             </div>
             <div class="col-lg-6">
                 <div class="product-detail-right">
@@ -58,12 +63,16 @@
                     </nav>
                     <h1 class="product-title">{{$product->name}}</h1>
                     <h3 class="product-price">
-                        <span class="product-Price-symbol">₹</span>
+                        @if(count($product->productVariations))
                         @foreach ($product->productVariations as $key => $variation)
                         <span id="price-{{$variation->id}}" class="price {{$loop->first ? '' : 'd-none'}}">
+                            <span class="product-Price-symbol">₹</span>
                             {{$variation->price}}
                         </span>
                         @endforeach
+                        @else
+                        {{$product->cost}}
+                        @endif
                     </h3>
                     <div class="product-short-description">
                         <h5 class="product-desc-main">
@@ -73,6 +82,7 @@
                     </div>
 
                     <form class="variations_form theme-form">
+                        @if(count($product->productVariations))
                         <div class="row mb-3">
                             <div class="col-md-3">
                                 <label for="choose_size" class=" col-form-label">Choose a Size</label>
@@ -86,6 +96,7 @@
                             </div>
 
                         </div>
+                        @endif
                         <div class="product-main-detail-submission">
                             <div class="quantity_selector">
                                 <div class="input-group mb-3">
@@ -141,7 +152,7 @@
                             <p>{!! $product->direction_for_use !!}</p>
                         </div>
                     </div>
-
+                    @if(count($product->productFaqs))
                     <div class="col-md-6">
                         <div class="accordion-section">
                             <h1 class="text-center section-title bold">{{$product->name}} FAQ</h1>
@@ -166,6 +177,8 @@
                             </div>
                         </div>
                     </div>
+                    @endif
+                    @if(count($product->productBenefits))
                     <div class="col-md-6">
                         <div class="accordion-section">
                             <h1 class="text-center section-title bold">Benefits Of {{$product->name}} Ingredients</h1>
@@ -192,6 +205,7 @@
                             </div>
                         </div>
                     </div>
+                    @endif
                 </div>
 
                 <section class="note-section">
@@ -207,7 +221,7 @@
                     <table class="table">
                         <thead>
                             <th scope="row">SIZE</th>
-                                <th scope="row">PRICE</th>
+                            <th scope="row">PRICE</th>
                         </thead>
                         <tbody>
                             @foreach ($product->productVariations as $variation)
@@ -287,34 +301,7 @@
         </div>
     </section>
 
-    @if(count($relatedProducts))
-    <section class="related-products-section mt-40">
-        <h1>RELATED PRODUCTS</h1>
-        <div class="owl-carousel owl-theme related-products-slider">
-            @foreach ($relatedProducts as $relatedProduct)
-            <div class="item">
-                <div class="related-product-item">
-                    <div class="related-product-image position-relative">
-                        <img src="{{$relatedProduct->image_path}}" style="max-height:258px !important;"
-                            class="object-fit-contain img-fluid img-main">
-                        {{-- <img src="{{asset('frontend/assets/images/sllider-image-hover.png')}}"
-                        class="img-fluid img-hover"> --}}
-                        @if($relatedProduct->is_sale)
-                        <div class="sale-badge">Sale!</div>
-                        @endif
-                        <button class="btn quick-view-btn" data-bs-toggle="modal"
-                            data-bs-target="#relatedProductModal-{{$relatedProduct->id}}">Quick View</button>
-                    </div>
-                    <div class="related-product-desc">
-                        <h6 class="related-product-category">{{$product->name}}</h6>
-                        <h3 class="related-product-price">₹250.00 – ₹910.00</h3>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </section>
-    @endif
+   @include('frontend.product.relatedProducts')
 
     <section class="client-experience-section  text-center mt-40 font-grey font-small">
         <h1 class="section-title">Client Experiences</h1>
@@ -370,95 +357,7 @@
         </div>
     </section>
 </div>
-@foreach ($relatedProducts as $relatedProduct)
-<!-- Related Product Modal -->
-<div class="modal fade" id="relatedProductModal-{{$relatedProduct->id}}" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="relatedProductModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="btn-close d-md-none" data-bs-dismiss="modal" aria-label="Close"></button>
-                <div class="row">
-                    <div class="col-lg-6 related-product-detail-gallery">
-                        <div id="relatedProductDetailCarousel" class="carousel slide carousel-fade"
-                            data-bs-ride="carousel" data-bs-interval="false">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#relatedProductDetailCarousel"
-                                    data-bs-slide-to="0" class="active" aria-current="true"
-                                    aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#relatedProductDetailCarousel"
-                                    data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            </div>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="{{asset('frontend/assets/images/dog1.jpg')}}" class="d-block w-100"
-                                        alt="...">
 
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="{{asset('frontend/assets/images/dog2.jpg')}}" class="d-block w-100"
-                                        alt="...">
-
-                                </div>
-                                <button class="carousel-control-prev carousel-controls" type="button"
-                                    data-bs-target="#relatedProductDetailCarousel" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <button class="carousel-control-next carousel-controls" type="button"
-                                    data-bs-target="#relatedProductDetailCarousel" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
-                                @if ($relatedProduct->is_sale)
-                                <div class="sale-badge">Sale!</div>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="product-detail-right">
-                            <h1 class="product-title modal-product-title">{{$relatedProduct->name}}</h1>
-                            <h3 class="product-price">₹250.00 – ₹910.00</h3>
-                            <div class="product-short-description">
-                                {!! $product->description !!}
-                            </div>
-
-                            <form class="variations_form theme-form">
-                                <div class="row mb-3">
-                                    <div class="col-md-3">
-                                        <label for="choose_size" class=" col-form-label">Choose a
-                                            Size</label>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <select name="product_size" id="choose_size" class="form-control">
-                                            <option value="">Select an option</option>
-                                            <option value="60">60 Tablets</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                                <div class="product-main-detail-submission">
-                                    <div class="quantity_selector">
-                                        <div class="input-group mb-3">
-                                            <button class="btn decrease" type="button">-</button>
-                                            <input type="text" class="form-control quantity" readonly value="1">
-                                            <button class="btn increase" type="button">+</button>
-                                        </div>
-                                    </div>
-                                    <button class="btn btn-warning shop-now-btn">Shop Now <i
-                                            class="fa fa-angle-right"></i></button>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-@endforeach
 @endsection
 @section('additional_script')
 <script src='{{asset('frontend/assets/js/jquery.zoom.min.js')}}'></script>

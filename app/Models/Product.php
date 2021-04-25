@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helper\Common;
 use App\Models\Model\ProductBenefit;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -117,8 +118,44 @@ class Product extends Model
             // $cost = $this->is_sale ? $this->sale_price : $this->regular_price;
             $cost = $this->regular_price;
         }
+        $cost = '₹' .  $cost;
 
         return $cost;
     }
 
+    public function priceRange()
+    {
+        $range = '';
+
+        if (count($this->productVariations) > 1) {
+
+            $minPriceVariation  = $this->productVariations()->orderBy('price', 'ASC')->first();
+            $maxPriceVariation  = $this->productVariations()->orderBy('price', 'DESC')->first();
+
+            if ($maxPriceVariation && $minPriceVariation) {
+                $range = '₹' . $minPriceVariation->price . '-' . '₹' .  $maxPriceVariation->price;
+            } else {
+                $range = $this->cost;
+            }
+        } else {
+            $range = $this->cost;
+        }
+        return $range;
+    }
+
+    public function delete()
+    {
+        $this->productFaqs()->delete();
+        $this->productBenefits()->delete();
+        $this->productVariations()->delete();
+
+        $path = public_path('frontend/uploads/product');
+        if (isset($this->image)) {
+            Common::deleteExistingImage($this->image, $path);
+        }
+
+        parent::delete();
+
+        return true;
+    }
 }

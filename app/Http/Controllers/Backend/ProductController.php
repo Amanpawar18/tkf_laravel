@@ -75,23 +75,14 @@ class ProductController extends Controller
 
     public function uploadProductImages($product)
     {
-        // if (request()->productImages && count(request()->productImages)) {
 
-        //     $path = public_path() . env('PRODUCT_IMAGE_PATH');
-
-        //     foreach ($product->productImages as $image) {
-        //         $imageName = Common::deleteExistingImage($image->image, $path);
-        //         $image->delete();
-        //     }
-        //     foreach (request()->productImages as $image) {
-
-        //         $imageName = Common::uploadImage($image, $path);
-        //         $product->productImages()->create(['image' => $imageName]);
-        //     }
-        // }
         if (request()->hasFile('image')) {
             $imageName = time() . '.' . request()->image->extension();
-            request()->image->move(public_path('frontend/uploads/product'), $imageName);
+            $path = public_path('frontend/uploads/product');
+            request()->image->move($path, $imageName);
+            if(isset($product->image)){
+                Common::deleteExistingImage($product->image, $path);
+            }
             $product->image = $imageName;
             $product->save();
         }

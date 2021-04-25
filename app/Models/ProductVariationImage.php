@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Helper\Common;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -25,4 +26,16 @@ class ProductVariationImage extends Model
         return $path;
     }
 
+
+    public function delete()
+    {
+        $path = public_path('frontend/uploads/product');
+        if(isset($this->image)){
+            Common::deleteExistingImage($this->image, $path);
+        }
+
+        parent::delete();
+
+        return true;
+    }
 }
