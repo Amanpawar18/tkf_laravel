@@ -1,13 +1,3 @@
-@php
-use App\Models\Cart;
-if (Auth::check()) {
-$cartItems = Cart::where('user_id', Auth::id())->get();
-} else {
-$cartItems = Cart::where('session_id', session('userCartSessionId'))->get();
-}
-$sideBarCartTotal = 0;
-@endphp
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,6 +16,8 @@ $sideBarCartTotal = 0;
         crossorigin="anonymous" />
     <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('frontend/css/custom.css')}}" rel="stylesheet" type="text/css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>@yield('meta_title', Setting::get('website_name'))</title>
     @hasSection('meta_description')

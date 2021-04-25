@@ -13,7 +13,9 @@ $(document).ready(function(){
         }
     });
 
-    $('.product-detail-gallery .carousel-item').zoom();
+    if($('.product-detail-gallery .carousel-item').length){
+        $('.product-detail-gallery .carousel-item').zoom();
+    }
     $('.related-products-slider').owlCarousel({
         loop:false,
         margin:30,

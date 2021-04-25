@@ -2,17 +2,7 @@
     object-fit: contain !important;
 }
 
-.cart-quantity-field {
-    text-align: center;
-    border: none;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-    margin: 0px;
-    width: 50px;
-    height: 30px;
-}
-
-#loading-icon {
+/* #loading-icon {
     position: fixed;
     left: 0%;
     top: 0%;
@@ -21,20 +11,10 @@
     background-size: 910px !important;
     z-index: 9999;
     background: url(../../public/images/loader.gif) center no-repeat transparent;
-}
-.gold-font{
-    color: #E5C073 !important;
-}
+} */
 
-.featured-badge {
-    font-size: 12px !important;
-    width: 145px;
-    height: 145px;
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+    background-color: #dd9933;
+    color: black;
 }
-
-.product-image img{
-    height: 250px !important;
-    object-fit: contain;
-}
-
