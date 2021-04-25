@@ -10,9 +10,9 @@
 @endsection
 @section('content')
 <div class="video-banner">
-    <iframe width="950" height="600" frameborder="0" allowfullscreen="1"
+    <iframe width="950" height="600"  frameborder="0" allowfullscreen="1"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        src="{{$category->frontend_video_url}}">
+        src="{{$category->frontend_video_url}}?autoplay=1&loop=1&mute=1">
     </iframe>
 </div>
 
