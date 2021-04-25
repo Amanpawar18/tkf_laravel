@@ -48,7 +48,7 @@ use Illuminate\Support\Facades\Route;
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($productBenefits as $key => $faq)
+                                    @forelse ($productFaqs as $key => $faq)
                                     <tr>
                                         <td>
                                             {{$key + 1}}
