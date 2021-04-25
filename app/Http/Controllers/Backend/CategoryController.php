@@ -53,7 +53,7 @@ class CategoryController extends Controller
         $data = request()->only('name', 'category_id', 'frontend_video_url');
         $category = Category::create($data);
         $this->uploadCategoryImage($category);
-        return redirect()->with('status', ' Category Created successfully !!');
+        return redirect()->route('admin.category.index')->with('status', ' Category Created successfully !!');
     }
 
     /**
