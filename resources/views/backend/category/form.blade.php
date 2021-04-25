@@ -4,8 +4,10 @@
             <div class="form-group">
                 @if(Route::currentRouteName() == 'admin.subcategory.add')
                 <input type="hidden" name="category_id" value="{{$category->id}}">
-                @endif
                 <label for="categoryTitleInput" class="text-capitalize">Category</label>
+                <input type="text" name="name" class="form-control" id="categoryTitleInput"
+                    placeholder="Enter category title"  value="{{old('category')}}" required>
+                @endif
                 <input type="text" name="name" class="form-control" id="categoryTitleInput"
                     placeholder="Enter category title"  value="{{$category->name ?? old('category')}}" required>
             </div>
