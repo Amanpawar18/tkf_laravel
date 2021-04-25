@@ -84,7 +84,7 @@ use Illuminate\Support\Facades\Route;
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-12">
-                                    {{$productBenefits->links('pagination::bootstrap-4')}}
+                                    {{$productFaqs->links('pagination::bootstrap-4')}}
                                 </div>
                             </div>
                         </div>
