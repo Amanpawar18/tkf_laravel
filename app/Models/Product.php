@@ -129,11 +129,13 @@ class Product extends Model
 
         if (count($this->productVariations) > 1) {
 
-            $minPriceVariation  = $this->productVariations()->orderBy('price', 'ASC')->first();
-            $maxPriceVariation  = $this->productVariations()->orderBy('price', 'DESC')->first();
+            $minPriceVariation  = $this->productVariations()->first();
+            $maxPriceVariation  = $this->productVariations()->get()->last();
+
+            // dd($minPriceVariation->id, $maxPriceVariation->id,  $this->productVariations()->count());
 
             if ($maxPriceVariation && $minPriceVariation) {
-                $range = '₹' . $minPriceVariation->price . '-' . '₹' .  $maxPriceVariation->price;
+                $range = '₹' . $minPriceVariation->price . ' - ' . '₹' .  $maxPriceVariation->price;
             } else {
                 $range = $this->cost;
             }

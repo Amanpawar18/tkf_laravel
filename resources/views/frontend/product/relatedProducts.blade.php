@@ -17,8 +17,8 @@
                         data-bs-target="#relatedProductModal-{{$relatedProduct->id}}">Quick View</button>
                 </div>
                 <div class="related-product-desc">
-                    <h6 class="related-product-category">{{$product->name}}</h6>
-                    <h3 class="related-product-price">{{$product->priceRange()}}</h3>
+                    <h6 class="related-product-category">{{$relatedProduct->name}}</h6>
+                    <h3 class="related-product-price">{{$relatedProduct->priceRange()}}</h3>
                 </div>
             </div>
         </div>
@@ -70,7 +70,12 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="product-detail-right">
-                            <h1 class="product-title modal-product-title">{{$relatedProduct->name}}</h1>
+                            <h1 class="product-title modal-product-title">
+                                <a href="{{route('frontend.product.details', $relatedProduct->slug)}}"
+                                    class="text-dark text-decoration-none">
+                                    {{$relatedProduct->name}}
+                                </a>
+                            </h1>
                             {{-- <h3 class="product-price">₹250.00 – ₹910.00</h3> --}}
                             <h3 class="product-price">{{ $relatedProduct->priceRange() }}</h3>
                             <div class="product-short-description">
@@ -81,8 +86,9 @@
                                 @if(count($relatedProduct->productVariations))
                                 <div class="row mb-3 mt-2">
                                     <div class="col-md-3">
-                                        <label for="choose_size" class=" col-form-label">Choose a
-                                            Size</label>
+                                        <label for="choose_size" class=" col-form-label">
+                                            Choose a Size
+                                        </label>
                                     </div>
                                     <div class="col-md-9">
                                         <select name="product_size" id="choose_size" class="form-control">
@@ -102,8 +108,14 @@
                                             <button class="btn increase" type="button">+</button>
                                         </div>
                                     </div>
-                                    <button class="btn btn-warning shop-now-btn">Shop Now <i
-                                            class="fa fa-angle-right"></i></button>
+                                    <button class="btn btn-warning shop-now-btn">
+                                        Shop Now
+                                        <i class="fa fa-angle-right"></i>
+                                    </button>
+                                    <a href="{{route('frontend.product.details', $relatedProduct->slug)}}" class="btn text-dark btn-warning shop-now-btn">
+                                        View product
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
                                 </div>
 
                             </form>
