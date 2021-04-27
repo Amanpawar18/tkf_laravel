@@ -189,7 +189,7 @@
                     </div>
                     <div class="col-md-6 text-center">
                         <div class="desc-section">
-                            <h1 class="section-title bold">Composition (Per Tablet)</h1>
+                            <h1 class="section-title bold">Composition</h1>
                             <p>{!! $product->composition !!}</p>
                         </div>
                     </div>

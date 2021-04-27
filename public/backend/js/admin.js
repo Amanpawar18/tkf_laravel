@@ -25,8 +25,19 @@ $(function () {
 
     $(function () {
         // Summernote
-        $('.textarea').summernote()
-      })
+        $('.textarea').summernote({
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['view', ['fullscreen', 'codeview', 'help']],
+                ['height', ['height']],
+            ],
+            lineHeights: ['0.2', '0.4', '0.6', '0.8', '1.0', '1.5', '2.0', '3.0']
+        })
+    })
 
     $(".custom-file-input").on("change", function () {
         var fileName = $(this).val().split("\\").pop();
@@ -79,7 +90,7 @@ $(document).ready(function () {
         x--; //Decrement field counter
     });
 
-    $("input[data-bootstrap-switch]").each(function(){
+    $("input[data-bootstrap-switch]").each(function () {
         $(this).bootstrapSwitch('state', $(this).prop('checked'));
-      });
+    });
 });
