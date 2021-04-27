@@ -11,6 +11,15 @@ class ProductVariation extends Model
 
     protected $fillable = ['product_id', 'size', 'price'];
 
+    // public static function boot()
+    // {
+    //     parent::boot();
+
+    //     ProductVariation::deleting(function ($variation) {
+    //         $variation->images()->delete();
+    //     });
+    // }
+
     public function product()
     {
         return $this->belongsTo(Product::class);
@@ -23,10 +32,12 @@ class ProductVariation extends Model
 
     public function delete()
     {
-        $this->images()->delete();
+        foreach($this->images as $image){
+
+            $image->delete();
+        }
         parent::delete();
 
         return true;
     }
-
 }

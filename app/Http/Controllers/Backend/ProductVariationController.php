@@ -90,6 +90,7 @@ class ProductVariationController extends Controller
      */
     public function destroy(Product $product, ProductVariation $productVariation)
     {
+        // dd($productVariation);
         $productVariation->delete();
         return redirect()->route('admin.product-variation.index', $product->slug)->with('status', 'Variation deleted successfully ');
     }

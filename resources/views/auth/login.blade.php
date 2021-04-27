@@ -91,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-8 col-md-6 col-lg-5">
+        {{-- <div class="col-sm-8 col-md-6 col-lg-5">
             <div class="row col-md-12 mb-2">
                 <h5>
                     Check order
@@ -118,7 +118,7 @@
                     Check status
                 </button>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 @endsection

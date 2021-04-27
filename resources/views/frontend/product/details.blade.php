@@ -47,8 +47,45 @@
                 </div>
                 @endforeach
                 @else
-                <img src="{{$product->image_path}}" style="height: 450px !important"
-                    class="d-block object-fit-contain w-100" alt="...">
+                <div id="productDetailCarousel-{{$product->id}}"
+                    class="productDetailCarousel carousel carousel-dark slide carousel-fade " data-bs-ride="carousel"
+                    data-bs-interval="false">
+                    <div class="carousel-indicators d-sm-flex d-none">
+                        @foreach ($product->productImages as $key => $image)
+                        <button type="button" data-bs-target="#productDetailCarousel-{{$product->id}}"
+                            data-bs-slide-to="{{$key}}" class="{{$loop->first ? 'active' : ''  }} " aria-current="true"
+                            aria-label="Slide {{$key + 1}}">
+                            <img src="{{ $image->image_path }}">
+                        </button>
+                        @endforeach
+                        </button>
+                    </div>
+                    <div class="carousel-inner">
+                        @foreach ($product->productImages as $key => $image)
+                        <div class="carousel-item {{$loop->first ? 'active' : ''  }}">
+                            <img src="{{$image->image_path}}" style="height: 450px !important"
+                                class="d-block object-fit-contain w-100" alt="...">
+                        </div>
+                        @endforeach
+                        <button class="carousel-control-prev carousel-controls" type="button"
+                            data-bs-target="#productDetailCarousel-{{$product->id}}" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next carousel-controls" type="button"
+                            data-bs-target="#productDetailCarousel-{{$product->id}}" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                    <div class="carousel-indicators d-sm-none">
+                        <button type="button" data-bs-target="#productDetailCarousel-{{$product->id}}"
+                            data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"><img
+                                src="{{asset('frontend/assets/images/dog1.jpg')}}"></button>
+                        <button type="button" data-bs-target="#productDetailCarousel" data-bs-slide-to="1"
+                            aria-label="Slide 2"><img src="{{asset('frontend/assets/images/dog2.jpg')}}"></button>
+                    </div>
+                </div>
                 @endif
             </div>
             <div class="col-lg-6">
@@ -135,6 +172,14 @@
                             <h1 class="section-title bold">Products Details</h1>
                             <p>{!! $product->product_detail !!}</p>
                         </div>
+                    </div>
+                    <div class="col-md-6 text-center">
+                        <div class="desc-section">
+                            <h1 class="section-title bold">Composition (Per Tablet)</h1>
+                            <p>{!! $product->composition !!}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center">
                         <div class="desc-section">
                             <h1 class="section-title bold">Suggested For</h1>
                             <p>{!! $product->suggested_for !!}</p>
@@ -142,14 +187,12 @@
                     </div>
                     <div class="col-md-6 text-center">
                         <div class="desc-section">
-                            <h1 class="section-title bold">Composition (Per Tablet)</h1>
-                            <p>{!! $product->composition !!}</p>
-                        </div>
-                        <div class="desc-section">
                             <h1 class="section-title bold">Directions for Use</h1>
                             <p>{!! $product->direction_for_use !!}</p>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     @if(count($product->productFaqs))
                     <div class="col-md-6">
                         <div class="accordion-section">
@@ -299,7 +342,7 @@
         </div>
     </section>
 
-   @include('frontend.product.relatedProducts')
+    @include('frontend.product.relatedProducts')
 
     <section class="client-experience-section  text-center mt-40 font-grey font-small">
         <h1 class="section-title">Client Experiences</h1>

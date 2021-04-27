@@ -72,6 +72,16 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12">
+        <div class="form-group">
+            <label for="categoryTitleInput" class="text-capitalize">
+                Product Images
+            </label>
+            <input type="file" class="form-control" id="fileUploader"
+                {{ isset($product->productImages) && count($product->productImages) ?  '' : 'required' }} multiple
+                name="productImages[]">
+        </div>
+    </div>
     <div class="col-md-6">
         <div class="form-group">
             <label for="categoryTitleInput" required class="text-capitalize">Product detail description</label>

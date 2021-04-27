@@ -29,7 +29,8 @@ class ProductVariationImage extends Model
 
     public function delete()
     {
-        $path = public_path('frontend/uploads/product');
+        $path = public_path('frontend/uploads/product/');
+
         if(isset($this->image)){
             Common::deleteExistingImage($this->image, $path);
         }

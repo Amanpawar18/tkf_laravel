@@ -86,6 +86,21 @@ class ProductController extends Controller
             $product->image = $imageName;
             $product->save();
         }
+
+        if (request()->productImages && count(request()->productImages)) {
+
+            $path = public_path() . env('PRODUCT_IMAGE_PATH');
+
+            foreach ($product->productImages as $image) {
+                $imageName = Common::deleteExistingImage($image->image, $path);
+                $image->delete();
+            }
+            foreach (request()->productImages as $image) {
+
+                $imageName = Common::uploadImage($image, $path);
+                $product->productImages()->create(['image' => $imageName]);
+            }
+        }
     }
 
 
@@ -148,7 +163,7 @@ class ProductController extends Controller
     {
         $image = ProductImage::find(request()->key);
         $path = public_path() . env('PRODUCT_IMAGE_PATH');
-        Common::deleteExistingImage($image, $path);
+        Common::deleteExistingImage($image->image, $path);
         $image->delete();
         return true;
     }
