@@ -14,7 +14,8 @@
                         <button type="button" data-bs-target="#productDetailCarousel-{{$variation->id}}"
                             data-bs-slide-to="{{$key}}" class="{{$loop->first ? 'active' : ''  }} " aria-current="true"
                             aria-label="Slide {{$key + 1}}">
-                            <img src="{{ $image->image_path }}">
+                            <img src="{{ $image->image_path }}" style="height: 50px !important"
+                            class="object-fit-contain w-100">
                         </button>
                         @endforeach
                         </button>
