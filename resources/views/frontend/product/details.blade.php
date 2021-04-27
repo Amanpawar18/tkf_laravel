@@ -15,7 +15,7 @@
                             data-bs-slide-to="{{$key}}" class="{{$loop->first ? 'active' : ''  }} " aria-current="true"
                             aria-label="Slide {{$key + 1}}">
                             <img src="{{ $image->image_path }}" style="height: 50px !important"
-                            class="object-fit-contain w-100">
+                                class="object-fit-contain w-100">
                         </button>
                         @endforeach
                         </button>
@@ -56,8 +56,8 @@
                         <button type="button" data-bs-target="#productDetailCarousel-{{$product->id}}"
                             data-bs-slide-to="{{$key}}" class="{{$loop->first ? 'active' : ''  }} " aria-current="true"
                             aria-label="Slide {{$key + 1}}">
-                            <img src="{{ $image->image_path }}"  style="height: 50px !important"
-                            class="object-fit-contain w-100">
+                            <img src="{{ $image->image_path }}" style="height: 50px !important"
+                                class="object-fit-contain w-100">
                         </button>
                         @endforeach
                         </button>
@@ -177,8 +177,8 @@
                     </div>
                     <div class="col-md-6 text-center">
                         <div class="desc-section">
-                            <h1 class="section-title bold">Composition (Per Tablet)</h1>
-                            <p>{!! $product->composition !!}</p>
+                            <h1 class="section-title bold">Directions for Use</h1>
+                            <p>{!! $product->direction_for_use !!}</p>
                         </div>
                     </div>
                     <div class="col-md-6 text-center">
@@ -189,8 +189,8 @@
                     </div>
                     <div class="col-md-6 text-center">
                         <div class="desc-section">
-                            <h1 class="section-title bold">Directions for Use</h1>
-                            <p>{!! $product->direction_for_use !!}</p>
+                            <h1 class="section-title bold">Composition (Per Tablet)</h1>
+                            <p>{!! $product->composition !!}</p>
                         </div>
                     </div>
                 </div>

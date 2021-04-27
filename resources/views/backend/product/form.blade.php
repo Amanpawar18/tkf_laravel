@@ -85,7 +85,7 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="categoryTitleInput" required class="text-capitalize">Product detail description</label>
-            <textarea name="product_detail" class="form-control" name="product_detail" id="" cols="30"
+            <textarea name="product_detail" class="form-control textarea" name="product_detail" id="" cols="30"
                 placeholder="Product detail description"
                 rows="5">{{old('product_detail', $product->product_detail)}}</textarea>
         </div>
@@ -93,21 +93,21 @@
     <div class="col-md-6">
         <div class="form-group">
             <label for="categoryTitleInput" required class="text-capitalize">Composition</label>
-            <textarea name="composition" class="form-control" name="composition" id="" cols="30"
+            <textarea name="composition" class="form-control textarea" name="composition" id="" cols="30"
                 placeholder="Composition" rows="5">{{old('composition', $product->composition)}}</textarea>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             <label for="categoryTitleInput" required class="text-capitalize">Suggested for</label>
-            <textarea name="suggested_for" class="form-control " name="suggested_for" id="" cols="30"
+            <textarea name="suggested_for" class="form-control textarea " name="suggested_for" id="" cols="30"
                 placeholder="Suggested for" rows="5">{{old('suggested_for', $product->suggested_for)}}</textarea>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
             <label for="categoryTitleInput" required class="text-capitalize">Direction for use</label>
-            <textarea name="direction_for_use" class="form-control" name="direction_for_use" id="" cols="30"
+            <textarea name="direction_for_use" class="form-control textarea" name="direction_for_use" id="" cols="30"
                 placeholder="Direction for use"
                 rows="5">{{old('direction_for_use', $product->direction_for_use)}}</textarea>
         </div>
