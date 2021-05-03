@@ -132,6 +132,93 @@
                                         </div>
                                     </div>
                                 </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Contact us link</label>
+                                            <input type="url" name="contact_us_link" class="form-control"
+                                                value="{{isset($footerData->contact_us_link)? $footerData->contact_us_link : ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Terms of use link</label>
+                                            <input type="url" name="terms_of_use_link" class="form-control"
+                                                value="{{isset($footerData->terms_of_use_link)? $footerData->terms_of_use_link : ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Privacy policy link</label>
+                                            <input type="url" name="privacy_policy_link" class="form-control"
+                                                value="{{isset($footerData->privacy_policy_link)? $footerData->privacy_policy_link : ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Order link</label>
+                                            <input type="url" name="order_link" class="form-control"
+                                                value="{{isset($footerData->order_link)? $footerData->order_link : ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Shipping link</label>
+                                            <input type="url" name="shipping_link" class="form-control"
+                                                value="{{isset($footerData->shipping_link)? $footerData->shipping_link : ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Who we are link</label>
+                                            <input type="url" name="who_we_are_link" class="form-control"
+                                                value="{{isset($footerData->who_we_are_link)? $footerData->who_we_are_link : ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Product faqs link</label>
+                                            <input type="url" name="product_faqs_link" class="form-control"
+                                                value="{{isset($footerData->product_faqs_link)? $footerData->product_faqs_link : ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Science link</label>
+                                            <input type="url" name="science_link" class="form-control"
+                                                value="{{isset($footerData->science_link)? $footerData->science_link : ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Quality link</label>
+                                            <input type="url" name="quality_link" class="form-control"
+                                                value="{{isset($footerData->quality_link)? $footerData->quality_link : ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Buddy club link</label>
+                                            <input type="url" name="buddy_club_link" class="form-control"
+                                                value="{{isset($footerData->buddy_club_link)? $footerData->buddy_club_link : ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Subscribe link</label>
+                                            <input type="url" name="subscribe_link" class="form-control"
+                                                value="{{isset($footerData->subscribe_link)? $footerData->subscribe_link : ''}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="">Affiliate link</label>
+                                            <input type="url" name="affiliate_link" class="form-control"
+                                                value="{{isset($footerData->affiliate_link)? $footerData->affiliate_link : ''}}">
+                                        </div>
+                                    </div>
+                                </div>
                                 {{-- Section-links End --}}
 
                             </div>

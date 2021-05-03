@@ -43,9 +43,9 @@
                 <div class="is-divider small"></div>
 
                 <ul id="menu-help" class="menu">
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Term of Use</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="{{FooterData::get('contact_us_link') ?? '#'}}">Contact Us</a></li>
+                    <li><a href="{{FooterData::get('terms_of_use_link') ?? '#'}}">Term of Use</a></li>
+                    <li><a href="{{FooterData::get('privacy_policy_link') ?? '#'}}">Privacy Policy</a></li>
                 </ul>
             </div>
             <div class="col-12 col-md-6 col-lg-3 mt-5 mt-md-0">
@@ -53,8 +53,8 @@
                 <div class="is-divider small"></div>
 
                 <ul id="menu-shopping" class="menu">
-                    <li><a href="#">Order</a></li>
-                    <li><a href="#">Shipping, Exchange, Cancellation</a></li>
+                    <li><a href="{{FooterData::get('order_link') ?? '#'}}">Order</a></li>
+                    <li><a href="{{FooterData::get('shipping_link') ?? '#'}}">Shipping, Exchange, Cancellation</a></li>
                 </ul>
 
             </div>
@@ -63,13 +63,13 @@
                 <div class="is-divider small"></div>
 
                 <ul id="menu-about-us" class="menu">
-                    <li><a href="#">Who We Are</a></li>
-                    <li><a href="#">Products Faq’s</a></li>
-                    <li><a href="#">Science</a></li>
-                    <li><a href="#">Quality</a></li>
-                    <li><a href="#">Buddy Club</a></li>
-                    <li><a href="#">Subscribe</a></li>
-                    <li><a href="#">Affiliate</a></li>
+                    <li><a href="{{FooterData::get('who_we_are_link') ?? '#'}}">Who We Are</a></li>
+                    <li><a href="{{FooterData::get('product_faqs_link') ?? '#'}}">Products Faq’s</a></li>
+                    <li><a href="{{FooterData::get('science_link') ?? '#'}}">Science</a></li>
+                    <li><a href="{{FooterData::get('quality_link') ?? '#'}}">Quality</a></li>
+                    <li><a href="{{FooterData::get('buddy_club_link') ?? '#'}}">Buddy Club</a></li>
+                    <li><a href="{{FooterData::get('subscribe_link') ?? '#'}}">Subscribe</a></li>
+                    <li><a href="{{FooterData::get('affiliate_link') ?? '#'}}">Affiliate</a></li>
                 </ul>
 
             </div>

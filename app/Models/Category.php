@@ -17,9 +17,10 @@ class Category extends Model
         'category_id',
         'slug',
         // 'image',
-        'frontend_video_url',
+        // 'frontend_video_url',
         // 'frontend_image_one',
         // 'frontend_image_two',
+        // 'subscription_banner',
     ];
 
 
@@ -94,6 +95,16 @@ class Category extends Model
         if (file_exists(public_path('frontend/uploads/category/' . $this->frontend_image_two)) && is_file(public_path('frontend/uploads/category/' . $this->frontend_image_two))) {
 
             $path = asset('frontend/uploads/category/' . $this->frontend_image_two);
+        }
+        return $path;
+    }
+
+    public function getSubscriptionBannerPathAttribute()
+    {
+        $path = asset('frontend/uploads/default_category.png');
+        if (file_exists(public_path('frontend/uploads/category/' . $this->subscription_banner)) && is_file(public_path('frontend/uploads/category/' . $this->subscription_banner))) {
+
+            $path = asset('frontend/uploads/category/' . $this->subscription_banner);
         }
         return $path;
     }

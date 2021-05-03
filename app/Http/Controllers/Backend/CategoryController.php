@@ -53,6 +53,7 @@ class CategoryController extends Controller
         $data = request()->only('name', 'category_id', 'frontend_video_url');
         $category = Category::create($data);
         $this->uploadCategoryImage($category);
+        $this->getYoutubeVideoId($category);
         return redirect()->route('admin.category.index')->with('status', ' Category Created successfully !!');
     }
 
@@ -102,6 +103,7 @@ class CategoryController extends Controller
         $category->update($data);
 
         $this->uploadCategoryImage($category);
+        $this->getYoutubeVideoId($category);
         return redirect()->route('admin.category.index')->with('status', ' Category updated successfully !!');
     }
 
@@ -109,22 +111,45 @@ class CategoryController extends Controller
     {
         $path = public_path() . env('CATEGORY_IMAGE_PATH');
         if (request()->hasFile('frontend_image_one')) {
-            if(isset($category->frontend_image_one)){
+            if (isset($category->frontend_image_one)) {
                 Common::deleteExistingImage($category->frontend_image_one, $path);
             }
             $imageName = Common::uploadImage(request()->frontend_image_one, $path);
             $category->frontend_image_one = $imageName;
         }
         if (request()->hasFile('frontend_image_two')) {
-            if(isset($category->frontend_image_two)){
+            if (isset($category->frontend_image_two)) {
                 Common::deleteExistingImage($category->frontend_image_two, $path);
             }
             $imageName = Common::uploadImage(request()->frontend_image_two, $path);
             $category->frontend_image_two = $imageName;
         }
+        if (request()->hasFile('subscription_banner')) {
+            if (isset($category->subscription_banner)) {
+                Common::deleteExistingImage($category->subscription_banner, $path);
+            }
+            $imageName = Common::uploadImage(request()->subscription_banner, $path);
+            $category->subscription_banner = $imageName;
+        }
         $category->save();
     }
 
+    public function getYoutubeVideoId($category)
+    {
+        // $link = "http://www.youtube.com/watch?v=oHg5SJYRHA0";
+        $link = request()->frontend_video_url;
+        $video_id = explode("?v=", $link);
+        if(count($video_id) && isset($video_id[1])){
+            $video_id = $video_id[1];
+            $category->frontend_video_url = $video_id;
+            $category->save();
+        } else {
+            $video_id = isset($video_id[0]) ? $video_id[0] : $link;
+            $category->frontend_video_url = $video_id;
+            $category->save();
+        }
+        return $video_id;
+    }
 
     public function destroy(Category $category)
     {

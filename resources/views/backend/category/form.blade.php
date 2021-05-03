@@ -23,6 +23,9 @@
                 <input type="text" name="frontend_video_url" class="form-control" id="categoryPageVideoUrlInput"
                     placeholder="Enter category title"
                     value="{{$category->frontend_video_url ?? old('frontend_video_url')}}" required>
+                <small class="text-danger">
+                    Paste only video code
+                </small>
             </div>
         </div>
         <div class="col-md-6">
@@ -41,6 +44,16 @@
                     two</label>
                 <div class="custom-file">
                     <input type="file" name="frontend_image_two" class="custom-file-input" id="customFile">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="categoryPageVideoUrlInput" class="text-capitalize">{{$category->name}} page subscription
+                    banner </label>
+                <div class="custom-file">
+                    <input type="file" name="subscription_banner" class="custom-file-input" id="customFile">
                     <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
             </div>

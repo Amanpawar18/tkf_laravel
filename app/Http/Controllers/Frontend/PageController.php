@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Page;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -15,5 +16,10 @@ class PageController extends Controller
     public function aboutUs()
     {
         return view('frontend.pages.about');
+    }
+
+    public function view(Page $page)
+    {
+        return view('frontend.pages.view', compact('page'));
     }
 }

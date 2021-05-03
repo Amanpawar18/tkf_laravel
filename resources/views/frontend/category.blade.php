@@ -12,22 +12,9 @@
 <div class="video-banner">
     <iframe width="950" height="600"  frameborder="0" allowfullscreen="1"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        src="{{$category->frontend_video_url}}?autoplay=1&loop=1&mute=1&controls=0">
+        src="https://www.youtube.com/embed/{{$category->frontend_video_url}}?playlist={{$category->frontend_video_url}}&autoplay=1&mute=1&loop=1&controls=0">
     </iframe>
 </div>
-
-<section class="home-section">
-    <div class="container-fluid text-center">
-        <h1 class="section-title bold">{{$homePageData->section_one_heading}}</h1>
-        <p class="mb-0">
-            {{$homePageData->section_one_heading_description}}
-        </p>
-        <a class="btn btn-gradient-light has-right-icon mt-40" href="{{$homePageData->read_more_link}}" title="">
-            Read More
-            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-        </a>
-    </div>
-</section>
 <section class="home-section">
     <div class="container-fluid">
         <div class="text-center">
@@ -68,8 +55,8 @@
         </div>
     </div>
 </section>
-<section class="subscription-banner" @if($homePageData->section_three_image_half_path != null) style='background-image:
-    url({{$homePageData->section_three_image_half_path}})' @endif>
+<section class="subscription-banner" @if($category->subscription_banner_path != null) style='background-image:
+    url({{$category->subscription_banner_path}})' @endif>
     <div class="subscription-banner-container">
         <div class="subscription-banner-form-wrapper">
             <form>
