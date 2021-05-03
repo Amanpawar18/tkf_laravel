@@ -29,7 +29,7 @@
                     <div class="product-item mt-30">
                         <a href="{{route('frontend.product.details', $product->slug)}}" class="text-decoration-none">
                             <div class="product-image">
-                                <div class="featured-badge black">{{$product->category->name}}</div>
+                                <div class="featured-badge black small-category-badge">{{$product->category->name}}</div>
                                 <img src="{{$product->image_path}}" class="img-fluid">
                             </div>
                         </a>

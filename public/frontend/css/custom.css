@@ -18,3 +18,9 @@
     background-color: #dd9933;
     color: black;
 }
+
+.small-category-badge{
+    width: 125px !important;
+    height: 145px !important;
+    top: -90px !important;
+}
