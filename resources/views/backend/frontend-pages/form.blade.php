@@ -26,6 +26,18 @@
             @endif
         </div>
     </div>
+    <div class="col-md-12 mx-auto">
+        <div class="form-group">
+            <label for="productTitleInput" class="text-capitalize">
+                Banner image
+            </label>
+            <div class="custom-file">
+            <input type="file" class="custom-file-input" name="banner_image" value="{{old('banner_image', $page->banner_image)}}" placeholder="Name"
+                required>
+                <label class="custom-file-label" for="customFile">Choose file</label>
+            </div>
+        </div>
+    </div>
     <div class="col-md-12">
         <div class="form-group">
             <label for="categoryTitleInput" required class="text-capitalize">Content</label>

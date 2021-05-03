@@ -11,9 +11,26 @@ class Page extends Model
 
     protected $fillable = ['name', 'slug', 'content', 'meta_title', 'meta_description', 'meta_keywords'];
 
+    // banner_image
 
     public function getRouteKeyName()
     {
         return 'slug';
     }
+
+
+    public function getBannerImagePathAttribute()
+    {
+        $path = asset('frontend/uploads/default_category.png');
+
+        if (
+            file_exists(public_path('frontend/uploads/page/' . $this->banner_image))
+            && is_file(public_path('frontend/uploads/page/' . $this->banner_image))
+        )
+            $path = asset('frontend/uploads/page/' . $this->banner_image);
+
+
+        return $path;
+    }
+
 }

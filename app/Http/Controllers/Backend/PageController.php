@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helper\Common;
 use App\Http\Controllers\Controller;
 use App\Models\Page;
 use Illuminate\Http\Request;
@@ -41,7 +42,8 @@ class PageController extends Controller
         $this->validate(request(), [
             'slug' => 'unique:pages,slug'
         ]);
-        Page::create(request()->all());
+        $page = Page::create(request()->all());
+        $this->uploadPageImages($page);
         return redirect()->route('admin.pages.index')->with('status', 'Page created successfully');
     }
 
@@ -77,10 +79,26 @@ class PageController extends Controller
     public function update(Page $page)
     {
         $this->validate(request(), [
-            'slug' => 'unique:pages,slug,'.$page->id
+            'slug' => 'unique:pages,slug,' . $page->id
         ]);
         $page->update(request()->all());
+        $this->uploadPageImages($page);
         return redirect()->route('admin.pages.index')->with('status', 'Page created successfully');
+    }
+
+    public function uploadPageImages($page)
+    {
+
+        if (request()->hasFile('banner_image')) {
+            $bannerImageName = time() . '.' . request()->banner_image->extension();
+            $path = public_path('frontend/uploads/page');
+            request()->banner_image->move($path, $bannerImageName);
+            if (isset($page->banner_image)) {
+                Common::deleteExistingImage($page->banner_image, $path);
+            }
+            $page->banner_image = $bannerImageName;
+            $page->save();
+        }
     }
 
     /**
