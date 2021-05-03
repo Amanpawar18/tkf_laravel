@@ -16,4 +16,5 @@ class ProductBenefit extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
 }

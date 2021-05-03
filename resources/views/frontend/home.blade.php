@@ -60,6 +60,9 @@
                     </div>
                 </div>
                 @endforeach
+                <div class="col-md-12 text-center">
+                    <a href="{{route('frontend.product.shop')}}" class="btn btn-buy-now" style="width: auto; !important">View all</a>
+                </div>
             </div>
         </div>
     </div>

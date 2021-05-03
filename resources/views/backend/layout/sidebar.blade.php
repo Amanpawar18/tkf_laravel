@@ -34,12 +34,12 @@
                 </li>
                 {{-- <li class="nav-item">
                     <a href="{{route('admin.user.index')}}" class="nav-link
-                    {{(App\Helper\Common::getCurrentController() == 'HomeController') ? 'active' : ''}}">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Users
-                        </p>
-                    </a>
+                {{(App\Helper\Common::getCurrentController() == 'HomeController') ? 'active' : ''}}">
+                <i class="nav-icon fas fa-users"></i>
+                <p>
+                    Users
+                </p>
+                </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.orders.index')}}" class="nav-link
@@ -52,12 +52,12 @@
                 </li> --}}
                 {{-- <li class="nav-item">
                     <a href="{{route('admin.newsletter.index')}}" class="nav-link
-                    {{(App\Helper\Common::getCurrentController() == 'NewsletterController') ? 'active' : ''}}">
-                        <i class="nav-icon fas fa-list"></i>
-                        <p>
-                            News Letter
-                        </p>
-                    </a>
+                {{(App\Helper\Common::getCurrentController() == 'NewsletterController') ? 'active' : ''}}">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                    News Letter
+                </p>
+                </a>
                 </li> --}}
                 <li class="nav-item">
                     <a href="{{route('admin.home-page.edit')}}" class="nav-link
@@ -78,6 +78,24 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.pages.index')}}" class="nav-link
+                    {{(App\Helper\Common::getCurrentController() == 'PageController') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>
+                            Pages
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.profile')}}" class="nav-link
+                    {{(App\Helper\Common::getCurrentController() == 'ProfileController') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-image"></i>
+                        <p>
+                            Profile
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.settings')}}" class="nav-link
                     {{(App\Helper\Common::getCurrentController() == 'SettingsController') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-cog"></i>
@@ -86,15 +104,6 @@
                         </p>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a href="{{route('admin.profile')}}" class="nav-link
-                {{(App\Helper\Common::getCurrentController() == 'ProfileController') ? 'active' : ''}}">
-                <i class="nav-icon fas fa-image"></i>
-                <p>
-                    Profile
-                </p>
-                </a>
-                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

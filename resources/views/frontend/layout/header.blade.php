@@ -21,9 +21,10 @@
             <div class="collapse navbar-collapse" id="navbarsExample04">
                 {{-- <ul class="navbar-nav ms-auto mb-2 mb-md-0 position-relative"> --}}
                 <ul class="navbar-nav mx-auto mb-2 mb-md-0 position-relative">
-                    @foreach (App\Models\Category::whereHas('childrenCategories')->take(3)->get() as $category)
+                    @foreach (App\Models\Category::whereHas('childrenCategories')->take(3)->get() as $headerCategory)
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('frontend.category', $category->slug)}}">{{$category->name}}</a>
+                        <a class="nav-link"
+                            href="{{route('frontend.category', $headerCategory->slug)}}">{{$headerCategory->name}}</a>
                     </li>
                     @endforeach
                     <li class="nav-item">

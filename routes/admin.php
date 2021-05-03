@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\FooterDataController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\NewsletterController;
 use App\Http\Controllers\Backend\OrderController;
+use App\Http\Controllers\Backend\PageController;
 use App\Http\Controllers\Backend\ProductBenefitController;
 use App\Http\Controllers\Backend\ProductController;
 use App\Http\Controllers\Backend\ProductFaqController;
@@ -87,6 +88,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::post('product-variation/destroy-images', [ProductVariationController::class, 'destroyImage'])->name('product-variation.destroyImage');
 
     Route::resource('orders', OrderController::class);
+    Route::resource('pages', PageController::class);
 
     Route::get('edit-home-page-data', [HomeController::class, 'edit'])->name('home-page.edit');
     Route::post('update-home-page-data', [HomeController::class, 'update'])->name('home-page.update');

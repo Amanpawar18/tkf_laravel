@@ -68,7 +68,7 @@
                             </div>
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="{{ route('admin.question.index') }}" class="btn btn-danger">
+                                <a href="{{ route('admin.dashboard') }}" class="btn btn-danger">
                                     <i class="fa fa-times-circle"></i> Cancel
                                 </a>
                             </div>

@@ -39,6 +39,31 @@ class ProductController extends Controller
         return view('frontend.product.index');
     }
 
+    public function shop()
+    {
+        if (isset(request()->category)) {
+            $category = Category::where('slug', 'LIKE', '%' . request()->category . '%')->first();
+        }
+        if (isset(request()->subcategory)) {
+            $subCategory = Category::where('slug', 'LIKE', '%' . request()->subcategory . '%')->first();
+        }
+
+        // dd($category->id, $subCategory->id);
+        $query = Product::with('productFaqs', 'productBenefits', 'productVariations');
+        if (isset($subCategory)) {
+            $query->where('subcategory_id', $subCategory->id);
+        } elseif (isset($category)) {
+            $query->where('category_id', $category->id);
+        }
+
+        $products = $query->get();
+
+        $categories = Category::with('categories')
+            ->whereHas('products')
+            ->get();
+        return view('frontend.product.shop', compact('products', 'categories'));
+    }
+
     public function details(Product $product)
     {
         $relatedProducts = Product::whereSubcategoryId($product->subcategory_id)

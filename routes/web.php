@@ -38,7 +38,9 @@ Route::group(['as' => 'frontend.'], function () {
     Route::get('category/{category}', [HomeController::class, 'category'])->name('category');
     // Route::get('/product/page', [ProductController::class, 'index'])->name('product.index');
 
+    Route::get('/shop', [ProductController::class, 'shop'])->name('product.shop');
     Route::get('/product-detail/{product}', [ProductController::class, 'details'])->name('product.details');
+    Route::get('/pages/{page?}', [PageController::class, 'view'])->name('page.view');
 
     // Route::post('create-checkout-session', [PaymentController::class, 'receivePayment'])->name('stripe.initialize');
     // Route::get('/pages/shipping-returns', [PageController::class, 'shippingReturns'])->name('shipping.return');
