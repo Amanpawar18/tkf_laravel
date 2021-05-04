@@ -37,91 +37,36 @@
                             <h2>Categories</h2>
 
                             <div class="row">
-                                <div class="col-12 col-md-4">
-                                    <div class="sub-mega-menu-item">
-                                        <h5>Dogs</h5>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="sub-mega-menu-item">
-                                        <h5>Cats</h5>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="sub-mega-menu-item">
-                                        <h5>Horses</h5>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="sub-mega-menu-item">
-                                        <h5>For You</h5>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                        </ul>
+                                <div class="col-md-8 col-4">
+                                    <div class="row">
+                                        @foreach (App\Models\Category::whereHas('products')->take(4)->get() as $key =>
+                                        $category)
+                                        <div class="col-6 col-md-6">
+                                            <div class="sub-mega-menu-item">
+                                                <h5>{{$category->name}}</h5>
+                                                <ul>
+                                                    @foreach ($category->categories as $subCategory)
+                                                    <li>
+                                                        <a
+                                                            href="{{route('frontend.product.shop', ['category' => $category->slug, 'subcategory' => $subCategory->slug])}}">
+                                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
+                                                            {{$subCategory->name}}
+                                                        </a>
+                                                    </li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        @endforeach
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-4">
-                                    <div class="sub-mega-menu-item">
-                                        <h5>Health</h5>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                            <li><a href="#"><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>Petraceuticals</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4">
+                                <div class="col-4 col-md-4">
                                     <div class="sub-mega-menu-item">
                                         <img src="{{asset('frontend/assets/images/shop-img-1.jpeg')}}"
                                             class="img-fluid">
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </li>
                     <li class="nav-item">
