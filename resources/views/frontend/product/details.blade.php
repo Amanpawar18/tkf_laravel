@@ -99,18 +99,6 @@
                         </ol>
                     </nav>
                     <h1 class="product-title">{{$product->name}}</h1>
-                    <h3 class="product-price">
-                        @if(count($product->productVariations))
-                        @foreach ($product->productVariations as $key => $variation)
-                        <span id="price-{{$variation->id}}" class="price {{$loop->first ? '' : 'd-none'}}">
-                            <span class="product-Price-symbol">₹</span>
-                            {{$variation->price}}
-                        </span>
-                        @endforeach
-                        @else
-                        {{$product->cost}}
-                        @endif
-                    </h3>
                     <div class="product-short-description">
                         <h5 class="product-desc-main">
                             {{$product->sub_description}}
@@ -135,15 +123,34 @@
                         </div>
                         @endif
                         <div class="product-main-detail-submission">
-                            <div class="quantity_selector">
-                                <div class="input-group mb-3">
-                                    <button class="btn decrease" type="button">-</button>
-                                    <input type="text" class="form-control quantity" readonly value="1">
-                                    <button class="btn increase" type="button">+</button>
+                            <div class="row align-items-center">
+                                <div class="col-md-2">
+                                    <h3 class="product-price">
+                                        @if(count($product->productVariations))
+                                        @foreach ($product->productVariations as $key => $variation)
+                                        <span id="price-{{$variation->id}}"
+                                            class="price {{$loop->first ? '' : 'd-none'}}">
+                                            <span class="product-Price-symbol h3 product-price">₹</span>
+                                            {{$variation->price}}
+                                        </span>
+                                        @endforeach
+                                        @else
+                                        {{$product->cost}}
+                                        @endif
+                                    </h3>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="quantity_selector">
+                                        <div class="input-group mb-3">
+                                            <button class="btn decrease" type="button">-</button>
+                                            <input type="text" class="form-control quantity" readonly value="1">
+                                            <button class="btn increase" type="button">+</button>
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-warning shop-now-btn">Shop Now <i
+                                            class="fa fa-angle-right"></i></button>
                                 </div>
                             </div>
-                            <button class="btn btn-warning shop-now-btn">Shop Now <i
-                                    class="fa fa-angle-right"></i></button>
                         </div>
 
                     </form>

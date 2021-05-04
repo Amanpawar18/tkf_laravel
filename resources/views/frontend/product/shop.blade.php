@@ -7,9 +7,9 @@
                 <h3>
                     All Products
                 </h3>
-                Our veterinary-developed horse supplements support horses' joint, digestive, hoof, allergy and weight
-                issues. Choose Platinum Performance® Equine for total body health. All products can be auto-shipped so
-                you’ll never run out while saving 50% on ground shipping.
+                At Venttura we believe your pet comes FIRST. With this simple approach to
+                guide all our decisions our goal is to help pets be healthy and to provide
+                wellness solutions to pets of all ages, at all stages.
                 <hr>
             </div>
             <div class="col-md-3">
@@ -21,7 +21,8 @@
                             <ul class="" style="list-style-type: none;">
                                 @foreach ($category->categories as $subCategory)
                                 <li>
-                                    <a class="text-dark text-decoration-none" href="{{route('frontend.product.shop', ['category' => $category->slug, 'subcategory' => $subCategory->slug])}}">
+                                    <a class="text-dark text-decoration-none"
+                                        href="{{route('frontend.product.shop', ['category' => $category->slug, 'subcategory' => $subCategory->slug])}}">
                                         {{$subCategory->name}}
                                     </a>
                                 </li>
