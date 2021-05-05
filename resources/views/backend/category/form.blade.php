@@ -1,9 +1,13 @@
 <div class="card-body">
     <div class="row">
-        <div class="col-md-12">
-            @foreach ($errors->all() as $error)
-            {{$error}}
-            @endforeach
+        <div class="col-md-12 text-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>
+                    {{$error}}
+                </li>
+                @endforeach
+            </ul>
         </div>
         <div class="col-md-6">
             <div class="form-group">
