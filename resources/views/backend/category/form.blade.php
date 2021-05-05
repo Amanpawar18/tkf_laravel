@@ -1,10 +1,15 @@
 <div class="card-body">
     <div class="row">
+        <div class="col-md-12">
+            @foreach ($errors->all() as $error)
+            {{$error}}
+            @endforeach
+        </div>
         <div class="col-md-6">
             <div class="form-group">
+                <label for="categoryTitleInput" class="text-capitalize">Category</label>
                 @if(Route::currentRouteName() == 'admin.subcategory.add')
                 <input type="hidden" name="category_id" value="{{$category->id}}">
-                <label for="categoryTitleInput" class="text-capitalize">Category</label>
                 <input type="text" name="name" class="form-control" id="categoryTitleInput"
                     placeholder="Enter category title" value="{{old('category')}}" required>
                 @else

@@ -28,10 +28,10 @@ Route::group(['as' => 'frontend.'], function () {
 
     // Route::post('/news-letter', [HomeController::class, 'newsLetter'])->name('newsletter');
 
-    // Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    // Route::post('/cart/store/{product}', [CartController::class, 'store'])->name('cart.store');
-    // Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
-    // Route::post('/cart/delete/{item}', [CartController::class, 'delete'])->name('cart.delete');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::post('/cart/store/{product}', [CartController::class, 'store'])->name('cart.store');
+    Route::post('/cart/update', [CartController::class, 'update'])->name('cart.update');
+    Route::post('/cart/delete/{item}', [CartController::class, 'delete'])->name('cart.delete');
 
 
     Route::get('/', [HomeController::class, 'home'])->name('home');

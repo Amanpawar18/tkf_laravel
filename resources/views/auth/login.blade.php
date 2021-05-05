@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-sm-8 col-md-12 col-lg-12 text-center">
             <h2>
-                    Sign In
+                Sign In
             </h2>
             <hr>
         </div>
@@ -15,9 +15,8 @@
                         <button class="nav-link active" id="nav-login-tab" data-bs-toggle="tab"
                             data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login"
                             aria-selected="true">Login</button>
-                        <button class="nav-link " id="nav-register-tab" data-bs-toggle="tab"
-                            data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register"
-                            aria-selected="true">Register</button>
+                        <a class="nav-link text-dark" id="nav-register-tab" href="{{route('register')}}"
+                            aria-selected="true">Register</a>
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
@@ -45,45 +44,6 @@
                             <div class="col-md-12 mb-2">
                                 <button class="btn btn-warning btn-block" type="submit">
                                     Login
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
-                        <div class="row mb-3">
-                            <div class="col-md-12 mb-2">
-                                <label for="revier_email">First name*</label>
-                                <input id="revier_email" name="revier_email" type="email" required=""
-                                    class="form-control">
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <label for="revier_email">Last name*</label>
-                                <input id="revier_email" name="revier_email" type="email" required=""
-                                    class="form-control">
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <label for="revier_email">Phone*</label>
-                                <input id="revier_email" name="revier_email" type="email" required=""
-                                    class="form-control">
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <label for="revier_email">Email*</label>
-                                <input id="revier_email" name="revier_email" type="email" required=""
-                                    class="form-control">
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <label for="revier_email">Password*</label>
-                                <input id="revier_email" name="revier_email" type="email" required=""
-                                    class="form-control">
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <label for="revier_email">Confirm password*</label>
-                                <input id="revier_email" name="revier_email" type="email" required=""
-                                    class="form-control">
-                            </div>
-                            <div class="col-md-12 mb-2">
-                                <button class="btn btn-warning btn-block" type="submit">
-                                    Register
                                 </button>
                             </div>
                         </div>

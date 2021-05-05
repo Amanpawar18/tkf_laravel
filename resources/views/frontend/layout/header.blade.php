@@ -87,35 +87,30 @@
                             <li><a href="#">Doctor Registration</a></li>
                         </ul>
                     </li>
+                    @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        <a class="nav-link" href="javascript:void(0);'"
+                            onclick="event.preventDefault(); document.getElementById('logOut').submit();">
+                            Logout
                         </a>
                     </li>
+                    <form method="post" id="logOut" action="{{route('logout')}}">
+                        @csrf
+                    </form>
+                    @else
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                        <a class="nav-link" href="{{route('login')}}">
+                            Login/Register
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="fa fa-phone" aria-hidden="true"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item has-dropdown has-dropdown-right">
-                        <a class="nav-link" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
-                        <div class="nav-dropdown-hoverable">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <button class="btn btn-warning" type="submit"><i class="fa fa-search"
-                                        aria-hidden="true"></i></button>
-                            </div>
-                        </div>
+                    @endauth
+                    @auth
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <i class="fa fa-user" aria-hidden="true"></i>
                         </a>
                     </li>
+                    @endauth
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
