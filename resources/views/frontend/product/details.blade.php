@@ -106,7 +106,8 @@
                         <p>{{$product->description}}</p>
                     </div>
 
-                    <form class="variations_form theme-form">
+                    <form class="variations_form theme-form" action="{{route('frontend.cart.store', $product->id)}}" method="POST">
+                        @csrf
                         @if(count($product->productVariations))
                         <div class="row mb-3">
                             <div class="col-md-3">
@@ -147,8 +148,10 @@
                                             <button class="btn increase" type="button">+</button>
                                         </div>
                                     </div>
-                                    <button class="btn btn-warning shop-now-btn">Shop Now <i
-                                            class="fa fa-angle-right"></i></button>
+                                    <button type="submit" class="btn btn-warning shop-now-btn">
+                                        Shop Now
+                                        <i class="fa fa-angle-right"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>

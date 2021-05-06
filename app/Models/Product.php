@@ -123,6 +123,22 @@ class Product extends Model
         return $cost;
     }
 
+    public function getCostNumericAttribute()
+    {
+
+        $variation = $this->productVariations()->first();
+
+        if ($variation) {
+            $cost = $variation->price;
+        } else {
+
+            // $cost = $this->is_sale ? $this->sale_price : $this->regular_price;
+            $cost = $this->regular_price;
+        }
+
+        return $cost;
+    }
+
     public function priceRange()
     {
         $range = '';

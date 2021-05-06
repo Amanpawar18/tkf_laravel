@@ -43,7 +43,6 @@ class CartController extends Controller
         $data['user_id'] = Auth::id();
         $data['product_id'] = $productId;
         $data['quantity'] = request()->quantity ?? 1;
-        $data['size'] = request()->size;
         $data['session_id'] = Auth::check() ? null : $this->getSessionId();
 
         $isAlreadyAdded = Cart::where(function ($query) {
@@ -55,7 +54,6 @@ class CartController extends Controller
         })
             ->where('product_id',  $productId)
             ->where('quantity',  $data['quantity'])
-            ->where('size',  $data['size'])
             ->first();
 
         if (!$isAlreadyAdded) {

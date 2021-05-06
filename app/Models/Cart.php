@@ -12,7 +12,7 @@ class Cart extends Model
 
     protected $fillable = [
         'user_id', 'session_id',
-        'product_id', 'quantity', 'size'
+        'product_id', 'quantity'
     ];
 
     protected static function boot()

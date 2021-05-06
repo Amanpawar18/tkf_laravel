@@ -115,7 +115,7 @@
                     </li>
                     @endauth
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{route('frontend.cart.index')}}">
                             Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                         </a>
                     </li>
