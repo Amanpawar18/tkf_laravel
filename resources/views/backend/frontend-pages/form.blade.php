@@ -33,7 +33,7 @@
             </label>
             <div class="custom-file">
             <input type="file" class="custom-file-input" name="banner_image" value="{{old('banner_image', $page->banner_image)}}" placeholder="Name"
-                required>
+                {{$page->banner_image ? '' : 'required'}}>
                 <label class="custom-file-label" for="customFile">Choose file</label>
             </div>
         </div>

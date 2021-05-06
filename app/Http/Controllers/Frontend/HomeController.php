@@ -49,4 +49,10 @@ class HomeController extends Controller
 
         return redirect(request()->currentUrl)->with('success', 'Thanks for subscription!');
     }
+
+    public function petraceuticalsSchedule()
+    {
+        $pathToFile = public_path() . '/frontend/PetraceuticalSchedule.pdf';
+        return response()->file($pathToFile);
+    }
 }

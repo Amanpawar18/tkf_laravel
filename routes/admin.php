@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\Auth\AdminAuthController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\FooterDataController;
 use App\Http\Controllers\Backend\HomeController;
 use App\Http\Controllers\Backend\NewsletterController;
@@ -89,6 +90,10 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::resource('orders', OrderController::class);
     Route::resource('pages', PageController::class);
+
+    Route::get('contact-us-leads', [ContactUsController::class, 'index'])->name('contactUs.index');
+    Route::get('contact-us-leads-view/{contactUs}', [ContactUsController::class, 'view'])->name('contactUs.view');
+    Route::post('contact-us-leads-delete/{contactUs}', [ContactUsController::class, 'destroy'])->name('contactUs.destroy');
 
     Route::get('edit-home-page-data', [HomeController::class, 'edit'])->name('home-page.edit');
     Route::post('update-home-page-data', [HomeController::class, 'update'])->name('home-page.update');

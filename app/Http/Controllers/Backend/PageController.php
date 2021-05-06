@@ -82,6 +82,9 @@ class PageController extends Controller
             'slug' => 'unique:pages,slug,' . $page->id
         ]);
         $page->update(request()->all());
+        // $page->content = request()->content;
+        // $page->save();
+        // dd(request()->all());
         $this->uploadPageImages($page);
         return redirect()->route('admin.pages.index')->with('status', 'Page created successfully');
     }

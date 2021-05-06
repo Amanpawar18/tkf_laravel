@@ -32,6 +32,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('admin.contactUs.index')}}" class="nav-link
+                    {{(App\Helper\Common::getCurrentController() == 'ContactUsController') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Contact us leads
+                        </p>
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a href="{{route('admin.user.index')}}" class="nav-link
                 {{(App\Helper\Common::getCurrentController() == 'HomeController') ? 'active' : ''}}">

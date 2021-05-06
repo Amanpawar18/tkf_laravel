@@ -43,7 +43,7 @@
                 <div class="is-divider small"></div>
 
                 <ul id="menu-help" class="menu">
-                    <li><a href="{{FooterData::get('contact_us_link') ?? '#'}}">Contact Us</a></li>
+                    <li><a href="{{route('frontend.contact-us.view')}}">Contact Us</a></li>
                     <li><a href="{{FooterData::get('terms_of_use_link') ?? '#'}}">Term of Use</a></li>
                     <li><a href="{{FooterData::get('privacy_policy_link') ?? '#'}}">Privacy Policy</a></li>
                 </ul>
@@ -53,7 +53,7 @@
                 <div class="is-divider small"></div>
 
                 <ul id="menu-shopping" class="menu">
-                    <li><a href="{{FooterData::get('order_link') ?? '#'}}">Order</a></li>
+                    <li><a href="{{FooterData::get('order_link') ?? '#'}}">Track Your Order</a></li>
                     <li><a href="{{FooterData::get('shipping_link') ?? '#'}}">Shipping, Exchange, Cancellation</a></li>
                 </ul>
 
@@ -65,11 +65,13 @@
                 <ul id="menu-about-us" class="menu">
                     <li><a href="{{FooterData::get('who_we_are_link') ?? '#'}}">Who We Are</a></li>
                     <li><a href="{{FooterData::get('product_faqs_link') ?? '#'}}">Products Faq’s</a></li>
+                    <li><a href="{{route('frontend.petraceuticals-schedule')}}" target="_blank">Petraceuticals
+                            Schedule</a></li>
                     <li><a href="{{FooterData::get('science_link') ?? '#'}}">Science</a></li>
                     <li><a href="{{FooterData::get('quality_link') ?? '#'}}">Quality</a></li>
                     <li><a href="{{FooterData::get('buddy_club_link') ?? '#'}}">Buddy Club</a></li>
                     <li><a href="{{FooterData::get('subscribe_link') ?? '#'}}">Subscribe</a></li>
-                    <li><a href="{{FooterData::get('affiliate_link') ?? '#'}}">Affiliate</a></li>
+                    <li><a href="{{FooterData::get('affiliate_link') ?? '#'}}">Referral</a></li>
                 </ul>
 
             </div>

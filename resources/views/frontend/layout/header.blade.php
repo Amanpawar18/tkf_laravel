@@ -28,11 +28,14 @@
                     </li>
                     @endforeach
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Who we Are</a>
+                        <a class="nav-link" href="{{FooterData::get('who_we_are_link') ?? '#'}}">Who we Are</a>
                     </li>
                     <li class="nav-item has-dropdown mega-menu">
-                        <a class="nav-link" href="#">Shop <span class="drop-icon"><i class="fa fa-angle-down"
-                                    aria-hidden="true"></i></span></a>
+                        <a class="nav-link" href="{{route('frontend.product.shop')}}">Shop
+                            <span class="drop-icon">
+                                <i class="fa fa-angle-down" aria-hidden="true"></i>
+                            </span>
+                        </a>
                         <div class="nav-dropdown-hoverable sub-mega-menu">
                             <h2>Categories</h2>
 
@@ -73,7 +76,7 @@
                         <a class="nav-link" href="#">Referral</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">News</a>
+                        <a class="nav-link" href="#">Gallery</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Blog</a>
