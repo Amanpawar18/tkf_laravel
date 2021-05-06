@@ -24,3 +24,14 @@
     height: 145px !important;
     top: -90px !important;
 }
+
+/* .btn-buy-now {
+    color: #d7b56d;
+    border: 2px solid #d7b56d;
+} */
+
+.btn-buy-now:hover {
+    color: #000;
+    border: 2px solid #d7b56d;
+    background-color: #d7b56d;
+}

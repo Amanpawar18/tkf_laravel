@@ -1,9 +1,26 @@
 @extends('frontend.layout.master')
 @section('content')
 
+{{-- <div class="container">
+    <section class="product-detail-main">
+        <div class="row">
+            <div class="col-md-6 text-left">
+                <h3 class=">
+                    Welcome,
+                    {{$user->name .' ' .$user->last_name}}
+</h3>
+</div>
+<div class="col-md-6 text-right">
+    <button class="btn btn-buy-now">Logout</button>
+</div>
+</div>
+<hr>
+</section>
+</div> --}}
+
 <!-- Slider -->
-<section id="cart" class="">
-    <div class="container">
+<div class="container">
+    <section id="cart" class="product-detail-main">
         <div class="row">
             <div class="col-sm-12 text-center">
                 <h3 class="mt-0 mb-0">WELCOME</h3>
@@ -14,14 +31,10 @@
 
         <div class="row mt-5">
             <div class="col-sm-6 pt-4 pb-4 border">
+                <p class="h4">
+                    My Account
+                </p>
                 <ul class="listing">
-                    <li>
-                        <p class="fw-500 mb-0 h4"> My Account </p>
-                    </li>
-                    <li> <a href="#" class="text-dark">Wishlist </a> <span
-                            class="badge badge-pill badge-default">4</span></li>
-                    <li> <a href="#" class="text-dark">View Addresses </a> <span
-                            class="badge badge-pill badge-default">{{$user->addresses()->count()}}</span></li>
                     <li>
                         <a href="#" class="text-dark"
                             onclick="event.preventDefault(); document.getElementById('logOut').submit();">
@@ -32,19 +45,18 @@
                 </ul>
             </div>
             <div class=" col-sm-6 pt-4 pb-4 border">
+                <p class="h4">
+                    Account Details
+                </p>
                 <ul class="listing">
-                    <li>
-                        <p class="fw-500 mb-0 h4"> Account Details </p>
-                    </li>
-                    <li> <a href="#" class="text-dark">{{$user->name . ' ' .$user->last_name}} </a> <span
-                            class="badge badge-pill badge-default">4</span></li>
-                    <li> <a href="#" class="text-dark">{{$user->email}} </a> </li>
+                    <li> {{$user->name . ' ' .$user->last_name}} </li>
+                    <li> {{$user->email}}</li>
 
                 </ul>
             </div>
         </div>
         <div class="row mt-5">
-            <div class="col-sm-12  pb-4 border">
+            <div class="col-sm-12  p-4 border">
                 <ul class="listing">
                     <li>
                         <p class="fw-500 mb-0 h4"> Order History </p>
@@ -67,7 +79,8 @@
                                         width="100" height="82">
                                 </td>
                                 <td>
-                                    <a href="{{route('frontend.product.details', $orderProduct->product->slug)}}" class="p">
+                                    <a href="{{route('frontend.product.details', $orderProduct->product->slug)}}"
+                                        class="p">
                                         <p>
                                             {{$orderProduct->product->name}}
                                         </p>
@@ -98,19 +111,12 @@
 
                         </tbody>
                     </table>
-
-                    <li>
-                        {{$orderProducts->links()}}
-                    </li>
                 </ul>
             </div>
-
+            <div class="col-md-12">
+                {{$orderProducts->links()}}
+            </div>
         </div>
-
-    </div>
-</section>
-
-
-
-
+    </section>
+</div>
 @endsection
