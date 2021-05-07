@@ -54,7 +54,7 @@
                                 </p>
                                 <h5>starting at <span class="product-price">{{$product->cost}}</span></h5>
                             </a>
-                            <a class="btn btn-buy-now">Buy Now</a>
+                            <a href="{{route('frontend.product.details', $product->slug)}}" class="btn btn-buy-now">Buy Now</a>
                         </div>
 
                     </div>

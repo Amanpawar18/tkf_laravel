@@ -66,11 +66,11 @@
                                 <div class="col-12 col-md-12">
                                     <div class="sub-mega-menu-item">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 text-center">
                                                 <img src="{{asset('frontend/assets/images/shop-header1.png')}}"
                                                     class="img-fluid object-fit-contain" style="height: 250px;">
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 text-center">
                                                 <img src="{{asset('frontend/assets/images/shop-header2.png')}}"
                                                     class="img-fluid object-fit-contain" style="height: 250px;">
                                             </div>

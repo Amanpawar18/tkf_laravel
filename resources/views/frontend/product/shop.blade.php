@@ -62,7 +62,7 @@
                                         starting at <strong>{{$product->cost}}</strong>
                                     </h5>
                                 </a>
-                                <a class="btn btn-buy-now">Buy Now</a>
+                                <a href="{{route('frontend.product.details', $product->slug)}}" class="btn btn-buy-now">Buy Now</a>
                             </div>
 
                         </div>
