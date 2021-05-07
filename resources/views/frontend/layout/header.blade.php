@@ -40,7 +40,7 @@
                             <h2>Categories</h2>
 
                             <div class="row">
-                                <div class="col-md-8 col-4">
+                                <div class="col-md-12 col-12">
                                     <div class="row">
                                         @foreach (App\Models\Category::whereHas('products')->take(4)->get() as $key =>
                                         $category)
@@ -63,10 +63,18 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="col-4 col-md-4">
+                                <div class="col-12 col-md-12">
                                     <div class="sub-mega-menu-item">
-                                        <img src="{{asset('frontend/assets/images/shop-img-1.jpeg')}}"
-                                            class="img-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <img src="{{asset('frontend/assets/images/shop-header1.png')}}"
+                                                    class="img-fluid object-fit-contain" style="height: 250px;">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <img src="{{asset('frontend/assets/images/shop-header2.png')}}"
+                                                    class="img-fluid object-fit-contain" style="height: 250px;">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
