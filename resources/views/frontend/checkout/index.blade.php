@@ -117,7 +117,7 @@ $subTotal = 0;
                                     {{$item->product->name}} <b>x</b>
                                     {{ $item->quantity }}
                                     <strong class="pull-right">
-                                        ${{ $item->quantity * ($item->product_cost)}}
+                                        ₹{{ $item->quantity * ($item->product_cost)}}
                                         @php
                                         $subTotal += $item->quantity * ($item->product_cost);
                                         @endphp
