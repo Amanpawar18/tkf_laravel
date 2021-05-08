@@ -52,7 +52,7 @@ use Illuminate\Support\Facades\Route;
                                         <td>Order-{{$order->id}}</td>
                                         <td>{{$order->orderProducts()->count()}}</td>
                                         <td>{{$order->status_text}}</td>
-                                        <td>${{$order->total_amount}}</td>
+                                        <td>₹{{$order->total_amount}}</td>
                                         <td>
                                             <form action="{{route('admin.orders.destroy',$order->id)}}"
                                                 method="post">

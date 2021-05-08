@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\ProfileController;
+use App\Http\Controllers\Frontend\RazorpayPaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -53,15 +54,18 @@ Route::group(['as' => 'frontend.'], function () {
     // Route::get('/pages/about-us', [PageController::class, 'aboutUs'])->name('about.us');
 });
 
-// Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
+Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('/dashboard', [ProfileController::class, 'show'])->name('profile.show');
 
-//     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
-//     Route::get('/shipping', [CheckoutController::class, 'shipping'])->name('shipping');
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
+    Route::get('/shipping', [CheckoutController::class, 'shipping'])->name('shipping');
+
+    Route::post('razorpay-order-create', [RazorpayPaymentController::class, 'orderCreate'])->name('razorpay.orderCreate');
+    Route::post('razorpay-order-save', [RazorpayPaymentController::class, 'orderSave'])->name('razorpay.orderSave');
 
 //     Route::post('/save-shipping-details', [CheckoutController::class, 'saveShippingDetails'])->name('shipping.save');
 
 //     // Route::post('/save-shipping-details', [CheckoutController::class, 'saveShippingDetails'])->name('shipping.save');
-//     Route::get('stripe-success', [PaymentController::class, 'stripeSuccess'])->name('stripe.success');
+    Route::get('stripe-success', [PaymentController::class, 'stripeSuccess'])->name('stripe.success');
 //     Route::get('stripe-cancel', [PaymentController::class, 'stripeCancel'])->name('stripe.cancel');
-// });
+});

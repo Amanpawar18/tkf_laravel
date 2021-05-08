@@ -34,15 +34,16 @@ class CartController extends Controller
     {
 
         $product = Product::find($productId);
-        if(isset($product->size)){
+        if(isset($product->variation_id)){
             request()->validate([
-                'size' => 'required'
+                'variation_id' => 'required'
             ]);
         }
 
         $data['user_id'] = Auth::id();
         $data['product_id'] = $productId;
         $data['quantity'] = request()->quantity ?? 1;
+        $data['variation_id'] = request()->variation_id;
         $data['session_id'] = Auth::check() ? null : $this->getSessionId();
 
         $isAlreadyAdded = Cart::where(function ($query) {
@@ -54,6 +55,7 @@ class CartController extends Controller
         })
             ->where('product_id',  $productId)
             ->where('quantity',  $data['quantity'])
+            ->where('variation_id',  $data['variation_id'])
             ->first();
 
         if (!$isAlreadyAdded) {
@@ -61,13 +63,15 @@ class CartController extends Controller
                 [
                     'user_id' => Auth::id(),
                     'session_id' => Auth::check() ? null : $this->getSessionId(),
-                    'product_id' =>  $productId
+                    'product_id' =>  $productId,
+                    'variation_id' =>   $data['variation_id']
                 ],
                 $data
             );
-            return redirect()->back()->with('status', 'Product added to cart successfully !!');
+            return redirect()->route('frontend.cart.index')->with('status', 'Product added to cart successfully !!');
         }
-        return redirect()->back()->with('status', 'Product already added to cart !!');
+        return redirect()->route('frontend.cart.index')->with('status', 'Product already added to cart !!');
+        // return redirect()->back()->with('status', 'Product already added to cart !!');
     }
 
     public function assignCartProducts()

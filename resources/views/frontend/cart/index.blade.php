@@ -6,19 +6,22 @@ $cartTotal = 0;
 <div class="container py-5">
     <form action="{{route('frontend.cart.update')}}" method="POST">
         @csrf
-        <div class="row no-gutters">
-            <aside class="col-md-9">
+        <div class="row no-gutters position-relative">
+            <aside class="col-md-9 mx-auto">
                 @forelse ($cartItems as $item)
-                <div class="card mb-3">
+                <div class="card mb-3" id="item-{{$item->id}}">
                     <article class="card-body">
                         <div class="row align-items-center">
                             <div class="col-md-2">
-                                <figure class="media">
-                                    <div class="img-wrap mr-3">
-                                        <img src="{{asset($item->product->image_path)}}"
-                                            class="img-sm object-fit-contain img-fluid" style="height: 100px">
-                                    </div>
-                                </figure>
+                                <a class="h6 text-dark text-decoration-none"
+                                    href="{{route('frontend.product.details', $item->product->slug)}}">
+                                    <figure class="media">
+                                        <div class="img-wrap mr-3">
+                                            <img src="{{asset($item->product->image_path)}}"
+                                                class="img-sm object-fit-contain img-fluid" style="height: 100px">
+                                        </div>
+                                    </figure>
+                                </a>
                             </div> <!-- col.// -->
                             <div class="col-md-2 col-sm-12">
                                 <a class="h6 text-dark text-decoration-none"
@@ -31,15 +34,15 @@ $cartTotal = 0;
                                     style="width: 80px; !important" name="item[{{$item->id}}][quantity]"
                                     value="{{$item->quantity}}">
                                 @php // Adding the product cost in cart total
-                                $cartTotal += $item->quantity * $item->product->cost_numeric;
+                                $cartTotal += $item->quantity * $item->product_cost;
                                 @endphp
                                 <span class="mx-3 p-2">
-                                    X &nbsp; {{ $item->product->cost }}
+                                    X &nbsp; {{ $item->product_cost }}
                                 </span>
                             </div>
                             <div class="col-md-3 col-sm-8 col-8 text-md-left">
                                 <span class="mx-md-3 p-1  mx-sm-0 p-sm-0">
-                                    Total: ₹{{ $item->quantity * $item->product->cost_numeric }}
+                                    Total: ₹{{ $item->quantity * $item->product_cost }}
                                 </span>
                             </div>
                             <div class="col-md-1 col-sm-4 col-4 text-md-right text-right">
@@ -53,18 +56,20 @@ $cartTotal = 0;
                     </article> <!-- card-group.// -->
                 </div>
                 @empty
-                <article class="card-body">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="price-wrap">Add some products in cart</div>
-                        </div> <!-- col.// -->
-                    </div> <!-- row.// -->
-                </article> <!-- card-group.// -->
+                <div class="card mb-3">
+                    <article class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="price-wrap">Add some products in cart</div>
+                            </div> <!-- col.// -->
+                        </div> <!-- row.// -->
+                    </article> <!-- card-group.// -->
+                </div>
                 @endforelse
             </aside> <!-- col.// -->
             @if(count($cartItems))
             <aside class="col-md-3 border-left">
-                <div class="card">
+                <div class="card position-sticky" style="top: 20px;">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 col-6 ">Total price:</div>
@@ -72,8 +77,7 @@ $cartTotal = 0;
                         </div>
                         <hr>
                         <button class="btn btn-buy-now btn-block"> Update Cart </Button>
-                        <a href="#" class="btn btn-buy-now btn-block"> Make Purchase </a>
-                        <a href="#" class="btn btn-buy-now btn-block">Continue Shopping</a>
+                        <a href="{{route('frontend.checkout')}}" class="btn btn-buy-now btn-block">Checkout</a>
                     </div> <!-- card-body.// -->
                 </div>
             </aside> <!-- col.// -->
@@ -81,91 +85,4 @@ $cartTotal = 0;
         </div> <!-- row.// -->
     </form>
 </div>
-{{-- <div class="card">
-        <div class="card-body">
-            <div class="row justify-content-center">
-                <div class="col-sm-8 col-md-12 col-lg-12 text-center">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr class="">
-                                <th scope="col" colspan="2">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
-                                <th scope="col">Actions</th>
-                            </tr>
-                        </thead>
-
-                        <form action="{{route('frontend.cart.update')}}" method="POST">
-@csrf
-<tbody>
-    @forelse ($cartItems as $item)
-    <tr id="item-{{$item->id}}">
-        <td class="align-middle" scope="row">
-            <img src="{{asset($item->product->image_path)}}" class="object-fit-contain" width="100px" height="82px">
-        </td>
-        <td class="align-middle">
-            <p>
-                <a href="{{route('frontend.product.details', $item->product->slug)}}">
-                    {{$item->product->name}}
-                </a>
-            </p>
-        </td>
-        <td class="align-middle">
-            {{$item->product->cost}}
-        </td>
-        <td class="align-middle" align="center">
-            <input type="number" id="item-{{$item->id}}-quantity" class="form-control" style="width: auto; !important"
-                name="item[{{$item->id}}][quantity]" value="{{$item->quantity}}">
-        </td>
-        <td class="align-middle">
-            <strong class="fw-500">
-                @php // Adding the product cost in cart total
-                $cartTotal += $item->quantity * $item->product->cost_numeric;
-                @endphp
-                ${{ $item->quantity * ($item->product->cost_numeric) }}
-            </strong>
-        </td>
-        <td class="align-middle">
-            <button type="button" data-url={{route('frontend.cart.delete', $item->id)}}
-                data-delete-element='item-{{$item->id}}' class="ajax-post-request btn btn-outline-danger btn-sm">
-                <i class="fa fa-trash"></i>
-            </button>
-            <button type="submit" class="btn btn-sm btn-outline-primary">
-                <i class="fa fa-save"></i>
-            </button>
-        </td>
-    </tr>
-    @empty
-    <tr>
-        <td scope="row" align="center" colspan="5">
-            Add items to cart !!
-        </td>
-    </tr>
-    @endforelse
-</tbody>
-</form>
-</table>
-</div>
-</div>
-</div>
-<div class="card-footer bg-white">
-    <div class="row justify-content-center">
-        <div class="col-sm-8 col-md-12 col-lg-12 text-center">
-            <table class="table table-hover">
-                <tbody>
-                    <tr>
-                        <td class="text-center align-middle">
-                            <strong>Cart Total: </strong>
-                        </td>
-                        <td class="align-middle">
-                            <strong class="fw-500">${{$cartTotal}}</strong>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-</div> --}}
 @endsection

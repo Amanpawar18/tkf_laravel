@@ -36,6 +36,7 @@ $(document).ready(function () {
                 if ($('#' + dataElement).length) {
                     $('#' + dataElement).remove();
                 }
+                location.reload();
             }
         });
 

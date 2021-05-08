@@ -55,62 +55,47 @@
                 </ul>
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-5 align-items-center">
             <div class="col-sm-12  p-4 border">
-                <ul class="listing">
-                    <li>
-                        <p class="fw-500 mb-0 h4"> Order History </p>
-                    </li>
-                    <table class="table">
-                        <thead>
-                            <tr class="">
-                                <th scope="col" colspan="2">Product</th>
-                                <th scope="col">Price</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+                <p class="fw-500 mb-0 h4 text-center"> Order History </p>
+                <hr>
+                <table class="table">
+                    <thead>
+                        <tr class="">
+                            <th scope="col" colspan="2" class="text-center">Product</th>
+                            <th scope="col" class="text-center">Quantity</th>
+                            <th scope="col" class="text-center">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
-                            @forelse ($orderProducts as $orderProduct)
-                            <tr>
-                                <td scope="row">
-                                    <img src="{{$orderProduct->product->image_path}}" class="object-fit-contain"
-                                        width="100" height="82">
-                                </td>
-                                <td>
-                                    <a href="{{route('frontend.product.details', $orderProduct->product->slug)}}"
-                                        class="p">
-                                        <p>
-                                            {{$orderProduct->product->name}}
-                                        </p>
-                                    </a>
-                                    <p><small class="fw-500">{{$orderProduct->size}}</small> </p>
-                                    <a class="btn  btn-fab btn-fab-mini btn-round ">
-                                        <i class="material-icons">bookmark</i>
-                                    </a>
-                                    <a class="btn  btn-fab btn-fab-mini btn-round ">
-                                        <i class="material-icons">remove_red_eye</i>
-                                    </a>
-                                    <a class="btn  btn-fab btn-fab-mini btn-round ">
-                                        <i class="material-icons">delete</i>
-                                    </a>
-                                </td>
-                                <td>$ {{$orderProduct->product->cost}}</td>
-                                <td> <input type="number" id="quantity" name="quantity"
-                                        value="{{$orderProduct->quantity}}" disabled> </td>
-                                <td><strong class="fw-500">${{$orderProduct->amount}}</strong></td>
-                            </tr>
-                            @empty
-                            <tr>
-                                <td colspan="5" align="center">
-                                    No data found
-                                </td>
-                            </tr>
-                            @endforelse
+                        @forelse ($orderProducts as $orderProduct)
+                        <tr>
+                            <td class="align-middle" scope="row">
+                                <img src="{{$orderProduct->product->image_path}}" class="object-fit-contain" width="100"
+                                    height="82">
+                            </td>
+                            <td class="align-middle">
+                                <a href="{{route('frontend.product.details', $orderProduct->product->slug)}}" class="p">
+                                    <p>
+                                        {{$orderProduct->product->name}}
+                                    </p>
+                                </a>
+                                <p><small class="fw-500">{{$orderProduct->size}}</small> </p>
+                            </td>
+                            <td class="align-middle" align="center">{{$orderProduct->quantity}}</td>
+                            <td class="align-middle" align="center"><strong class="fw-500">₹{{$orderProduct->amount}}</strong></td>
+                        </tr>
+                        @empty
+                        <tr>
+                            <td colspan="5" align="center">
+                                No data found
+                            </td>
+                        </tr>
+                        @endforelse
 
-                        </tbody>
-                    </table>
+                    </tbody>
+                </table>
                 </ul>
             </div>
             <div class="col-md-12">

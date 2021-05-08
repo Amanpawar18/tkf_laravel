@@ -41,7 +41,7 @@
                         </p>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
+                <li class="nav-item">
                     <a href="{{route('admin.user.index')}}" class="nav-link
                 {{(App\Helper\Common::getCurrentController() == 'HomeController') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-users"></i>
@@ -58,7 +58,7 @@
                             Orders
                         </p>
                     </a>
-                </li> --}}
+                </li>
                 {{-- <li class="nav-item">
                     <a href="{{route('admin.newsletter.index')}}" class="nav-link
                 {{(App\Helper\Common::getCurrentController() == 'NewsletterController') ? 'active' : ''}}">

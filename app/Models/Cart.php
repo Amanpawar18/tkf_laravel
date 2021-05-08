@@ -12,7 +12,7 @@ class Cart extends Model
 
     protected $fillable = [
         'user_id', 'session_id',
-        'product_id', 'quantity'
+        'product_id', 'quantity', 'variation_id'
     ];
 
     protected static function boot()
@@ -33,5 +33,21 @@ class Cart extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function getProductCostAttribute()
+    {
+        $product = $this->product;
+        $variation = $product->productVariations()->where('id', $this->variation_id)->first();
+
+        if ($variation) {
+            $cost = $variation->price;
+        } else {
+
+            // $cost = $this->is_sale ? $this->sale_price : $this->regular_price;
+            $cost = $product->regular_price;
+        }
+
+        return $cost;
     }
 }

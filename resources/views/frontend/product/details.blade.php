@@ -114,7 +114,7 @@
                                 <label for="choose_size" class=" col-form-label">Choose a Size</label>
                             </div>
                             <div class="col-md-9">
-                                <select name="product_size" id="choose_size" class="form-control">
+                                <select name="variation_id" id="choose_size" class="form-control">
                                     @foreach ($product->productVariations as $variation)
                                     <option value="{{$variation->id}}">{{ $variation->size }}</option>
                                     @endforeach
@@ -144,7 +144,7 @@
                                     <div class="quantity_selector">
                                         <div class="input-group mb-3">
                                             <button class="btn decrease" type="button">-</button>
-                                            <input type="text" class="form-control quantity" readonly value="1">
+                                            <input type="text" name="quantity" class="form-control quantity" readonly value="1">
                                             <button class="btn increase" type="button">+</button>
                                         </div>
                                     </div>

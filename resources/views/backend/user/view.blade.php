@@ -72,7 +72,6 @@ use Illuminate\Support\Facades\Route;
                                                 <th scope="col" colspan="2">Product</th>
                                                 <th scope="col">Price</th>
                                                 <th scope="col">Quantity</th>
-                                                <th scope="col">Total</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -85,9 +84,8 @@ use Illuminate\Support\Facades\Route;
                                                 <td>
                                                     <p>{{$orderProduct->product->name}}</p>
                                                 </td>
-                                                <td>$ {{$orderProduct->product->cost}}</td>
+                                                <td>{{$orderProduct->amount}}</td>
                                                 <td>{{$orderProduct->quantity}}</td>
-                                                <td><strong class="fw-500">${{$orderProduct->amount}}</strong></td>
                                             </tr>
                                             @empty
                                             <tr>

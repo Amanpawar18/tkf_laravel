@@ -68,7 +68,7 @@ use Illuminate\Support\Facades\Route;
                                     <label>Total Amount :</label>
                                 </div>
                                 <div class="col-md-4">
-                                    {{$order->total_amount}}
+                                    ₹{{$order->total_amount}}
                                 </div>
 
                                 <div class="col-md-2">
@@ -107,7 +107,7 @@ use Illuminate\Support\Facades\Route;
                                                     </td>
                                                     <td>{{$orderProduct->size ?? '-'}}</td>
                                                     <td>{{$orderProduct->quantity}}</td>
-                                                    <td>${{$orderProduct->amount}}</td>
+                                                    <td>₹{{$orderProduct->amount}}</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
