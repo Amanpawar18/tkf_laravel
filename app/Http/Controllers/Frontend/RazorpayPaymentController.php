@@ -8,6 +8,7 @@ use App\Mail\OrderPlaceMail;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Razorpay\Api\Api;
 use Log;
 
@@ -49,7 +50,7 @@ class RazorpayPaymentController extends Controller
         $order = Order::create($orderData);
         $this->addOrderProducts($order);
         Mail::to(Auth::user())->send(new OrderPlaceMail($order));
-        return route('frontend.profile.show');
+        return route('frontend.thankYouPage');
     }
 
     public function addOrderProducts($order)

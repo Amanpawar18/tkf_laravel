@@ -30,8 +30,9 @@ class OrderPlaceMail extends Mailable
      */
     public function build()
     {
+        $order = $this->order;
         return $this->from(env('MAIL_FROM_ADDRESS'))
             ->subject('Order placed successfully ')
-            ->view('frontend.mail-templates.order-create', compact(['order' => $this->order]));
+            ->view('frontend.mail-templates.order-create', compact('order'));
     }
 }

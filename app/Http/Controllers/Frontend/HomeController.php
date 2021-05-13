@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderPlaceMail;
 use App\Models\Category;
 use App\Models\HomePageData;
 use App\Models\Newsletter;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Mail, Auth;
 
 class HomeController extends Controller
 {
@@ -18,7 +20,7 @@ class HomeController extends Controller
         if (!$homePageData) {
             return abort('403', 'Run Seeders !!');
         }
-        $products = Product::orderBy('product_view_count', 'DESC')->take(4)->get();
+        $products = Product::orderBy('product_view_count', 'DESC')->limit(4)->get();
         return view('frontend.home', compact('homePageData', 'products'));
     }
 
@@ -60,6 +62,12 @@ class HomeController extends Controller
     public function orderCreateMail()
     {
         $order = Order::first();
-        return view('frontend.mail-templates.order-craete', compact('order'));
+        // Mail::to(Auth::user())->send(new OrderPlaceMail($order));
+        return view('frontend.mail-templates.order-create', compact('order'));
+    }
+
+    public function thankYouPage()
+    {
+        return view('frontend.pages.thank-you');
     }
 }

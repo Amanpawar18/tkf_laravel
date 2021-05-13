@@ -60,11 +60,28 @@
         }
 
         .container {
-            width: 45%;
-            padding-right: .75rem;
-            padding-left: .75rem;
+            padding-right: 15px;
+            padding-left: 15px;
             margin-right: auto;
             margin-left: auto;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                width: 750px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .container {
+                width: 60%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                width: 60%;
+            }
         }
 
         .button {
@@ -72,7 +89,7 @@
             border: 2px solid #d7b56d;
             background-color: #d7b56d;
             text-transform: uppercase;
-            width: 100%;
+            width: 80%;
             color: #000;
             border: 2px solid #000;
             text-decoration: none !important;
@@ -99,7 +116,7 @@
         }
 
         table {
-            width: 560px;
+            width: 100%;
             text-align: left;
             border-spacing: 0;
             border-collapse: collapse;
@@ -239,6 +256,8 @@
                 Customer Information
             </h2>
         </p>
+    </div>
+    <div class="container" style="overflow-x:auto;-webkit-overflow-scrolling:touch">
         <p>
             <strong>Shipping address</strong>
             <br>

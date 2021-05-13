@@ -34,6 +34,7 @@
 </head>
 
 <body>
+    <div id="loading-icon" class="loading-icon" style="display: none;"></div>
     <div class="main-wrapper">
         @include('frontend.layout.header')
     </div>
