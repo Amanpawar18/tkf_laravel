@@ -17,7 +17,7 @@ $subTotal = 0;
             <button type="button" id="checkout-button" class="btn btn-buy-now"
             data-redirect-url={{route('frontend.razorpay.orderSave')}}
             data-razorpay-url={{route('frontend.razorpay.orderCreate')}}>
-                Place order
+                Continue shopping
             </button>
             <p class="text-center mt-3">
                 <a href="{{route('frontend.checkout', request()->all())}}" class="mt-3 text-dark fw-500">
