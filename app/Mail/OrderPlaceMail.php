@@ -31,7 +31,7 @@ class OrderPlaceMail extends Mailable
     public function build()
     {
         $order = $this->order;
-        return $this->from(env('MAIL_FROM_ADDRESS'))
+        return $this->from(env('MAIL_FROM_ADDRESS', 'ventturaTeam@venttura.in'))
             ->subject('Order placed successfully ')
             ->view('frontend.mail-templates.order-create', compact('order'));
     }
