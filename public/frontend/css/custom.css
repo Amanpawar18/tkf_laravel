@@ -30,7 +30,8 @@
     top: 0%;
     width: 100%;
     height: 100%;
-    background-size: 910px !important;
+    /* background-size: 910px !important; */
+    background-size: 250px !important;
     z-index: 9999;
     background: url(../../public/images/loader.gif) center no-repeat transparent;
 }
