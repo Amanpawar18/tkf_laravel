@@ -4,7 +4,7 @@
 $subTotal = 0;
 @endphp
 <div class="container py-5">
-    <div class="row">
+    <div class="row position-relative">
         @if(session('error'))
         <div class="col-md-12 text-center">
             <div class="alert alert-danger p-2" role="alert">
@@ -102,41 +102,68 @@ $subTotal = 0;
         <div class="col-sm-2 col-2">
         </div>
         <div class="col-sm-4 col-xs-12 col-4 mr-0">
-
-            @foreach ($cartItems as $item)
-            <div class="card mb-1">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-md-4">
-                            <img src="{{$item->product->image_path}}" class="object-fit-contain" width="70px"
-                                height="70px">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="content">
-                                <p>
-                                    {{$item->product->name}} <b>x</b>
-                                    {{ $item->quantity }}
-                                    <strong class="pull-right">
-                                        ₹{{ $item->quantity * ($item->product_cost)}}
-                                        @php
-                                        $subTotal += $item->quantity * ($item->product_cost);
-                                        @endphp
-                                    </strong>
-                                </p>
+            <div class="row position-sticky" style="top: 30px;">
+                <div class="col-md-12">
+                    @foreach ($cartItems as $item)
+                    <div class="card mb-1">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-md-4">
+                                    <img src="{{$item->product->image_path}}" class="object-fit-contain" width="70px"
+                                        height="70px">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="content">
+                                        <p>
+                                            {{$item->product->name}} <b>x</b>
+                                            {{ $item->quantity }}
+                                            <strong class="pull-right">
+                                                ₹{{ $item->quantity * ($item->product_cost)}}
+                                                @php
+                                                $subTotal += $item->quantity * ($item->product_cost);
+                                                @endphp
+                                            </strong>
+                                        </p>
+                                        <small>
+                                            {{ Str::limit($item->product->sub_description, 40)}}
+                                        </small>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
-
+                    @endforeach
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class=" pull-left">
+                                SUBTOTAL
+                            </p>
+                            <p class=" pull-right">
+                                <strong>₹{{$subTotal}}</strong>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class=" pull-left">
+                                SHIPPING
+                            </p>
+                            <p class=" pull-right">
+                                <strong>₹{{50}}</strong>
+                            </p>
+                        </div>
+                        <div class="col-md-12">
+                            <hr>
+                            <p class=" pull-left">
+                                TOTAL
+                            </p>
+                            <p class=" pull-right">
+                                <strong>₹{{$subTotal + 50}}</strong>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            @endforeach
-            <hr>
-            <p class=" pull-left">
-                TOTAL
-            </p>
-            <p class=" pull-right">
-                <strong>₹{{$subTotal}}</strong>
-            </p>
         </div>
     </div>
 </div>

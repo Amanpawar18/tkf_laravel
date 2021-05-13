@@ -51,10 +51,4 @@ class CheckoutController extends Controller
         }
         return $address;
     }
-
-    public function saveShippingDetails ()
-    {
-        dd(request()->all());
-    }
-
 }

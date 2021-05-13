@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\HomePageData;
 use App\Models\Newsletter;
+use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -54,5 +55,11 @@ class HomeController extends Controller
     {
         $pathToFile = public_path() . '/frontend/PetraceuticalSchedule.pdf';
         return response()->file($pathToFile);
+    }
+
+    public function orderCreateMail()
+    {
+        $order = Order::first();
+        return view('frontend.mail-templates.order-craete', compact('order'));
     }
 }

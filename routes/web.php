@@ -23,8 +23,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/login', [LoginController::class, 'view'])->name('login.view');
-// Route::post('/login', [LoginController::class, 'loginAttempt'])->name('login');
+Route::get('/login', [LoginController::class, 'view'])->name('login.view');
+Route::post('/login', [LoginController::class, 'loginAttempt'])->name('login');
 
 Route::group(['as' => 'frontend.'], function () {
 
@@ -49,9 +49,8 @@ Route::group(['as' => 'frontend.'], function () {
     Route::get('/product-detail/{product}', [ProductController::class, 'details'])->name('product.details');
     Route::get('/pages/{page?}', [PageController::class, 'view'])->name('page.view');
 
-    // Route::post('create-checkout-session', [PaymentController::class, 'receivePayment'])->name('stripe.initialize');
-    // Route::get('/pages/shipping-returns', [PageController::class, 'shippingReturns'])->name('shipping.return');
-    // Route::get('/pages/about-us', [PageController::class, 'aboutUs'])->name('about.us');
+    Route::get('mail-template-order-create', [HomeController::class, 'orderCreateMail'])->name('mailTemplate.orderCreateMail');
+
 });
 
 Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
@@ -63,9 +62,4 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::post('razorpay-order-create', [RazorpayPaymentController::class, 'orderCreate'])->name('razorpay.orderCreate');
     Route::post('razorpay-order-save', [RazorpayPaymentController::class, 'orderSave'])->name('razorpay.orderSave');
 
-//     Route::post('/save-shipping-details', [CheckoutController::class, 'saveShippingDetails'])->name('shipping.save');
-
-//     // Route::post('/save-shipping-details', [CheckoutController::class, 'saveShippingDetails'])->name('shipping.save');
-    Route::get('stripe-success', [PaymentController::class, 'stripeSuccess'])->name('stripe.success');
-//     Route::get('stripe-cancel', [PaymentController::class, 'stripeCancel'])->name('stripe.cancel');
 });

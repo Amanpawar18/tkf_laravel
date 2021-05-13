@@ -40,7 +40,6 @@ class LoginController extends Controller
     public function assignCartProducts()
     {
         $sessionId = session('userCartSessionId');
-
         if ($sessionId) {
             $sessionCartItems = Cart::whereSessionId($sessionId)->get();
 
@@ -50,7 +49,7 @@ class LoginController extends Controller
                     'session_id' => null,
                     'product_id' => $cartItem->product_id,
                     'quantity' => $cartItem->quantity,
-                    'size' => $cartItem->size,
+                    'variation_id' => $cartItem->variation_id,
                 ]);
                 $cartItem->delete();
             }

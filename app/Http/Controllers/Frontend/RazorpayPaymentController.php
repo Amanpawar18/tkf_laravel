@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Mail\OrderPlaceMail;
 use App\Models\Cart;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +48,7 @@ class RazorpayPaymentController extends Controller
 
         $order = Order::create($orderData);
         $this->addOrderProducts($order);
+        Mail::to(Auth::user())->send(new OrderPlaceMail($order));
         return route('frontend.profile.show');
     }
 
