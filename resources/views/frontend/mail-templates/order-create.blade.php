@@ -18,55 +18,22 @@
             font-size: 13px
         }
 
-        a:link,
-        a:active {
-            color: #1155CC;
-            text-decoration: none
-        }
-
-        a:hover {
-            text-decoration: underline;
-            cursor: pointer
-        }
-
-        a:visited {
-            color: ##6611CC
-        }
-
-        img {
-            border: 0px
-        }
-
-        pre {
-            white-space: pre;
-            white-space: -moz-pre-wrap;
-            white-space: -o-pre-wrap;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            max-width: 800px;
-            overflow: auto;
-        }
-
-        .logo {
-            left: -7px;
-            position: relative;
-        }
-
         p {
-            color: #777;
+            color: #000;
             line-height: 150%;
             font-size: 16px;
             margin: 15px 0 0
         }
 
         .container {
+            width: 60%;
             padding-right: 15px;
             padding-left: 15px;
             margin-right: auto;
             margin-left: auto;
         }
 
-        @media (min-width: 768px) {
+        /* @media (min-width: 768px) {
             .container {
                 width: 750px;
             }
@@ -82,32 +49,7 @@
             .container {
                 width: 60%;
             }
-        }
-
-        .button {
-            color: #000 !important;
-            border: 2px solid #d7b56d;
-            background-color: #d7b56d;
-            text-transform: uppercase;
-            width: 80%;
-            color: #000;
-            border: 2px solid #000;
-            text-decoration: none !important;
-            border-radius: 0;
-            font-weight: 900;
-            padding: 10px;
-            margin-top: 20px;
-            transition: 0.3s ease-in-out;
-
-            display: inline-block;
-            line-height: 1.5;
-            text-align: center;
-            text-decoration: none;
-            vertical-align: middle;
-            cursor: pointer;
-            user-select: none;
-            background-color: transparent;
-        }
+        } */
 
         .button:hover {
             color: #000;
@@ -134,61 +76,77 @@
     <title>Venttura - Your Order is confirmed</title>
 </head>
 
-<body cz-shortcut-listen="true">
-    <div class="container">
-        <p>
+<body cz-shortcut-listen="true" style="font-family: arial, sans-serif; paddin: 500px;">
+    <div class="container" style="justify-content: center;">
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             <h2 style="font-weight:normal;font-size:24px;margin:0 0 10px">
                 Your Order is Confirmed
             </h2>
         </p>
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             Hi {{Auth::check() ? Auth::user()->name : ''}},
         </p>
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             Your order is confirmed!
         </p>
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             And, we're wagging our tails withexcitement!
         </p>
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             We're busy getting your order ready for dispatch and will keep you updated along the way. In the meantime
             you can always review your order below.
         </p>
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             <b>COVID-19 Effect:</b>
         </p>
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             As you may be aware, there is a lockdown measure in place, as a nation-wide effort to combat the outbreak of
             COVID-19.
         </p>
-        <p style="color:#777;line-height:150%;font-size:16px;margin:15px 0 0">
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             As a result, we are unable to guarantee any delivery dates. However, as we are sure you can understand that
             it is very difficult to predict, and we're all in the same situation.
         </p>
-        <p style="">
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             We completely understand that certain items such as petsupplements are essential and you too must be eager
             to receive your orders to be able to feed your pet. However, this is situation is beyond our control.
         </p>
-        <p style="color:#777;line-height:150%;font-size:16px;margin:15px 0 0">
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             Continuing with your order is a sign of supporting us, and would really help business like ours during these
             difficult times.
         </p>
-        <p style="color:#777;line-height:150%;font-size:16px;margin:15px 0 0">
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             However, should you choose to cancel your order due to the delivery date, you can do so below
         </p>
-        <a href="https://www.petsy.online/31288262795/orders/a8e497d50b3b45069c88aa5cba3f5ea9/authenticate?key=b23a65ef0b56563feba9d609ee1c60b8"
-            target="_blank" class="button">
+    </div>
+    <div style="text-align:center">
+        <a href="{{route('frontend.home')}}" target="_blank" style="color: #000 !important;
+            background-color: #d7b56d;
+            text-transform: uppercase;
+            width: auto;
+            color: #000;
+            border: 2px solid #000;
+            text-decoration: none !important;
+            border-radius: 0;
+            font-weight: 900;
+            padding: 10px;
+            margin-top: 20px;
+            display: inline-block;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;">
             View your order
         </a>
     </div>
     <hr style="margin: 30px">
     <div class="container">
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             <h2 style="font-weight:normal;font-size:24px;margin:0 0 10px">
                 Order Summmary
             </h2>
         </p>
-        <table>
+        <table style="width: 100%">
             <tbody>
                 @foreach ($order->orderProducts as $orderProduct)
                 <tr class="bordered">
@@ -214,7 +172,7 @@
                 @endforeach
                 <tr>
                     <td colspan="2" align="right" style="border-top: 1px solid black;">
-                        <p>
+                        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
                             SubTotal
                         </p>
                     </td>
@@ -226,7 +184,7 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="right">
-                        <p>
+                        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
                             Shipping
                         </p>
                     </td>
@@ -237,7 +195,7 @@
                     </td>
                 </tr <tr>
                 <td colspan="2" align="right">
-                    <p>
+                    <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
                         Total
                     </p>
                 </td>
@@ -251,24 +209,24 @@
         </table>
     </div>
     <div class="container">
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             <h2 style="font-weight:normal;font-size:24px;">
                 Customer Information
             </h2>
         </p>
     </div>
     <div class="container" style="overflow-x:auto;-webkit-overflow-scrolling:touch">
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             <strong>Shipping address</strong>
             <br>
             {!! $order->shippingAddress->address_in_text !!}
         </p>
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             <strong>Shipping Method</strong>
             <br>
             Delhivery express
         </p>
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             <strong>Payment Method</strong>
             <br>
             Razorpay
@@ -276,7 +234,7 @@
     </div>
     <div class="container">
         <hr>
-        <p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             In case you have any questions or concerns regarding your order, our friendly customer happiness team are on
             standby to answer your questions. Get in touch with us anytime at ventturacare@gmail.com or call us on
             9833103030
