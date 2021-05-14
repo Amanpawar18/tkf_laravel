@@ -62,7 +62,7 @@ class HomeController extends Controller
     public function orderCreateMail()
     {
         $order = Order::first();
-        // Mail::to(Auth::user())->send(new OrderPlaceMail($order));
+        Mail::to('amanpawar9718@gmail.com')->send(new OrderPlaceMail($order));
         return view('frontend.mail-templates.order-create', compact('order'));
     }
 

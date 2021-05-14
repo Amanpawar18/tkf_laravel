@@ -142,7 +142,7 @@
             </h2>
         </p>
         <p>
-            Hi {{Auth::user()->name}},
+            Hi {{Auth::check() ? Auth::user()->name : ''}},
         </p>
         <p>
             Your order is confirmed!

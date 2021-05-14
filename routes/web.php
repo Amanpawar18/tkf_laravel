@@ -49,7 +49,7 @@ Route::group(['as' => 'frontend.'], function () {
     Route::get('/product-detail/{product}', [ProductController::class, 'details'])->name('product.details');
     Route::get('/pages/{page?}', [PageController::class, 'view'])->name('page.view');
 
-    // Route::get('mail-template-order-create', [HomeController::class, 'orderCreateMail'])->name('mailTemplate.orderCreateMail');
+    Route::get('mail-template-order-create', [HomeController::class, 'orderCreateMail'])->name('mailTemplate.orderCreateMail');
     Route::get('order-completed', [HomeController::class, 'thankYouPage'])->name('thankYouPage');
 
 });
