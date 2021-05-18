@@ -145,20 +145,12 @@ $subTotal = 0;
                             </p>
                         </div>
                         <div class="col-md-12">
-                            <p class=" pull-left">
-                                SHIPPING
-                            </p>
-                            <p class=" pull-right">
-                                <strong>₹{{50}}</strong>
-                            </p>
-                        </div>
-                        <div class="col-md-12">
                             <hr>
                             <p class=" pull-left">
                                 TOTAL
                             </p>
                             <p class=" pull-right">
-                                <strong>₹{{$subTotal + 50}}</strong>
+                                <strong>₹{{$subTotal}}</strong>
                             </p>
                         </div>
                     </div>

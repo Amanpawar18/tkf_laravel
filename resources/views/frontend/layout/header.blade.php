@@ -87,7 +87,7 @@
                         <a class="nav-link" href="#">Gallery</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Blog</a>
+                        <a class="nav-link" href="{{route('frontend.blog.index')}}">Blog</a>
                     </li>
                     <li class="nav-item has-dropdown">
                         <a class="nav-link" href="#">Registration <span class="drop-icon"><i class="fa fa-angle-down"

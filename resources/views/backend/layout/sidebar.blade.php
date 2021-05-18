@@ -87,6 +87,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.blog.index')}}" class="nav-link
+                    {{(App\Helper\Common::getCurrentController() == 'BlogController') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>
+                            Blogs
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.pages.index')}}" class="nav-link
                     {{(App\Helper\Common::getCurrentController() == 'PageController') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-file"></i>

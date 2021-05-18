@@ -182,18 +182,7 @@
                         </strong>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="2" align="right">
-                        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
-                            Shipping
-                        </p>
-                    </td>
-                    <td align="right">
-                        <strong style="font-size:16px;color:#555">
-                            ₹50
-                        </strong>
-                    </td>
-                </tr <tr>
+                 <tr>
                 <td colspan="2" align="right">
                     <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
                         Total
@@ -201,7 +190,7 @@
                 </td>
                 <td align="right">
                     <strong style="font-size:16px;color:#555">
-                        ₹{{$order->total_amount + 50}}
+                        ₹{{$order->total_amount}}
                     </strong>
                 </td>
                 </tr>

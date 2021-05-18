@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ContactUsController;
@@ -48,6 +49,8 @@ Route::group(['as' => 'frontend.'], function () {
     Route::get('/shop', [ProductController::class, 'shop'])->name('product.shop');
     Route::get('/product-detail/{product}', [ProductController::class, 'details'])->name('product.details');
     Route::get('/pages/{page?}', [PageController::class, 'view'])->name('page.view');
+    Route::get('/blogs/{blog}', [BlogController::class, 'view'])->name('blog.view');
+    Route::get('/blogs', [BlogController::class, 'index'])->name('blog.index');
 
     Route::get('mail-template-order-create', [HomeController::class, 'orderCreateMail'])->name('mailTemplate.orderCreateMail');
     Route::get('order-completed', [HomeController::class, 'thankYouPage'])->name('thankYouPage');

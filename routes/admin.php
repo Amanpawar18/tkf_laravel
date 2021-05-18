@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\Auth\AdminAuthController;
+use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\FooterDataController;
@@ -90,6 +91,7 @@ Route::group(['middleware' => 'admin'], function () {
 
     Route::resource('orders', OrderController::class);
     Route::resource('pages', PageController::class);
+    Route::resource('blog', BlogController::class);
 
     Route::get('contact-us-leads', [ContactUsController::class, 'index'])->name('contactUs.index');
     Route::get('contact-us-leads-view/{contactUs}', [ContactUsController::class, 'view'])->name('contactUs.view');
