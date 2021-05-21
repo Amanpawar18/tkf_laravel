@@ -27,7 +27,8 @@ class ImageController extends Controller
      */
     public function create()
     {
-        return view('backend.image.create');
+        $image = new Image();
+        return view('backend.image.create', compact('image'));
     }
 
     /**
