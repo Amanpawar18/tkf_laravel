@@ -78,7 +78,7 @@ class ProductController extends Controller
 
         if (request()->hasFile('image')) {
             $imageName = time() . '.' . request()->image->extension();
-            $path = public_path('frontend/uploads/product');
+            $path = public_path('frontend/uploads/product/');
             request()->image->move($path, $imageName);
             if(isset($product->image)){
                 Common::deleteExistingImage($product->image, $path);

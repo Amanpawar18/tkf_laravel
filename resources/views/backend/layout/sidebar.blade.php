@@ -96,6 +96,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.image.index')}}" class="nav-link
+                    {{(App\Helper\Common::getCurrentController() == 'ImageController') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-image"></i>
+                        <p>
+                            Images
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.pages.index')}}" class="nav-link
                     {{(App\Helper\Common::getCurrentController() == 'PageController') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-file"></i>

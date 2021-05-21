@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\FooterDataController;
 use App\Http\Controllers\Backend\HomeController;
+use App\Http\Controllers\Backend\ImageController;
 use App\Http\Controllers\Backend\NewsletterController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PageController;
@@ -92,6 +93,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('orders', OrderController::class);
     Route::resource('pages', PageController::class);
     Route::resource('blog', BlogController::class);
+    Route::resource('image', ImageController::class);
 
     Route::get('contact-us-leads', [ContactUsController::class, 'index'])->name('contactUs.index');
     Route::get('contact-us-leads-view/{contactUs}', [ContactUsController::class, 'view'])->name('contactUs.view');
