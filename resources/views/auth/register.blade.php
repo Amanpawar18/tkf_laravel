@@ -20,13 +20,14 @@
                     </div>
                 </nav>
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+                    <div class="tab-pane fade show active" id="nav-register" role="tabpanel"
+                        aria-labelledby="nav-register-tab">
                         <div class="row mb-3">
                             <div class="col-md-12 text-danger">
                                 <ul>
                                     @foreach ($errors->all() as $error)
                                     <li>
-                                            {{$error}}
+                                        {{$error}}
                                     </li>
                                     @endforeach
                                 </ul>
@@ -35,31 +36,29 @@
                                 @csrf
                                 <div class="col-md-12 mb-2">
                                     <label for="name">Name*</label>
-                                    <input id="name" name="name" type="text" required=""
-                                        class="form-control">
+                                    <input id="name" name="name" type="text" required="" class="form-control">
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="phone_no">Phone*</label>
-                                    <input id="phone_no" name="phone_no" type="tel" required=""
-                                        class="form-control">
+                                    <input id="phone_no" name="phone_no" type="tel" required="" class="form-control">
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="email">Email*</label>
-                                    <input id="email" name="email" type="email" required=""
-                                        class="form-control">
+                                    <input id="email" name="email" type="email" required="" class="form-control">
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="password">Password*</label>
                                     <input id="password" name="password" type="password" required=""
                                         class="form-control">
+                                    <small class="text-danger">Password has to be 8+ characters </small>
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="password_confirmation">Confirm password*</label>
-                                    <input id="password_confirmation" name="password_confirmation" type="password" required=""
-                                        class="form-control">
+                                    <input id="password_confirmation" name="password_confirmation" type="password"
+                                        required="" class="form-control">
                                 </div>
                                 <div class="col-md-12 mb-2">
-                                    <button class="btn btn-warning btn-block" type="submit">
+                                    <button class="btn btn-buy-now btn-block" type="submit">
                                         Register
                                     </button>
                                 </div>

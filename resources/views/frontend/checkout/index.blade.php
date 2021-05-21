@@ -38,33 +38,31 @@ $subTotal = 0;
 
 
                 <div class="form-group mb-2">
-                    <label for="exampleInputPassword1">Apartment, suite, etc. (optional)</label>
+                    <label for="exampleInputPassword1">Address 2</label>
                     <input type="text" class="form-control" value="{{request()->apartment_no ?? old('apartment_no') }}"
                         required name="apartment_no">
                 </div>
                 <div class="form-group mb-2">
-                    <label for="exampleInputPassword1">City </label>
-                    <input type="text" class="form-control" value="{{request()->city ?? old('city') }}" required
-                        name="city">
+                    <label for="inputCountry">Country/Region</label>
+                    <input type="text" class="form-control" value="{{request()->country ?? old('country') }}" required
+                        name="country">
                 </div>
                 <div class="row">
-                    <div class="col-sm-4">
-                        <div class="form-group mb-2">
-                            <label for="inputCountry">Country/Region</label>
-                            <input type="text" class="form-control" value="{{request()->country ?? old('country') }}"
-                                required name="country">
-                        </div>
-                    </div>
                     <div class="col-sm-4">
                         <label for="inputState">State</label>
                         <input type="text" class="form-control" value="{{request()->state ?? old('state') }}" required
                             name="state">
                     </div>
-
                     <div class="col-sm-4">
-                        <label for="exampleInputPassword1"> &nbsp; </label>
-
-                        <input type="text" class="form-control" value="{{request()->pin_code ?? old('pin_code') }}"
+                        <div class="form-group mb-2">
+                            <label for="exampleInputPassword1">City </label>
+                            <input type="text" class="form-control" value="{{request()->city ?? old('city') }}" required
+                                name="city">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <label for="inputpin_code">Pin Code</label>
+                        <input type="number" class="form-control" value="{{request()->pin_code ?? old('pin_code') }}"
                             required name="pin_code" placeholder="ZIP code">
                     </div>
                 </div>
@@ -91,10 +89,14 @@ $subTotal = 0;
                 <button type="submit" class="btn btn-buy-now btn-block">
                     Place order
                 </button>
+                <a href="{{route('frontend.profile.show')}}" class="btn btn-buy-now btn-block">
+                    My Account
+                </a>
 
                 <p class="text-center mt-3">
-                    <a href="{{route('frontend.cart.index')}}" class="mt-3 text-dark fw-500">Return
-                        to cart</a>
+                    <a href="{{route('frontend.cart.index')}}" class="mt-3 text-dark fw-500">
+                        Return to cart
+                    </a>
                 </p>
 
             </form>
@@ -144,6 +146,19 @@ $subTotal = 0;
                                 <strong>₹{{$subTotal}}</strong>
                             </p>
                         </div>
+                        @if($subTotal < 500)
+                        <div class="col-md-12">
+                            <p class=" pull-left">
+                                SHIPPING
+                            </p>
+                            <p class=" pull-right">
+                                @php
+                                   $subTotal = $subTotal + 50;
+                                @endphp
+                                <strong>₹50</strong>
+                            </p>
+                        </div>
+                        @endif
                         <div class="col-md-12">
                             <hr>
                             <p class=" pull-left">

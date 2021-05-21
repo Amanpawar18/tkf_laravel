@@ -64,6 +64,7 @@
 
                 <ul id="menu-about-us" class="menu">
                     <li><a href="{{FooterData::get('who_we_are_link') ?? '#'}}">Who We Are</a></li>
+                    <li><a href="{{route('frontend.profile.show')}}">My Account</a></li>
                     <li><a href="{{FooterData::get('product_faqs_link') ?? '#'}}">Products Faq’s</a></li>
                     <li><a href="{{route('frontend.petraceuticals-schedule')}}" target="_blank">Petraceuticals
                             Schedule</a></li>

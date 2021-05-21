@@ -125,6 +125,11 @@
                         @endif
                         <div class="product-main-detail-submission">
                             <div class="row align-items-center">
+                                <div class="col-md-12 mb-1 product-short-description">
+                                    <p>
+                                        Free delivery above ₹500
+                                    </p>
+                                </div>
                                 <div class="col-md-2">
                                     <h3 class="product-price">
                                         @if(count($product->productVariations))
@@ -148,8 +153,8 @@
                                             <button class="btn increase" type="button">+</button>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-warning shop-now-btn">
-                                        Shop Now
+                                    <button type="submit" class="btn btn-buy-now w-auto m-0 shop-now-btn">
+                                        Buy Now
                                         <i class="fa fa-angle-right"></i>
                                     </button>
                                 </div>

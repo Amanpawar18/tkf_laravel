@@ -89,7 +89,7 @@
                                     <button class="btn" type="button">+</button>
                                 </div>
                             </div>
-                            <button class="btn btn-warning shop-now-btn">Shop Now <i
+                            <button class="btn btn-warning shop-now-btn">Buy Now <i
                                     class="fa fa-angle-right"></i></button>
                         </div>
 
@@ -612,7 +612,7 @@
                                             <button class="btn" type="button">+</button>
                                         </div>
                                     </div>
-                                    <button class="btn btn-warning shop-now-btn">Shop Now <i
+                                    <button class="btn btn-warning shop-now-btn">Buy Now <i
                                             class="fa fa-angle-right"></i></button>
                                 </div>
 

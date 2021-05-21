@@ -33,7 +33,8 @@ $(function () {
                 ['color', ['color']],
                 ['para', ['ul', 'ol', 'paragraph']],
                 ['view', ['fullscreen', 'codeview', 'help']],
-                ['insert', ['link', 'picture', 'video', 'image']],
+                // ['insert', ['link', 'picture', 'video', 'image']],
+                ['insert', ['link']],
                 ['height', ['height']],
             ],
             lineHeights: ['0.2', '0.4', '0.6', '0.8', '1.0', '1.5', '2.0', '3.0']

@@ -109,7 +109,7 @@
                                         </div>
                                     </div>
                                     <button class="btn btn-warning shop-now-btn">
-                                        Shop Now
+                                        Buy Now
                                         <i class="fa fa-angle-right"></i>
                                     </button>
                                     <a href="{{route('frontend.product.details', $relatedProduct->slug)}}" class="btn text-dark btn-warning shop-now-btn">

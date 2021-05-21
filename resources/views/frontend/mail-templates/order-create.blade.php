@@ -120,6 +120,24 @@
         </p>
     </div>
     <div style="text-align:center">
+        <a href="{{route('frontend.profile.show')}}" target="_blank" style="color: #000 !important;
+            background-color: #d7b56d;
+            text-transform: uppercase;
+            width: auto;
+            color: #000;
+            border: 2px solid #000;
+            text-decoration: none !important;
+            border-radius: 0;
+            font-weight: 900;
+            padding: 10px;
+            margin-top: 20px;
+            display: inline-block;
+            line-height: 1.5;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;">
+            My Account
+        </a>
         <a href="{{route('frontend.home')}}" target="_blank" style="color: #000 !important;
             background-color: #d7b56d;
             text-transform: uppercase;
@@ -182,17 +200,31 @@
                         </strong>
                     </td>
                 </tr>
-                 <tr>
-                <td colspan="2" align="right">
-                    <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
-                        Total
-                    </p>
-                </td>
-                <td align="right">
-                    <strong style="font-size:16px;color:#555">
-                        ₹{{$order->total_amount}}
-                    </strong>
-                </td>
+                @if($order->total_amount - 50 < 500)
+                <tr>
+                    <td colspan="2" align="right" style="border-top: 1px solid black;">
+                        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
+                            Shipping
+                        </p>
+                    </td>
+                    <td align="right" style="border-top: 1px solid black;">
+                        <strong style="font-size:16px;color:#555">
+                            ₹50
+                        </strong>
+                    </td>
+                </tr>
+                @endif
+                <tr>
+                    <td colspan="2" align="right">
+                        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
+                            Total
+                        </p>
+                    </td>
+                    <td align="right">
+                        <strong style="font-size:16px;color:#555">
+                            ₹{{$order->total_amount}}
+                        </strong>
+                    </td>
                 </tr>
             </tbody>
         </table>

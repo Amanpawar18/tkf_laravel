@@ -70,4 +70,27 @@ class User extends Authenticatable
         parent::delete();
         return true;
     }
+
+
+    public function assignCartProducts()
+    {
+        $sessionId = session('userCartSessionId');
+        if ($sessionId) {
+            $sessionCartItems = Cart::whereSessionId($sessionId)->get();
+
+            foreach ($sessionCartItems as $cartItem) {
+                Cart::firstOrCreate([
+                    'user_id' => $this->id,
+                    'session_id' => null,
+                    'product_id' => $cartItem->product_id,
+                    'quantity' => $cartItem->quantity,
+                    'variation_id' => $cartItem->variation_id,
+                ]);
+                $cartItem->delete();
+            }
+        }
+
+        session()->forget('userCartSessionId');
+        return true;
+    }
 }

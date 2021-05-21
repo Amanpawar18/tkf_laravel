@@ -3,7 +3,7 @@
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link{
-    background-color: #dd9933;
+    background-color: #d7b56d;
     color: black;
 }
 
@@ -17,6 +17,14 @@
     color: #d7b56d;
     border: 2px solid #d7b56d;
 } */
+
+.btn-buy-now {
+    color: #000;
+    /* color: #d7b56d;
+    border: 2px solid #000;
+    background-color: #000; */
+}
+
 
 .btn-buy-now:hover {
     color: #000;

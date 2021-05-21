@@ -77,6 +77,7 @@ $cartTotal = 0;
                         </div>
                         <hr>
                         <button class="btn btn-buy-now btn-block"> Update Cart </Button>
+                        <a href="{{route('frontend.product.shop')}}" class="btn btn-buy-now btn-block">Continue Shopping</a>
                         <a href="{{route('frontend.checkout')}}" class="btn btn-buy-now btn-block">Checkout</a>
                     </div> <!-- card-body.// -->
                 </div>

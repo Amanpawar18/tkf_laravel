@@ -80,25 +80,21 @@
                             </div>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a class="nav-link" href="#">Referral</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Gallery</a>
-                    </li>
+                    </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('frontend.blog.index')}}">Blog</a>
                     </li>
-                    <li class="nav-item has-dropdown">
-                        <a class="nav-link" href="#">Registration <span class="drop-icon"><i class="fa fa-angle-down"
-                                    aria-hidden="true"></i></span></a>
-                        <ul class="nav-dropdown-hoverable">
-                            <li><a href="#">Dog Registration</a></li>
-                            <li><a href="#">Cat Registration</a></li>
-                            <li><a href="#">Doctor Registration</a></li>
-                        </ul>
-                    </li>
                     @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('frontend.profile.show')}}">
+                            My Account
+                        </a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="javascript:void(0);'"
                             onclick="event.preventDefault(); document.getElementById('logOut').submit();">
@@ -124,7 +120,13 @@
                     @endauth
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('frontend.cart.index')}}">
-                            Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            Cart
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                            @auth
+                            {{App\Models\Cart::where('user_id', Auth::id())->count()}}
+                            @else
+                            {{App\Models\Cart::where('session_id', session('userCartSessionId'))->count()}}
+                            @endauth
                         </a>
                     </li>
                 </ul>

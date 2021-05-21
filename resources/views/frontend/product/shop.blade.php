@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <section class="product-detail-main">
-        <div class="row">
+        <div class="row position-relative">
             <div class="col-md-12 text-center">
                 <h3>
                     All Products
@@ -13,7 +13,7 @@
                 <hr>
             </div>
             <div class="col-md-3">
-                <div class="card card-body">
+                <div class="card card-body position-sticky" style="top: 20px;">
                     <div class="row">
                         <div class="col-md-12">
                             @foreach ($categories as $category)

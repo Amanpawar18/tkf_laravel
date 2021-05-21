@@ -93,6 +93,10 @@ class RazorpayPaymentController extends Controller
             $cartTotal += $item->quantity * $item->product_cost;
         }
 
+        if($cartTotal < 500){
+            $cartTotal += 50 ; // shipping charges
+        }
+
         return $cartTotal;
     }
 

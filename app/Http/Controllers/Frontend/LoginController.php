@@ -25,7 +25,7 @@ class LoginController extends Controller
         if (Auth::guard()->attempt(['email' => $request->email, 'password' => $request->password]) && Auth::guard()->check()) {
 
             if (Auth::user()->status == User::ACTIVE) {
-                $this->assignCartProducts();
+                Auth::user()->assignCartProducts();
 
                 return redirect()->intended(route('frontend.profile.show'));
             } else {
@@ -37,25 +37,25 @@ class LoginController extends Controller
         }
     }
 
-    public function assignCartProducts()
-    {
-        $sessionId = session('userCartSessionId');
-        if ($sessionId) {
-            $sessionCartItems = Cart::whereSessionId($sessionId)->get();
+    // public function assignCartProducts()
+    // {
+    //     $sessionId = session('userCartSessionId');
+    //     if ($sessionId) {
+    //         $sessionCartItems = Cart::whereSessionId($sessionId)->get();
 
-            foreach ($sessionCartItems as $cartItem) {
-                Cart::firstOrCreate([
-                    'user_id' => Auth::id(),
-                    'session_id' => null,
-                    'product_id' => $cartItem->product_id,
-                    'quantity' => $cartItem->quantity,
-                    'variation_id' => $cartItem->variation_id,
-                ]);
-                $cartItem->delete();
-            }
-        }
+    //         foreach ($sessionCartItems as $cartItem) {
+    //             Cart::firstOrCreate([
+    //                 'user_id' => Auth::id(),
+    //                 'session_id' => null,
+    //                 'product_id' => $cartItem->product_id,
+    //                 'quantity' => $cartItem->quantity,
+    //                 'variation_id' => $cartItem->variation_id,
+    //             ]);
+    //             $cartItem->delete();
+    //         }
+    //     }
 
-        session()->forget('userCartSessionId');
-        return true;
-    }
+    //     session()->forget('userCartSessionId');
+    //     return true;
+    // }
 }

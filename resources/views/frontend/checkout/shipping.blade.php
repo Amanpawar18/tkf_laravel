@@ -15,8 +15,8 @@ $subTotal = 0;
             </div>
             <hr>
             <button type="button" id="checkout-button" class="btn btn-buy-now"
-            data-redirect-url={{route('frontend.razorpay.orderSave')}}
-            data-razorpay-url={{route('frontend.razorpay.orderCreate')}}>
+                data-redirect-url={{route('frontend.razorpay.orderSave')}}
+                data-razorpay-url={{route('frontend.razorpay.orderCreate')}}>
                 Continue shopping
             </button>
             <p class="text-center mt-3">
@@ -55,12 +55,38 @@ $subTotal = 0;
             </div>
             @endforeach
             <hr>
-            <p class=" pull-left">
-                TOTAL
-            </p>
-            <p class=" pull-right">
-                <strong>₹{{$subTotal}}</strong>
-            </p>
+            <div class="row">
+
+                <div class="col-md-12">
+                    <p class=" pull-left">
+                        SUBTOTAL
+                    </p>
+                    <p class=" pull-right">
+                        <strong>₹{{$subTotal}}</strong>
+                    </p>
+                </div>
+                @if($subTotal < 500)
+                <div class="col-md-12">
+                    <p class=" pull-left">
+                        SHIPPING
+                    </p>
+                    <p class=" pull-right">
+                        @php
+                        $subTotal = $subTotal + 50;
+                        @endphp
+                        <strong>₹50</strong>
+                    </p>
+                </div>
+                @endif
+                <div class="col-md-12">
+                    <p class=" pull-left">
+                        TOTAL
+                    </p>
+                    <p class=" pull-right">
+                        <strong>₹{{$subTotal}}</strong>
+                    </p>
+                </div>
+            </div>
             <input type="hidden" name="sub_total" value="{{$subTotal}}">
             <input type="hidden" name="address" value="{{$address->id}}">
             @csrf

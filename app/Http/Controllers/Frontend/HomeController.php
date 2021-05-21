@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\OrderPlaceMail;
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\HomePageData;
 use App\Models\Newsletter;
@@ -21,7 +22,8 @@ class HomeController extends Controller
             return abort('403', 'Run Seeders !!');
         }
         $products = Product::orderBy('product_view_count', 'DESC')->limit(4)->get();
-        return view('frontend.home', compact('homePageData', 'products'));
+        $blogs = Blog::orderBy('id', 'DESC')->get()->shuffle()->take(4);
+        return view('frontend.home', compact('homePageData', 'products', 'blogs'));
     }
 
     public function category(Category $category)
@@ -61,8 +63,8 @@ class HomeController extends Controller
 
     public function orderCreateMail()
     {
-        $order = Order::first();
-        Mail::to('amanpawar9718@gmail.com')->send(new OrderPlaceMail($order));
+        $order = Order::orderBy('id', 'DESC')->first();
+        // Mail::to('amanpawar9718@gmail.com')->send(new OrderPlaceMail($order));
         return view('frontend.mail-templates.order-create', compact('order'));
     }
 
