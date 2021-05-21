@@ -122,11 +122,13 @@
                         <a class="nav-link" href="{{route('frontend.cart.index')}}">
                             Cart
                             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                            @auth
-                            {{App\Models\Cart::where('user_id', Auth::id())->count()}}
-                            @else
+                            <span class="theme-text">
+                                @auth
+                                {{App\Models\Cart::where('user_id', Auth::id())->count()}}
+                                @else
                             {{App\Models\Cart::where('session_id', session('userCartSessionId'))->count()}}
                             @endauth
+                        </span>
                         </a>
                     </li>
                 </ul>

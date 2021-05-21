@@ -21,7 +21,25 @@ Venttura Blogs
         </div>
         <div class="row">
             @forelse ($blogs as $blog)
-            <div class="col-md-4 mb-3">
+            <div class="col-lg-3 mx-2 col-sm-6 col-12 mt-4 mt-lg-0 text-center">
+                <div class="blog-item">
+                    <div class="blog-image">
+                        <img src="{{$blog->banner_image_path}}" style="height: 300px;"
+                            class="img-fluid object-fit-contain">
+                    </div>
+                    <div class="blog-caption mt-40">
+                        <h6 class="bold mb-40 mt-40">{{$blog->name}}</h6>
+                        <p>
+                            {!! Str::limit($blog->content, 100) !!}
+                        </p>
+                        <div class="text-center mt-40">
+                            <a class="btn has-left-icon bold" href="{{route('frontend.blog.view', $blog->slug)}}" title=""><i class="fa fa-arrow-circle-right"
+                                    aria-hidden="true"></i>Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{-- <div class="col-md-4 mb-3">
                 <a href="{{route('frontend.blog.view', $blog->slug)}}" class=" text-dark text-decoration-none">
                     <div class="card">
                         <div class="card-body">
@@ -38,7 +56,7 @@ Venttura Blogs
                         </div>
                     </div>
                 </a>
-            </div>
+            </div> --}}
             @empty
             <div class="col-md-12">
                 <div class="card">
