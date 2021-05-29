@@ -57,6 +57,9 @@ Route::group(['as' => 'frontend.'], function () {
 
 });
 
+Auth::routes(['register' => false, 'login' => false]);
+
+
 Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('/dashboard', [ProfileController::class, 'show'])->name('profile.show');
 

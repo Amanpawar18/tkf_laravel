@@ -106,7 +106,8 @@
                         <p>{{$product->description}}</p>
                     </div>
 
-                    <form class="variations_form theme-form" action="{{route('frontend.cart.store', $product->id)}}" method="POST">
+                    <form class="variations_form theme-form" action="{{route('frontend.cart.store', $product->id)}}"
+                        method="POST">
                         @csrf
                         @if(count($product->productVariations))
                         <div class="row mb-3">
@@ -120,14 +121,19 @@
                                     @endforeach
                                 </select>
                             </div>
-
                         </div>
                         @endif
                         <div class="product-main-detail-submission">
                             <div class="row align-items-center">
-                                <div class="col-md-12 mb-1 product-short-description">
+                                <div class="col-md-7 mb-1 product-short-description">
                                     <p>
                                         Free delivery above ₹500
+                                    </p>
+                                </div>
+                                <div class="col-md-5 mb-1 product-short-description text-right">
+                                    <p>
+                                        <a href="" data-bs-target="#checkPinCodeMOdal" data-bs-toggle="modal"
+                                            class="text-decoration-none">Check delivery eligblity</a>
                                     </p>
                                 </div>
                                 <div class="col-md-2">
@@ -149,7 +155,8 @@
                                     <div class="quantity_selector">
                                         <div class="input-group mb-3">
                                             <button class="btn decrease" type="button">-</button>
-                                            <input type="text" name="quantity" class="form-control quantity" readonly value="1">
+                                            <input type="text" name="quantity" class="form-control quantity" readonly
+                                                value="1">
                                             <button class="btn increase" type="button">+</button>
                                         </div>
                                     </div>
@@ -160,13 +167,11 @@
                                 </div>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
         </div>
     </section>
-
     <section>
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -415,10 +420,31 @@
         </div>
     </section>
 </div>
-
+<div class="modal fade" id="checkPinCodeMOdal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="border-radius: 4px; ">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title ">Check delivery eligblity</h5>
+                <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal"
+                    aria-label="Close">X</button>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="number" maxlength="6" minlength="6" class="form-control">
+                        </div>
+                        <div class="col-md-12 text-right">
+                            <button type="submit" class="btn btn-buy-now w-auto">Check</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 @section('additional_script')
-<script src='{{asset('frontend/assets/js/jquery.zoom.min.js')}}'></script>
 <script src='{{asset('frontend/assets/js/jquery.zoom.min.js')}}'></script>
 <script>
     $(document).ready(function(){

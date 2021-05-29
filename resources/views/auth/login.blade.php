@@ -27,6 +27,7 @@
                                 @csrf
                                 <div class="col-md-12 text-danger">
                                     <p>{{session('error')}}</p>
+                                    <p class="text-success">{{session('status')}}</p>
                                     <ul>
                                         @foreach ($errors->all() as $error)
                                         <li>
@@ -50,13 +51,16 @@
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="password">Password*</label>
-                                    <input id="password" name="password" type="password" value="{{old('password')}}" required=""
-                                        class="form-control">
+                                    <input id="password" name="password" type="password" value="{{old('password')}}"
+                                        required="" class="form-control">
                                 </div>
-                                <div class="col-md-12 mb-2">
+                                <div class="col-md-12 mb-2 text-center">
                                     <button class="btn btn-buy-now btn-block" type="submit">
                                         Login
                                     </button>
+                                </div>
+                                <div class="col-md-12 mt-2 text-center">
+                                    <a href="{{route('password.request')}}" class="mt-3">Forgot Password</a>
                                 </div>
                             </form>
                         </div>

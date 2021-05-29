@@ -3,7 +3,7 @@
 <section id="login" class="">
     <div class="container">
         <div class="form1 mt-5 col-sxs-12 col-sm-12 col-md-6 offset-md-3">
-            <h3 class="fw-500 uppercase text-center"> login </h3>
+            <h3 class="fw-500 uppercase text-center"> Login </h3>
             <form method="POST" action="{{ route('password.update') }}">
                 @csrf
                 <input type="hidden" name="token" value="{{ request()->route('token') }}">
@@ -16,6 +16,7 @@
                     <label for="exampleInputEmail1">Email address</label>
 
                     <input type="email" class="form-control" id="exampleInputEmail1" name="email"
+                    value="{{ request()->email ?? old('email') }}"
                         aria-describedby="emailHelp">
 
                     <div class="small text-danger">
@@ -34,7 +35,7 @@
                     <label for="exampleInputEmail1">Password</label>
 
                     <input type="password" class="form-control" id="exampleInputEmail1" name="password"
-                        aria-describedby="emailHelp">
+                        autocomplete="off" aria-describedby="emailHelp">
 
                     <div class="small text-danger">
                         {{$errors->first('password')}}
@@ -42,7 +43,21 @@
 
                 </div>
 
-                <button type="submit" class="btn bg-dark btn-block">Submit</button>
+                <div class="form-group mb-4">
+
+                    <label for="exampleInputEmail1">Confirm Password</label>
+
+                    <input type="password" class="form-control" id="exampleInputEmail1" name="password_confirmation"
+                        autocomplete="off" aria-describedby="emailHelp">
+
+                    <div class="small text-danger">
+                        {{$errors->first('password_confirmation')}}
+                    </div>
+
+                </div>
+
+
+                <button type="submit" class="btn btn btn-buy-now">Submit</button>
 
                 <a href="{{route('login')}}" class="login d-block text-center mt-3 text-dark fw-500">Cancel</a>
 
