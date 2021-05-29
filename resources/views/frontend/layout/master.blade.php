@@ -70,6 +70,8 @@
     })();
     </script>
     <!--End of Tawk.to Script-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+
 
     @yield('additional_script')
     <script type="text/javascript" src="{{asset('frontend/assets/js/custom.js')}}"></script>

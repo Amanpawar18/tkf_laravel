@@ -118,6 +118,9 @@
         <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
             However, should you choose to cancel your order due to the delivery date, you can do so below
         </p>
+        <p style="color:#000;line-height:150%;font-size:16px;margin:15px 0 0">
+            Your way bill no is {{$order->delhivery_waybill}}. You can use this to check your order status.
+        </p>
     </div>
     <div style="text-align:center">
         <a href="{{route('frontend.profile.show')}}" target="_blank" style="color: #000 !important;

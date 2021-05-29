@@ -1,107 +1,109 @@
-@extends('frontend.layout.master')
-@section('content')
-
-{{-- <div class="container">
-    <section class="product-detail-main">
-        <div class="row">
-            <div class="col-md-6 text-left">
-                <h3 class=">
-                    Welcome,
-                    {{$user->name .' ' .$user->last_name}}
-</h3>
-</div>
-<div class="col-md-6 text-right">
-    <button class="btn btn-buy-now">Logout</button>
-</div>
-</div>
-<hr>
-</section>
-</div> --}}
-
-<!-- Slider -->
-<div class="container">
-    <section id="cart" class="product-detail-main">
-        <div class="row">
-            <div class="col-sm-12 text-center">
-                <h3 class="mt-0 mb-0">WELCOME</h3>
-                <h3 class="mt-0 mb-0 fw-500"><strong> {{$user->name .' ' .$user->last_name}} </strong>
-                </h3>
-            </div>
-        </div>
-
-        <div class="row mt-5">
-            <div class="col-sm-6 pt-4 pb-4 border">
-                <p class="h4">
-                    My Account
+@extends('frontend.profile.layout')
+@section('profile-content')
+<div class="row">
+    <div class="col-md-12 mb-3">
+        <div class="card">
+            <div class="card-body">
+                <p>
+                    Hello,
+                    <strong>
+                        {{Auth::user()->name}}
+                    </strong>
+                    , (Not
+                    <strong>
+                        {{Auth::user()->name}}
+                    </strong>
+                    ?
+                    <a class="text-decoration-none" href="javascript:void(0);'"
+                        onclick="event.preventDefault(); document.getElementById('logOut').submit();">
+                        Logout
+                    </a>
+                    )
                 </p>
-                <ul class="listing">
-                    <li>
-                        <a href="#" class="text-dark"
-                            onclick="event.preventDefault(); document.getElementById('logOut').submit();">
-                            Logout
-                        </a>
-                    </li>
-
-                </ul>
-            </div>
-            <div class=" col-sm-6 pt-4 pb-4 border">
-                <p class="h4">
-                    Account Details
+                <p>
+                    From your account dashboard you can review orders, manage your shippping and billing addresses and
+                    edit your password and account details.
                 </p>
-                <ul class="listing">
-                    <li> {{$user->name . ' ' .$user->last_name}} </li>
-                    <li> {{$user->email}}</li>
-
-                </ul>
             </div>
         </div>
-        <div class="row mt-5 align-items-center">
-            <div class="col-sm-12  p-4 border">
-                <p class="fw-500 mb-0 h4 text-center"> Order History </p>
-                <hr>
-                <table class="table">
-                    <thead>
-                        <tr class="">
-                            <th scope="col" colspan="2" class="text-center">Product</th>
-                            <th scope="col" class="text-center">Quantity</th>
-                            <th scope="col" class="text-center">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-
-                        @forelse ($orderProducts as $orderProduct)
-                        <tr>
-                            <td class="align-middle" scope="row">
-                                <img src="{{$orderProduct->product->image_path}}" class="object-fit-contain" width="100"
-                                    height="82">
-                            </td>
-                            <td class="align-middle">
-                                <a href="{{route('frontend.product.details', $orderProduct->product->slug)}}" class="p">
-                                    <p>
-                                        {{$orderProduct->product->name}}
-                                    </p>
-                                </a>
-                                <p><small class="fw-500">{{$orderProduct->size}}</small> </p>
-                            </td>
-                            <td class="align-middle" align="center">{{$orderProduct->quantity}}</td>
-                            <td class="align-middle" align="center"><strong class="fw-500">₹{{$orderProduct->amount}}</strong></td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="5" align="center">
-                                No data found
-                            </td>
-                        </tr>
-                        @endforelse
-
-                    </tbody>
-                </table>
-                </ul>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header bg-transparent">
+                Log In Information
             </div>
-            <div class="col-md-12">
-                {{$orderProducts->links()}}
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <p>
+                        {{$user->name}}
+                        <br>
+                        {{$user->email}}
+                        <br>
+                        {{$user->phone_no}}
+                        <br>
+                        <a href="#" class="">Edit Profile</a>
+                    </p>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header bg-transparent">
+                Referral Details
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <p>
+                        <b>
+                            Referral Code:
+                        </b>
+                        QWERTY-1234
+                        <br>
+                        <b>
+                            Referral Url:
+                        </b>
+                        {{route('register','QWERTY-1234')}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header bg-transparent">
+                Default Address
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <p>
+                        {!! $user->addresses()->first()->address_in_text !!}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header bg-transparent">
+                Subscriptions
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <ul>
+                            <li>
+                                Livo+
+                            </li>
+                            <li>
+                                Fero+
+                            </li>
+                        </ul>
+                        <a href="#" class="">Edit Subscriptions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

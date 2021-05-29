@@ -47,3 +47,9 @@
     z-index: 9999;
     background: url(../../public/images/loader.gif) center no-repeat transparent;
 }
+
+.list-group-item.active{
+    color: black;
+    background-color: #d7b56d !important;
+    border-color: #d7b56d !important;
+}

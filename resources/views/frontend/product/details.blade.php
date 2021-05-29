@@ -425,14 +425,14 @@
         <div class="modal-content" style="border-radius: 4px; ">
             <div class="modal-header bg-dark text-white">
                 <h5 class="modal-title ">Check delivery eligblity</h5>
-                <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal"
-                    aria-label="Close">X</button>
+                <button type="button" class="btn btn-light btn-sm" data-bs-dismiss="modal" aria-label="Close">X</button>
             </div>
             <div class="modal-body">
-                <form action="">
+                <form action="{{route('api.delhivery.checkPinCode')}}" id="checkPinCode" method="get">
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="number" maxlength="6" minlength="6" class="form-control">
+                            <input type="number" maxlength="6" name="pin_code" minlength="6" class="form-control">
+                            <small id="pinCodeStatus" class="small"></small>
                         </div>
                         <div class="col-md-12 text-right">
                             <button type="submit" class="btn btn-buy-now w-auto">Check</button>
@@ -454,6 +454,17 @@
             var sizeValue = $(this).val();
             $('#productDetailCarousel-'+sizeValue).removeClass('d-none');
             $('#price-'+sizeValue).removeClass('d-none');
+        });
+        $('#checkPinCode').ajaxForm(function(response) {
+            if(response){
+                 $('#pinCodeStatus').removeClass('text-success');
+                 $('#pinCodeStatus').addClass('text-success');
+                 $('#pinCodeStatus').html('Your area is currently servicable');
+            } else {
+                $('#pinCodeStatus').removeClass('text-danger');
+                 $('#pinCodeStatus').addClass('text-danger');
+                 $('#pinCodeStatus').html('Your area is currently not servicable');
+            }
         });
     });
 </script>

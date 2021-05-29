@@ -32,4 +32,11 @@ class ShippingAddress extends Model
         $address .= $this->city . ', ' .  $this->state . ', ' .  $this->country;
         return $address;
     }
+
+    public function getAddressInStringAttribute()
+    {
+        $address =  $this->address . ', ' .   $this->apartment_no . ', ';
+        $address .= $this->city . ', ' .  $this->state;
+        return $address;
+    }
 }

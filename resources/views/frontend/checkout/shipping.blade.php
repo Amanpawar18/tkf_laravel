@@ -14,11 +14,17 @@ $subTotal = 0;
                 </p>
             </div>
             <hr>
+            @if($isDeliveryEligible)
             <button type="button" id="checkout-button" class="btn btn-buy-now"
                 data-redirect-url={{route('frontend.razorpay.orderSave')}}
                 data-razorpay-url={{route('frontend.razorpay.orderCreate')}}>
-                Continue shopping
+                Place Order
             </button>
+            @else
+            <p class="text-center text-danger">
+                Currently not deliverable at your address
+            </p>
+            @endif
             <p class="text-center mt-3">
                 <a href="{{route('frontend.checkout', request()->all())}}" class="mt-3 text-dark fw-500">
                     Edit addresss

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Api\DelhiveryController;
 use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\ShippingAddress;
@@ -28,7 +29,9 @@ class CheckoutController extends Controller
         } else {
             $cartItems = Cart::where('session_id', session('userCartSessionId'))->get();
         }
-        return view('frontend.checkout.shipping', compact('cartItems', 'address'));
+        $delhiveryObject = new DelhiveryController();
+        $isDeliveryEligible = $delhiveryObject->checkPinCode($address->pin_code);
+        return view('frontend.checkout.shipping', compact('cartItems', 'address', 'isDeliveryEligible'));
     }
 
     public function saveAddress()

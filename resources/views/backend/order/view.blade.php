@@ -58,10 +58,10 @@ use Illuminate\Support\Facades\Route;
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label>Stripe Payment Id :</label>
+                                    <label>Razorpay Payment Id :</label>
                                 </div>
                                 <div class="col-md-4">
-                                    {{$order->stripe_payment_id}}
+                                    {{$order->razorpay_payment_id}}
                                 </div>
 
                                 <div class="col-md-2">

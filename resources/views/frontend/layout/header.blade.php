@@ -126,9 +126,9 @@
                                 @auth
                                 {{App\Models\Cart::where('user_id', Auth::id())->count()}}
                                 @else
-                            {{App\Models\Cart::where('session_id', session('userCartSessionId'))->count()}}
-                            @endauth
-                        </span>
+                                {{session('userCartSessionId') ? App\Models\Cart::where('session_id', session('userCartSessionId'))->count() : 0}}
+                                @endauth
+                            </span>
                         </a>
                     </li>
                 </ul>

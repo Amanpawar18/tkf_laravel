@@ -62,6 +62,7 @@ Auth::routes(['register' => false, 'login' => false]);
 
 Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('/dashboard', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/order-history', [ProfileController::class, 'orderHistory'])->name('profile.orderHistory');
 
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::get('/shipping', [CheckoutController::class, 'shipping'])->name('shipping');

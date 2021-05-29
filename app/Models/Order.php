@@ -20,7 +20,14 @@ class Order extends Model
     protected $fillable = [
         'user_id', 'order_status',
         'payment_status', 'stripe_payment_id',
-        'address_id', 'total_amount'
+        'address_id', 'total_amount',
+        'razorpay_order_id', 'razorpay_payment_id',
+        'razorpay_signature',
+    ];
+
+    protected $guarded = [
+        'delhivery_waybill', 'delhivery_refnum',
+        'delhivery_upload_wbn'
     ];
 
     protected static function boot()

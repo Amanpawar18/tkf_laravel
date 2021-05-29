@@ -15,8 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('delhivery')->group(function () {
-    Route::get('/orders', [DelhiveryController::class, 'index'])->name('orders');
+Route::prefix('delhivery')->name('delhivery.')->group(function () {
     Route::get('/check-pin-code/{pin_code?}', [DelhiveryController::class, 'checkPinCode'])->name('checkPinCode');
     Route::get('/create-order', [DelhiveryController::class, 'createOrder'])->name('createOrder');
     Route::get('/track-order', [DelhiveryController::class, 'trackOrder'])->name('trackOrder');

@@ -24,39 +24,12 @@ class DelhiveryController extends Controller
         ]);
     }
 
-    public function index()
-    {
-        $url = 'https://staging-express.delhivery.com/c/api/pin-codes/json/?token=' . $this->token . '&filter_codes=302033';
-        // $url = '/c/api/pin-codes/json/';
-        // $url = 'https://staging-express.delhivery.com/c/api/pin-codes/json';
-
-        // dump($this->baseUrl .  $url);
-
-        $generatedUrl = '';
-
-        $response = $this->client->request('GET', $url, [
-            'query' => [
-                // 'filter_codes' => '302021',
-                'state_code' => 'RJ',
-            ],
-            'headers' => [
-                'User-Agent' => 'ReadMe-API-Explorer',
-                'Accept' => 'application/json',
-                'Authorization' => 'Token ' . $this->token
-            ],
-            'on_stats' => function (TransferStats $stats) use (&$generatedUrl) {
-                $generatedUrl = $stats->getEffectiveUri();
-            }
-        ])->getBody()->getContents();
-        dd(json_decode($response));
-    }
-
-    public function checkPinCode()
+    public function checkPinCode($pinCode = null)
     {
         $url = '/c/api/pin-codes/json/';
         $response = $this->client->request('GET', $url, [
             'query' => [
-                'filter_codes' => request()->pin_code,
+                'filter_codes' => $pinCode ?? request()->pin_code,
             ],
             'headers' => [
                 'User-Agent' => 'ReadMe-API-Explorer',
@@ -65,8 +38,9 @@ class DelhiveryController extends Controller
             ],
         ])->getBody()->getContents();
 
-        if (is_array($response) && count($response) > 1) {
-            if (count($response) == 1)
+        $response = json_decode($response);
+        if (isset($response->delivery_codes)) {
+            if (request()->pin_code && count($response->delivery_codes) == 1)
                 return true;
             else
                 return false;
@@ -80,8 +54,7 @@ class DelhiveryController extends Controller
         $url = 'api/v1/packages/json/';
         $response = $this->client->request('GET', $url, [
             'query' => [
-                // 'waybill' => request()->waybill,
-                'waybill' => '5106910000125',
+                'waybill' => 'request()->waybill',
             ],
             'headers' => [
                 'User-Agent' => 'ReadMe-API-Explorer',
@@ -107,8 +80,7 @@ class DelhiveryController extends Controller
         $url = 'api/p/packing_slip';
         $response = $this->client->request('GET', $url, [
             'query' => [
-                // 'wbns' => request()->waybill,
-                'wbns' => '5106910000125',
+                'wbns' => request()->waybill,
             ],
             'headers' => [
                 'User-Agent' => 'ReadMe-API-Explorer',
@@ -124,14 +96,13 @@ class DelhiveryController extends Controller
         }
     }
 
-    public function createOrder()
+    public function createOrder($order)
     {
         $url = '/api/cmu/create.json';
         $response = $this->client->request('POST', $url, [
-            // 'form_params' => [$this->createOrderFormParams()],
             'form_params' => [
                 'format' => 'json',
-                'data' => $this->createOrderFormParams(),
+                'data' => $this->createOrderFormParams($order),
             ],
             'headers' => [
                 'User-Agent' => 'ReadMe-API-Explorer',
@@ -145,10 +116,18 @@ class DelhiveryController extends Controller
         foreach ($packages as $key => $package) {
             if ($key == 0) { // run only for key one then stop
                 if ($package->remarks[0] ==  "") {
-                    $data['waybill'] = $package->waybill;
-                    $data['refnum'] = $package->refnum;
-                    $data['upload_wbn'] = $response->upload_wbn;
-                    return $data;
+
+                    // $data['waybill'] = $package->waybill;
+                    // $data['refnum'] = $package->refnum;
+                    // $data['upload_wbn'] = $response->upload_wbn;
+
+                    $order->delhivery_waybill = $package->waybill;
+                    $order->delhivery_refnum = $package->refnum;
+                    $order->delhivery_upload_wbn = $response->upload_wbn;
+
+                    $order->save();
+
+                    return $order;
                 } else {
                     Log::error($package->remarks[0]);
                     return false;
@@ -158,19 +137,19 @@ class DelhiveryController extends Controller
         }
     }
 
-    public function createOrderFormParams()
+    public function createOrderFormParams($order)
     {
         $pickup_location = array(
             "name" => "VENTTURA 0068588"
         );
 
         $shipments = array(
-            "add" => "M25,NelsonMarg",
-            "phone" => '9887171241',
+            "add" => $order->shippingAddress->address_in_string,
+            "phone" => $order->shippingAddress->phone_no,
             "payment_mode" => "Prepaid",
-            "name" => "name-of-the-consignee",
-            "pin" => 325007,
-            "order" => "orderid" . time(),
+            "name" => $order->shippingAddress->first_name . ' ' .  $order->shippingAddress->last_name ,
+            "pin" => $order->shippingAddress->pin_code,
+            "order" => "Order-id-" . $order->id,
         );
 
         $params = json_encode(

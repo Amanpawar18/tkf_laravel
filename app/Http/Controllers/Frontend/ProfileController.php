@@ -15,4 +15,11 @@ class ProfileController extends Controller
         $orderProducts = OrderProduct::whereUserId($user->id)->simplePaginate(10);
         return view('frontend.profile.view', compact('user', 'orderProducts'));
     }
+
+    public function orderHistory()
+    {
+        $user = Auth::user();
+        $orderProducts = OrderProduct::whereUserId($user->id)->simplePaginate(10);
+        return view('frontend.profile.order-history', compact('user', 'orderProducts'));
+    }
 }
