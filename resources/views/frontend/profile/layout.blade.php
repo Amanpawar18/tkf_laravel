@@ -31,9 +31,9 @@ $routeName =Route::currentRouteName();
                     <a class="list-group-item " href="#">
                         My Subscriptions
                     </a>
-                    <a href="{{route('frontend.address.index')}}" class="list-group-item {{(App\Helper\Common::getCurrentController() == 'AddressController') ? 'active' : ''}}" href="#">
+                    {{-- <a href="{{route('frontend.address.index')}}" class="list-group-item {{(App\Helper\Common::getCurrentController() == 'AddressController') ? 'active' : ''}}" href="#">
                         My Addresses
-                    </a>
+                    </a> --}}
                     <a class="list-group-item " href="#">
                         Coupon
                     </a>

@@ -35,15 +35,13 @@
                 <br>
                 Total: ₹{{ $orderProduct->quantity * $orderProduct->amount }}
             </div>
-            <div class="col-md-3 col-sm-12 col-12 text-right text-md-center">
-                <button class="btn btn-buy-now m-0">
-                    Cancel Order
-                </button>
+            <div class="col-md-3 col-sm-12 col-12 text-right">
             </div>
-            <div class="col-md-3 col-sm-12 col-12 text-right text-md-center">
-               <a href="https://www.delhivery.com/track/package/{{$orderProduct->order->delhivery_waybill}}" target="_blank" class="btn btn-buy-now w-lg-auto m-lg-0 ">
-                   Check Status
-               </a>
+            <div class="col-md-3 col-sm-12 col-12 text-right">
+                <a href="https://www.delhivery.com/track/package/{{$orderProduct->order->delhivery_waybill}}"
+                    target="_blank" class="btn btn-buy-now w-lg-auto w-100 m-lg-0 ">
+                    Check Status
+                </a>
             </div>
         </div>
         @if(!$loop->last)
