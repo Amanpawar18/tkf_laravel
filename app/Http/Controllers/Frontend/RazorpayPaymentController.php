@@ -79,7 +79,7 @@ class RazorpayPaymentController extends Controller
                 'amount' => $item->quantity * $item->product_cost,
             ]);
 
-            // $item->delete();
+            $item->delete();
         }
         return true;
     }
