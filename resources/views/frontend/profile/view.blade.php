@@ -77,7 +77,11 @@
             <div class="card-body">
                 <div class="row align-items-center">
                     <p>
+                        @if($user->addresses()->first())
                         {!! $user->addresses()->first()->address_in_text !!}
+                        @else
+                        No Address Found
+                        @endif
                     </p>
                 </div>
             </div>
