@@ -16,7 +16,7 @@
                     </figure>
                 </a>
             </div> <!-- col.// -->
-            <div class="col-md-3 col-sm-6 col-6 text-lg-left text-center mt-md-2 ">
+            <div class="col-md-2 col-sm-6 col-6 text-lg-left text-center mt-md-2 ">
                 <a class="h6 text-dark text-decoration-none"
                     href="{{route('frontend.product.details', $orderProduct->product->slug)}}">
                     {{$orderProduct->product->name}}
@@ -30,12 +30,17 @@
                     <i class="fa fa-star-o text-warning"></i>
                 </span>
             </div>
-            <div class="col-md-3 col-sm-6 col-6 text-lg-left text-center mt-md-2 ">
+            <div class="col-md-2 col-sm-6 col-6 text-lg-left text-center mt-md-2 ">
                 Quantity: {{$orderProduct->quantity}}
                 <br>
                 Total: ₹{{ $orderProduct->quantity * $orderProduct->amount }}
             </div>
-            <div class="col-md-4 col-sm-12 col-12 text-right text-md-center">
+            <div class="col-md-3 col-sm-12 col-12 text-right text-md-center">
+                <button class="btn btn-buy-now m-0">
+                    Cancel Order
+                </button>
+            </div>
+            <div class="col-md-3 col-sm-12 col-12 text-right text-md-center">
                <a href="https://www.delhivery.com/track/package/{{$orderProduct->order->delhivery_waybill}}" target="_blank" class="btn btn-buy-now w-lg-auto m-lg-0 ">
                    Check Status
                </a>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\AddressController;
 use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
@@ -70,4 +71,5 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::post('razorpay-order-create', [RazorpayPaymentController::class, 'orderCreate'])->name('razorpay.orderCreate');
     Route::post('razorpay-order-save', [RazorpayPaymentController::class, 'orderSave'])->name('razorpay.orderSave');
 
+    Route::resource('address', AddressController::class);
 });

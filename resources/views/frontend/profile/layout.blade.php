@@ -31,8 +31,23 @@ $routeName =Route::currentRouteName();
                     <a class="list-group-item " href="#">
                         My Subscriptions
                     </a>
-                    <a class="list-group-item " href="#">
+                    <a href="{{route('frontend.address.index')}}" class="list-group-item {{(App\Helper\Common::getCurrentController() == 'AddressController') ? 'active' : ''}}" href="#">
                         My Addresses
+                    </a>
+                    <a class="list-group-item " href="#">
+                        Coupon
+                    </a>
+                    <a class="list-group-item " href="#">
+                        Referral
+                    </a>
+                    <a class="list-group-item " href="#">
+                        Offers
+                    </a>
+                    <a class="list-group-item " href="#">
+                        Downloads
+                    </a>
+                    <a class="list-group-item " href="#">
+                        Earnings
                     </a>
                 </ul>
             </aside> <!-- col.// -->
