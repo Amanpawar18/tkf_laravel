@@ -37,7 +37,7 @@ use Illuminate\Support\Facades\Route;
                                         <th style="width: 10px">#</th>
                                         <th>Order-ID</th>
                                         <th>No. of products</th>
-                                        <th>Order Status</th>
+                                        <th>WayBill No.</th>
                                         <th>Amount</th>
                                         <th>Action</th>
                                     </tr>
@@ -51,7 +51,7 @@ use Illuminate\Support\Facades\Route;
                                         <td>{{$i++}}</td>
                                         <td>Order-{{$order->id}}</td>
                                         <td>{{$order->orderProducts()->count()}}</td>
-                                        <td>{{$order->status_text}}</td>
+                                        <td>{{$order->delhivery_waybill}}</td>
                                         <td>₹{{$order->total_amount}}</td>
                                         <td>
                                             <form action="{{route('admin.orders.destroy',$order->id)}}"

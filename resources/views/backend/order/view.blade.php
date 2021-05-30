@@ -72,9 +72,29 @@ use Illuminate\Support\Facades\Route;
                                 </div>
 
                                 <div class="col-md-2">
-                                    <label>Address :</label>
+                                    <label>Delhivery Waybill :</label>
                                 </div>
                                 <div class="col-md-4">
+                                    {{$order->delhivery_waybill}}
+                                </div>
+                                <div class="col-md-2">
+                                    <label>Delhivery Upload Wbn:</label>
+                                </div>
+                                <div class="col-md-4">
+                                    {{$order->delhivery_upload_wbn}}
+                                </div>
+
+                                <div class="col-md-2">
+                                    <label>Delhivery RefNum (OrderId) :</label>
+                                </div>
+                                <div class="col-md-4">
+                                    {{$order->delhivery_refnum}}
+                                </div>
+
+                                <div class="mt-2 col-md-2">
+                                    <label>Address :</label>
+                                </div>
+                                <div class="mt-2 col-md-8">
                                     {!! $order->shippingAddress ? $order->shippingAddress->address_in_text : 'N/A' !!}
                                 </div>
 
