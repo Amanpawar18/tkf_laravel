@@ -178,7 +178,7 @@
                         <div class="blog-caption mt-40">
                             <h6 class="bold mb-40 mt-40">{{$blog->name}}</h6>
                             <p>
-                                {!! Str::limit($blog->content, 100) !!}
+                                {{ Str::limit($blog->meta_description, 100) }}
                             </p>
                             <div class="text-center mt-40">
                                 <a class="btn has-left-icon bold" href="{{route('frontend.blog.view', $blog->slug)}}" title=""><i class="fa fa-arrow-circle-right"

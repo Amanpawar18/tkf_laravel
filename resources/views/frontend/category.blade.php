@@ -10,7 +10,7 @@
 @endsection
 @section('content')
 <div class="video-banner">
-    <iframe width="950" height="600"  frameborder="0" allowfullscreen="1"
+    <iframe width="950" height="600" frameborder="0" allowfullscreen="1"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         src="https://www.youtube.com/embed/{{$category->frontend_video_url}}?playlist={{$category->frontend_video_url}}&autoplay=1&mute=1&loop=1&controls=0">
     </iframe>
@@ -29,7 +29,8 @@
                     <div class="product-item mt-30">
                         <a href="{{route('frontend.product.details', $product->slug)}}" class="text-decoration-none">
                             <div class="product-image">
-                                <div class="featured-badge black small-category-badge">{{$product->category->name}}</div>
+                                <div class="featured-badge black small-category-badge">{{$product->category->name}}
+                                </div>
                                 <img src="{{$product->image_path}}" class="img-fluid">
                             </div>
                         </a>
@@ -42,14 +43,16 @@
                                 </p>
                                 <h5>starting at <span class="product-price">₹{{$product->regular_price}}</span></h5>
                             </a>
-                            <a href="{{route('frontend.product.details', $product->slug)}}" class="btn btn-buy-now">Buy Now</a>
+                            <a href="{{route('frontend.product.details', $product->slug)}}" class="btn btn-buy-now">Buy
+                                Now</a>
                         </div>
 
                     </div>
                 </div>
                 @endforeach
                 <div class="col-md-12 text-center">
-                    <a href="{{route('frontend.product.shop', ['category' => $category->slug])}}" class="btn btn-buy-now" style="width: auto; !important">View all</a>
+                    <a href="{{route('frontend.product.shop', ['category' => $category->slug])}}"
+                        class="btn btn-buy-now" style="width: auto; !important">View all</a>
                 </div>
             </div>
         </div>
@@ -67,6 +70,7 @@
         </div>
     </div>
 </section>
+
 
 <section class="home-section">
     <div class="container-fluid">
@@ -133,7 +137,6 @@
         </div>
     </div>
 </section>
-
 <section class="reward-collage">
     <img src="{{$homePageData->section_five_image_path}}" height="420px" class="object-fit-contain img-fluid">
     <div class="container-fluid">
@@ -148,101 +151,5 @@
         </div>
     </div>
     <img src="{{asset('frontend/assets/images/WhatsApp-Image-2021-02-08-at-3.05.03-PM-1.jpeg')}}" class="w-100 mt-30">
-</section>
-
-<section class="home-section">
-    <div class="container-fluid">
-        <div class="blog-cards text-left">
-            <div class="row">
-                <div class="col-lg-3 col-sm-6 col-12 mt-4 mt-lg-0">
-                    <div class="blog-item">
-                        <div class="blog-image">
-                            <img src="{{asset('frontend/assets/images/Joint-Health-in-Dogs-Copy.png')}}"
-                                class="img-fluid">
-                        </div>
-                        <div class="blog-caption mt-40">
-                            <h6 class="bold mb-40 mt-40">Joint Health in Dogs</h6>
-                            <p>Joints allow dogs free movement and flexibility. Without joints the skeleton would be
-                                a rigid bag of bones! Joints are incredible examples of engineering that are made of
-                                a number of parts.</p>
-                            <h6 class="bold mb-30 mt-40">Components of a Joint</h6>
-                            <p><strong>Bones-</strong> A joint is formed where two or more bones meet to allow
-                                movement.</p>
-
-                            <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
-                                        aria-hidden="true"></i>Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 col-12 mt-4 mt-lg-0">
-                    <div class="blog-item">
-                        <div class="blog-image">
-                            <img src="{{asset('frontend/assets/images/cat-blog.jpg')}}" class="img-fluid">
-                        </div>
-                        <div class="blog-caption mt-40">
-                            <h6 class="bold mb-40 mt-40">
-                                Litter Training your Cat
-                            </h6>
-                            <p> By the time most kittens leave their mother and come to live with their new family, they
-                                have already been toilet trained, making life easy for the new family. This is because
-                                mother cats often train their kittens’ proper toileting habits. However, sometimes it
-                                will be necessary to train your new kitten or cat how to use the litter tray. .
-                            </p>
-                            <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
-                                        aria-hidden="true"></i>Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 col-12 mt-4 mt-lg-0">
-                    <div class="blog-item">
-                        <div class="blog-image">
-                            <img src="{{asset('frontend/assets/images/puppy-blog.jpg')}}" class="img-fluid">
-                        </div>
-                        <div class="blog-caption mt-40">
-                            <h6 class="bold mb-40 mt-40">
-                                Boosting Your Dog’s Immune System
-                            </h6>
-                            <p>
-                                Your dog’s immune system is a complex and intricate system that protects your pet from
-                                external as well as internal factors. It consists of white blood cells, antibodies and
-                                other components that help fight infections, pathogens like bacteria and viruses and
-                                toxins, parasites, free radicals, etc. The immune system involves organs like the bone
-                            </p>
-                            <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
-                                        aria-hidden="true"></i>Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 col-12 mt-4 mt-lg-0">
-                    <div class="blog-item">
-                        <div class="blog-image">
-                            <img src="{{asset('frontend/assets/images/Healthy-Skin-Coat.jpg')}}" class="img-fluid">
-                        </div>
-                        <div class="blog-caption mt-40">
-                            <h6 class="bold mb-40 mt-40">
-                                Healthy Skin & Coat in Dogs
-                            </h6>
-                            <p>
-                                A dog’s skin and coat are a barometer to his overall health. Soft, shiny coat and supple
-                                skin without redness or flakiness are signs of a healthy dog but dry itchy skin, brittle
-                                rough coat, redness, scratching and hair loss are all indications that your dog may not
-                                be feeling at his best and may need a visit to the vet’s. Skin and coat ‘issues’
-                            </p>
-                            <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
-                                        aria-hidden="true"></i>Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 @endsection
