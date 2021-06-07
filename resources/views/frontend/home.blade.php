@@ -169,7 +169,7 @@
         <div class="blog-cards text-left">
             <div class="row">
                 @foreach ($blogs as $blog)
-                <div class="col-lg-3 mx-2 col-sm-6 col-12 mt-4 mt-lg-0 text-center">
+                <div class="col-lg-4 col-sm-6 col-12 mt-0 mt-md-4 text-center">
                     <div class="blog-item">
                         <div class="blog-image">
                             <img src="{{$blog->banner_image_path}}" style="height: 300px;"
