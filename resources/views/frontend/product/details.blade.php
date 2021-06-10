@@ -143,27 +143,26 @@
                                         <span id="price-{{$variation->id}}"
                                             class="price {{$loop->first ? '' : 'd-none'}}">
                                             <span class="product-Price-symbol h3 product-price">₹</span>
-                                            {{$variation->price}}
+                                            {{$variation->cost}}
                                         </span>
                                         @endforeach
                                         @else
+                                        <span class="product-Price-symbol h3 product-price">₹</span>
                                         {{$product->cost}}
                                         @endif
                                     </h3>
                                 </div>
-                                <div class="col-md-8">
+                                <div class="col-md-4">
                                     <div class="quantity_selector">
                                         <div class="input-group mb-3">
                                             <button class="btn decrease" type="button">-</button>
-                                            <input type="text" name="quantity" class="form-control quantity" readonly
-                                                value="1">
+                                            <input type="text" name="quantity" class="form-control quantity" readonly value="1">
                                             <button class="btn increase" type="button">+</button>
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn btn-buy-now w-auto m-0 shop-now-btn">
-                                        Buy Now
-                                        <i class="fa fa-angle-right"></i>
-                                    </button>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    @include('frontend.product.price')
                                 </div>
                             </div>
                         </div>
@@ -451,9 +450,11 @@
         $('#choose_size').change(function(){
             $('.productDetailCarousel').addClass('d-none');
             $('.price').addClass('d-none');
+            $('.buyNow').addClass('d-none');
             var sizeValue = $(this).val();
             $('#productDetailCarousel-'+sizeValue).removeClass('d-none');
             $('#price-'+sizeValue).removeClass('d-none');
+            $('#buyNow-'+sizeValue).removeClass('d-none');
         });
         $('#checkPinCode').ajaxForm(function(response) {
             if(response){

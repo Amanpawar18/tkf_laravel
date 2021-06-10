@@ -24,7 +24,9 @@ class Product extends Model
         'description', 'product_detail',
         'composition', 'suggested_for',
         'direction_for_use', 'note',
-        'sale_price', 'regular_price', 'is_sale'
+        'sale_price', 'regular_price', 'is_sale',
+        'quantity', 'batch_no', 'mfg_date',
+        'exp_date', 'hsn', 'sac', 'gst_rate'
     ];
 
     protected static function boot()
@@ -115,10 +117,10 @@ class Product extends Model
             $cost = $variation->price;
         } else {
 
-            // $cost = $this->is_sale ? $this->sale_price : $this->regular_price;
-            $cost = $this->regular_price;
+            $cost = $this->is_sale ? $this->sale_price : $this->regular_price;
+            // $cost = $this->regular_price;
         }
-        $cost = '₹' .  $cost;
+        $cost =  $cost;
 
         return $cost;
     }

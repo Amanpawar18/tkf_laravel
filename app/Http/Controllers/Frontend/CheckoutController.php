@@ -18,6 +18,11 @@ class CheckoutController extends Controller
         } else {
             $cartItems = Cart::where('session_id', session('userCartSessionId'))->get();
         }
+        foreach ($cartItems as $item) {
+            if (!$item->stock) {
+                return redirect()->route('frontend.cart.index')->withErrors("Can't proceed for checkout some items are out of stock. Update cart and Try Again");
+            }
+        }
         return view('frontend.checkout.index', compact('cartItems'));
     }
 
@@ -42,9 +47,9 @@ class CheckoutController extends Controller
 
         $address = null;
         $previousAddress = ShippingAddress::where($addressData)->first();
-        if($previousAddress){
+        if ($previousAddress) {
             $address = $previousAddress;
-            if(request()->status){
+            if (request()->status) {
                 $previousAddress->status = request()->status;
                 $previousAddress->save();
             }

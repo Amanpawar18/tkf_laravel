@@ -41,13 +41,25 @@ class Cart extends Model
         $variation = $product->productVariations()->where('id', $this->variation_id)->first();
 
         if ($variation) {
-            $cost = $variation->price;
+            $cost = $variation->cost;
         } else {
 
-            // $cost = $this->is_sale ? $this->sale_price : $this->regular_price;
-            $cost = $product->regular_price;
+            $cost = $product->cost;
         }
 
         return $cost;
+    }
+
+    public function getStockAttribute()
+    {
+        $product = $this->product;
+        $variation = $product->productVariations()->where('id', $this->variation_id)->first();
+
+        if ($variation) {
+            $quantity = $variation->quantity;
+        } else {
+            $quantity = $product->quantity;
+        }
+        return $quantity;
     }
 }

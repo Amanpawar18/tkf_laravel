@@ -7,6 +7,15 @@ $cartTotal = 0;
     <form action="{{route('frontend.cart.update')}}" method="POST">
         @csrf
         <div class="row no-gutters position-relative">
+            @if($errors->any())
+            <div class="col-md-12 alert alert-danger">
+                @foreach ($errors->all() as $error)
+                <li>
+                    {{$error}}
+                </li>
+                @endforeach
+            </div>
+            @endif
             <aside class="col-md-9 mx-auto">
                 @forelse ($cartItems as $item)
                 <div class="card mb-3" id="item-{{$item->id}}">
@@ -28,6 +37,10 @@ $cartTotal = 0;
                                     href="{{route('frontend.product.details', $item->product->slug)}}">
                                     {{$item->product->name}}
                                 </a>
+                                @if(!$item->stock)
+                                <br>
+                                <small class="text-danger">Out of stock</small>
+                                @endif
                             </div>
                             <div class="col-md-4 col-sm-12 col-12 my-3 my-md-0 text-md-center d-flex">
                                 <input type="number" id="item-{{$item->id}}-quantity" class="form-control"
@@ -79,13 +92,13 @@ $cartTotal = 0;
                         <button class="btn btn-buy-now btn-block"> Update Cart </Button>
                         <a href="{{route('frontend.product.shop')}}" class="btn btn-buy-now btn-block">Continue
                         Shopping</a>
-                        <br>
+                        {{-- <br>
                         <p class="mt-4 text-center">
                             <small class="text-danger">
                                 Checkout Option is under maintenance.
                             </small>
-                        </p>
-                        {{-- <a href="{{route('frontend.checkout')}}" class="btn btn-buy-now btn-block">Checkout</a> --}}
+                        </p> --}}
+                        <a href="{{route('frontend.checkout')}}" class="btn btn-buy-now btn-block">Checkout</a>
                     </div> <!-- card-body.// -->
                 </div>
             </aside> <!-- col.// -->

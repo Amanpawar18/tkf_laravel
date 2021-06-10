@@ -9,16 +9,11 @@ class ProductVariation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['product_id', 'size', 'price'];
-
-    // public static function boot()
-    // {
-    //     parent::boot();
-
-    //     ProductVariation::deleting(function ($variation) {
-    //         $variation->images()->delete();
-    //     });
-    // }
+    protected $fillable = [
+        'product_id', 'size',
+        'price', 'is_sale', 'sale_price',
+        'quantity', 'batch_no', 'exp_date', 'mfg_date'
+    ];
 
     public function product()
     {
@@ -32,12 +27,18 @@ class ProductVariation extends Model
 
     public function delete()
     {
-        foreach($this->images as $image){
+        foreach ($this->images as $image) {
 
             $image->delete();
         }
         parent::delete();
 
         return true;
+    }
+
+    public function getCostAttribute()
+    {
+        $cost = $this->is_sale ? $this->sale_price : $this->price;
+        return $cost;
     }
 }
