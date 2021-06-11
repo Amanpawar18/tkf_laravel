@@ -42,26 +42,45 @@
                     <div class="product-item mt-30">
                         <a href="{{route('frontend.product.details', $product->slug)}}" class="text-decoration-none">
                             <div class="product-image">
-                                <div class="featured-badge black small-category-badge">{{$product->category->name}}</div>
+                                <div class="featured-badge black small-category-badge">{{$product->category->name}}
+                                </div>
                                 <img src="{{$product->image_path}}" class="img-fluid">
                             </div>
                         </a>
                         <div class="product-info">
-                            <a href="{{route('frontend.product.details', $product->slug)}}" class="text-dark text-decoration-none">
-                                <h2>{{$product->name}}<small>{{$product->sub_description}}</small></h2>
+                            <a href="{{route('frontend.product.details', $product->slug)}}"
+                                class="text-dark text-decoration-none">
+                                <h2>
+                                    {{$product->name}}
+                                    @if($product->is_sale)
+                                    <span class="text-danger h6">
+                                        (On Sale)
+                                    </span class="text-danger h6">
+                                    @endif
+                                    <small>
+                                        {{$product->sub_description}}
+                                    </small>
+                                </h2>
                                 <p class="small">
                                     {{$product->description}}
                                 </p>
-                                <h5>starting at <span class="product-price">{{$product->cost}}</span></h5>
+                                <span>
+                                    starting at
+                                    <span class="product-price h5">
+                                        ₹{{$product->cost}}
+                                    </span>
+                                </span>
                             </a>
-                            <a href="{{route('frontend.product.details', $product->slug)}}" class="btn btn-buy-now">Buy Now</a>
+                            <a href="{{route('frontend.product.details', $product->slug)}}" class="btn btn-buy-now">Buy
+                                Now</a>
                         </div>
 
                     </div>
                 </div>
                 @endforeach
                 <div class="col-md-12 text-center">
-                    <a href="{{route('frontend.product.shop')}}" class="btn btn-buy-now" style="width: auto; !important">View all</a>
+                    <a href="{{route('frontend.product.shop')}}" class="btn btn-buy-now"
+                        style="width: auto; !important">View all</a>
                 </div>
             </div>
         </div>
@@ -181,8 +200,8 @@
                                 {{ Str::limit($blog->meta_description, 100) }}
                             </p>
                             <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="{{route('frontend.blog.view', $blog->slug)}}" title=""><i class="fa fa-arrow-circle-right"
-                                        aria-hidden="true"></i>Read More</a>
+                                <a class="btn has-left-icon bold" href="{{route('frontend.blog.view', $blog->slug)}}"
+                                    title=""><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>Read More</a>
                             </div>
                         </div>
                     </div>

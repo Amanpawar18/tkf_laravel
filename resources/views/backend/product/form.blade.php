@@ -128,7 +128,7 @@
             <label for="hsn" class="text-capitalize">HSN
             </label>
             <input type="text" min="0" class="form-control" name="hsn" value="{{old('hsn', $product->hsn)}}"
-                placeholder="hsn" required>
+                placeholder="hsn" >
         </div>
     </div>
     <div class="col-md-4">
@@ -136,7 +136,7 @@
             <label for="sac" class="text-capitalize">SAC
             </label>
             <input type="text" min="0" class="form-control" name="sac" value="{{old('sac', $product->sac)}}"
-                placeholder="SAC" required>
+                placeholder="SAC" >
         </div>
     </div>
     <div class="col-md-4">
@@ -144,7 +144,7 @@
             <label for="gst_rate" class="text-capitalize">GST RATE
             </label>
             <input type="text" min="0" class="form-control" name="gst_rate"
-                value="{{old('gst_rate', $product->gst_rate)}}" placeholder="GST RATE" required>
+                value="{{old('gst_rate', $product->gst_rate)}}" placeholder="GST RATE" >
         </div>
     </div>
     <div class="col-md-12">

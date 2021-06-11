@@ -37,11 +37,19 @@
                         <div class="product-info">
                             <a href="{{route('frontend.product.details', $product->slug)}}"
                                 class="text-dark text-decoration-none">
-                                <h2>{{$product->name}}<small>{{$product->sub_description}}</small></h2>
+                                <h2>
+                                    {{$product->name}}
+                                    @if($product->is_sale)
+                                        <span class="text-danger h6">
+                                            (On Sale)
+                                        </span class="text-danger h6">
+                                        @endif
+                                    <small>{{$product->sub_description}}</small>
+                                </h2>
                                 <p class="small">
                                     {{$product->description}}
                                 </p>
-                                <h5>starting at <span class="product-price">₹{{$product->regular_price}}</span></h5>
+                                <h5>starting at <span class="product-price">₹{{$product->cost}}</span></h5>
                             </a>
                             <a href="{{route('frontend.product.details', $product->slug)}}" class="btn btn-buy-now">Buy
                                 Now</a>
