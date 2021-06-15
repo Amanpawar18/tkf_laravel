@@ -37,7 +37,7 @@ $routeName =Route::currentRouteName();
                     <a class="list-group-item " href="#">
                         Coupon
                     </a>
-                    <a class="list-group-item " href="#">
+                    <a class="list-group-item " href="{{route('frontend.referralIndex')}}">
                         Referral
                     </a>
                     <a class="list-group-item " href="#">

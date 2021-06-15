@@ -11,8 +11,8 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    const ACTIVE =1;
-    const HIDDEN =0;
+    const ACTIVE = 1;
+    const HIDDEN = 0;
 
     /**
      * The attributes that are mass assignable.
@@ -27,6 +27,12 @@ class User extends Authenticatable
         'status',
         'first_name',
         'phone_no',
+    ];
+
+    protected $guarded = [
+        'referral_code',
+        'referrer_user_id',
+        'referrer_user_code'
     ];
 
     /**
@@ -51,6 +57,11 @@ class User extends Authenticatable
     public function orderProducts()
     {
         return $this->hasMany(OrderProduct::class);
+    }
+
+    public function referredUsers()
+    {
+        return $this->hasMany(User::class, 'referrer_user_id', 'id') ;
     }
 
     public function orders()
@@ -91,6 +102,30 @@ class User extends Authenticatable
         }
 
         session()->forget('userCartSessionId');
+        return true;
+    }
+
+    public function createReferralId()
+    {
+        $this->forceFill([
+            'referral_code' => $this->first_name . '-' . $this->id
+        ]);
+        $this->save();
+        return true;
+    }
+
+    public function assignReferredUser($referrerCode = null)
+    {
+
+        $referrerUser = User::whereReferralCode($referrerCode)->first();
+        $this->referrer_user_id = isset($referrerUser) ? $referrerUser->id : null;
+
+        $this->forceFill([
+            'referral_code' =>  $referrerCode,
+            'referrer_user_id' => isset($referrerCode) && isset($referrerUser)  ? $referrerUser->id : null,
+        ]);
+        $this->save();
+
         return true;
     }
 }

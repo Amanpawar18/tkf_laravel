@@ -41,7 +41,9 @@ class CreateNewUser implements CreatesNewUsers
             'password' => Hash::make($input['password']),
         ]);
 
+        $user->createReferralId();
         $user->assignCartProducts();
+        $user->assignReferredUser(request()->referrer_user_code);
 
         return $user;
     }

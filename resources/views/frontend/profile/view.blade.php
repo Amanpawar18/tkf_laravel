@@ -58,12 +58,14 @@
                         <b>
                             Referral Code:
                         </b>
-                        QWERTY-1234
+                        {{Auth::user()->referral_code}}
                         <br>
                         <b>
                             Referral Url:
                         </b>
-                        {{route('register','QWERTY-1234')}}
+                        <a href=" {{route('register', ['referrer_user_code' => Auth::user()->referral_code])}}" target="_blank">
+                            {{route('register', ['referrer_user_code' => Auth::user()->referral_code])}}
+                        </a>
                     </p>
                 </div>
             </div>
