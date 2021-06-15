@@ -28,7 +28,11 @@ class CheckoutController extends Controller
 
     public function shipping()
     {
-        $address = $this->saveAddress();
+        if(request()->has('address_id')){
+            $address = ShippingAddress::find(request()->address_id);
+        } else {
+            $address = $this->saveAddress();
+        }
         if (Auth::check()) {
             $cartItems = Cart::where('user_id', Auth::id())->get();
         } else {

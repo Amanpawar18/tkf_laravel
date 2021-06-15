@@ -71,7 +71,7 @@ class User extends Authenticatable
 
     public function addresses()
     {
-        return $this->hasMany(ShippingAddress::class)->whereStatus(ShippingAddress::ACTIVE);
+        return $this->hasMany(ShippingAddress::class);
     }
 
     public function delete()

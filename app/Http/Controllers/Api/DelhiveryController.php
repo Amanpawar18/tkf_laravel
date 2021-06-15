@@ -42,7 +42,7 @@ class DelhiveryController extends Controller
 
         $response = json_decode($response);
         if (isset($response->delivery_codes)) {
-            if (request()->pin_code && count($response->delivery_codes) == 1)
+            if ((request()->pin_code || $pinCode ) && count($response->delivery_codes) == 1)
                 return true;
             else
                 return false;
