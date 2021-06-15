@@ -23,9 +23,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'last_name',
+        // 'last_name',
         'status',
-        'first_name',
+        // 'first_name',
         'phone_no',
     ];
 
@@ -108,7 +108,7 @@ class User extends Authenticatable
     public function createReferralId()
     {
         $this->forceFill([
-            'referral_code' => $this->first_name . '-' . $this->id
+            'referral_code' => str_replace(' ', '-', $this->name) . '-' . $this->id
         ]);
         $this->save();
         return true;
@@ -121,7 +121,7 @@ class User extends Authenticatable
         $this->referrer_user_id = isset($referrerUser) ? $referrerUser->id : null;
 
         $this->forceFill([
-            'referral_code' =>  $referrerCode,
+            'referrer_user_code' =>  $referrerCode,
             'referrer_user_id' => isset($referrerCode) && isset($referrerUser)  ? $referrerUser->id : null,
         ]);
         $this->save();

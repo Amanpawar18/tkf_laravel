@@ -25,10 +25,11 @@
                             <td>
                                 <form action="{{route('frontend.address.destroy', $address->id)}}" method="POST">
                                     @method('DELETE')
+                                    @csrf
                                     <a class="btn btn-primary btn-sm" href="{{route('frontend.address.edit', $address->id)}}">
                                         <i class="fa fa-edit"></i>
                                     </a>
-                                    <button class="btn btn-danger btn-sm" type="submit">
+                                    <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this address?')" type="submit">
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </form>
