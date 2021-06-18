@@ -41,7 +41,7 @@
                         <br>
                         {{$user->phone_no}}
                         <br>
-                        <a href="#" class="">Edit Profile</a>
+                        <a href="{{route('frontend.profile.edit')}}" class="">Edit Profile</a>
                     </p>
                 </div>
             </div>

@@ -80,6 +80,11 @@ class User extends Authenticatable
         return $this->hasMany(ShippingAddress::class);
     }
 
+    public function bankDetails()
+    {
+        return $this->hasMany(BankDetail::class);
+    }
+
     public function referrerUser()
     {
         return $this->belongsTo(User::class, 'referrer_user_id', 'id');

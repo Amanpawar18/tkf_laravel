@@ -69,6 +69,10 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('/referral', [ProfileController::class, 'referralIndex'])->name('referralIndex');
     Route::get('/transaction', [ProfileController::class, 'transactionIndex'])->name('transactionIndex');
 
+    Route::get('edit-profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('update-profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('update-password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
+
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::get('/shipping', [CheckoutController::class, 'shipping'])->name('shipping');
 

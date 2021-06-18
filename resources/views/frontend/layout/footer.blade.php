@@ -1,7 +1,7 @@
 <hr class="m-0">
 <section class="mt-30">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center align-items-center">
             <div class="col-md-2 text-center">
                 <a href="{{FooterData::get('image_one_link') ?? '#'}}">
                     <img src="{{FooterData::get('image_one_path')}}" class="img-fluid">
@@ -27,11 +27,7 @@
                     <img src="{{FooterData::get('image_five_path')}}" class="img-fluid">
                 </a>
             </div>
-            {{-- <div class="col-md-10">
-                <img src="{{asset('frontend/assets/images/Screen-Shot-2021-03-01-at-11.04.08-AM.png')}}"
-            class="img-fluid">
-        </div> --}}
-    </div>
+        </div>
     </div>
 </section>
 
