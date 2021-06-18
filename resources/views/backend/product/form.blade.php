@@ -88,7 +88,7 @@
             <label for="productTitleInput" class="text-capitalize">Sale Price
             </label>
             <input type="number" min="0" class="form-control" name="sale_price"
-                value="{{old('sale_price', $product->sale_price)}}" placeholder="Sale Price" required>
+                value="{{old('sale_price', $product->sale_price)}}" placeholder="Sale Price" >
         </div>
     </div>
     <div class="col-md-6">
@@ -104,7 +104,7 @@
             <label for="batch_no" class="text-capitalize">Batch No.
             </label>
             <input type="number" min="0" class="form-control" name="batch_no"
-                value="{{old('batch_no', $product->batch_no)}}" placeholder="Batch No." required>
+                value="{{old('batch_no', $product->batch_no)}}" placeholder="Batch No." >
         </div>
     </div>
     <div class="col-md-6">
@@ -112,7 +112,7 @@
             <label for="mfg_date" class="text-capitalize">MFG. Date
             </label>
             <input type="date" class="form-control" name="mfg_date" value="{{old('mfg_date', $product->mfg_date)}}"
-                placeholder="Mfg. Date" required>
+                placeholder="Mfg. Date" >
         </div>
     </div>
     <div class="col-md-6">
@@ -120,10 +120,10 @@
             <label for="exp_date" class="text-capitalize">Exp. Date
             </label>
             <input type="date" class="form-control" name="exp_date" value="{{old('exp_date', $product->exp_date)}}"
-                placeholder="Exp. Date" required>
+                placeholder="Exp. Date" >
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="form-group">
             <label for="hsn" class="text-capitalize">HSN
             </label>
@@ -131,7 +131,7 @@
                 placeholder="hsn" >
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="form-group">
             <label for="sac" class="text-capitalize">SAC
             </label>
@@ -139,12 +139,26 @@
                 placeholder="SAC" >
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-3">
         <div class="form-group">
             <label for="gst_rate" class="text-capitalize">GST RATE
             </label>
             <input type="text" min="0" class="form-control" name="gst_rate"
                 value="{{old('gst_rate', $product->gst_rate)}}" placeholder="GST RATE" >
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="form-group">
+            <label for="referral_percent" class="text-capitalize">
+                Referral Percent
+            </label>
+            <div class="input-group">
+                <input type="number" min="0" class="form-control" name="referral_percent"
+                value="{{old('referral_percent', $product->referral_percent)}}" placeholder="GST RATE" >
+                <div class="input-group-append">
+                    <span class="input-group-text">%</span>
+                  </div>
+            </div>
         </div>
     </div>
     <div class="col-md-12">

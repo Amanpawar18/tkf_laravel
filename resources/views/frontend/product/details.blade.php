@@ -104,6 +104,11 @@
                             {{$product->sub_description}}
                         </h5>
                         <p>{{$product->description}}</p>
+                        @if($product->referral_percent)
+                        <p class="text-theme">
+                            Refer this product and get {{$product->referral_percent}} % cashback in your wallet.
+                        </p>
+                        @endif
                     </div>
 
                     <form class="variations_form theme-form" action="{{route('frontend.cart.store', $product->id)}}"
@@ -156,7 +161,8 @@
                                     <div class="quantity_selector">
                                         <div class="input-group mb-3">
                                             <button class="btn decrease" type="button">-</button>
-                                            <input type="text" name="quantity" class="form-control quantity" readonly value="1">
+                                            <input type="text" name="quantity" class="form-control quantity" readonly
+                                                value="1">
                                             <button class="btn increase" type="button">+</button>
                                         </div>
                                     </div>

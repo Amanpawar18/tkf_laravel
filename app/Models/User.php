@@ -32,7 +32,8 @@ class User extends Authenticatable
     protected $guarded = [
         'referral_code',
         'referrer_user_id',
-        'referrer_user_code'
+        'referrer_user_code',
+        'wallet_balance'
     ];
 
     /**
@@ -61,7 +62,7 @@ class User extends Authenticatable
 
     public function referredUsers()
     {
-        return $this->hasMany(User::class, 'referrer_user_id', 'id') ;
+        return $this->hasMany(User::class, 'referrer_user_id', 'id');
     }
 
     public function orders()
@@ -69,9 +70,19 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+
     public function addresses()
     {
         return $this->hasMany(ShippingAddress::class);
+    }
+
+    public function referrerUser()
+    {
+        return $this->belongsTo(User::class, 'referrer_user_id', 'id');
     }
 
     public function delete()
@@ -127,5 +138,38 @@ class User extends Authenticatable
         $this->save();
 
         return true;
+    }
+
+    public function getWalletBalanceTextAttribute()
+    {
+        $text = '₹ ' . $this->wallet_balance;
+        return $text;
+    }
+
+    public function createTransaction($userId, $amount = 0, $message = 'N/A', $type = Transaction::TYPE_CREDIT)
+    {
+        $data['message'] = $message;
+        $data['type'] = $type;
+        $data['amount'] = $amount;
+        $data['user_id'] = $userId;
+        Transaction::create($data);
+        return true;
+    }
+
+    public function giveReferralAmount($amount, $product)
+    {
+        $referrerUser = $this->referrerUser;
+
+        if ($product->referral_percent > 0) {
+
+            $referralAmount = $amount * ($product->referral_percent  / 100);
+            $referrerUser->createTransaction($referrerUser->id, $referralAmount, 'Referral purchase of' . $product->title);
+
+            $referrerUser->forceFill([
+                'wallet_balance' => $referrerUser->wallet_balance + $referralAmount
+            ]);
+            $referrerUser->save();
+        }
+        return $this;
     }
 }

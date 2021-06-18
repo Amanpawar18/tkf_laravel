@@ -25,6 +25,10 @@ $routeName =Route::currentRouteName();
                         href="{{route('frontend.profile.orderHistory')}}">
                         Orders
                     </a>
+                    <a class="list-group-item {{ $routeName == 'frontend.transactionIndex' ? 'active' : '' }}"
+                        href="{{route('frontend.transactionIndex')}}">
+                        Transactions
+                    </a>
                     <a class="list-group-item " href="#">
                         My Buddies
                     </a>

@@ -74,6 +74,23 @@
     <div class="col-md-6 mb-3">
         <div class="card">
             <div class="card-header bg-transparent">
+                Wallet Balance
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <p>
+                        <b>
+                            Wallet Balance:
+                        </b>
+                        {{Auth::user()->wallet_balance_text}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card">
+            <div class="card-header bg-transparent">
                 Default Address
             </div>
             <div class="card-body">
@@ -85,28 +102,6 @@
                         No Address Found
                         @endif
                     </p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 mb-3">
-        <div class="card">
-            <div class="card-header bg-transparent">
-                Subscriptions
-            </div>
-            <div class="card-body">
-                <div class="row align-items-center">
-                    <div class="col-md-12">
-                        <ul>
-                            <li>
-                                Livo+
-                            </li>
-                            <li>
-                                Fero+
-                            </li>
-                        </ul>
-                        <a href="#" class="">Edit Subscriptions</a>
-                    </div>
                 </div>
             </div>
         </div>

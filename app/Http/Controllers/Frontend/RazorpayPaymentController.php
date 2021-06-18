@@ -78,7 +78,9 @@ class RazorpayPaymentController extends Controller
                 'quantity' => $item->quantity,
                 'amount' => $item->quantity * $item->product_cost,
             ]);
-
+            if(Auth::user()->referrerUser && $item->product->referral_percent){
+                Auth::user()->giveReferralAmount($item->quantity * $item->product_cost, $item->product);
+            }
             $item->delete();
         }
         return true;
