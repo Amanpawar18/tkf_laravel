@@ -43,6 +43,9 @@
                                     <button class="btn btn-buy-now w-auto btn-block" type="submit">
                                         Update
                                     </button>
+                                    <a href="{{route('frontend.profile.editBankDetails')}}" class="btn btn-buy-now w-auto btn-block" type="submit">
+                                        Edit Bank Details
+                                    </a>
                                 </div>
                             </div>
                         </form>

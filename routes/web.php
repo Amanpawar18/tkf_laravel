@@ -72,6 +72,8 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('edit-profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::post('update-profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::post('update-password', [ProfileController::class, 'updatePassword'])->name('profile.updatePassword');
+    Route::get('edit-bank-details', [ProfileController::class, 'editBankDetails'])->name('profile.editBankDetails');
+    Route::post('update-bank-details', [ProfileController::class, 'updateBankDetails'])->name('profile.updateBankDetails');
 
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::get('/shipping', [CheckoutController::class, 'shipping'])->name('shipping');

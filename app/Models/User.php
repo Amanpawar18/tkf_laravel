@@ -33,7 +33,12 @@ class User extends Authenticatable
         'referral_code',
         'referrer_user_id',
         'referrer_user_code',
-        'wallet_balance'
+        'wallet_balance',
+        'acc_holder_name',
+        'acc_number',
+        'bank_name',
+        'ifsc_code',
+        'branch_name',
     ];
 
     /**
