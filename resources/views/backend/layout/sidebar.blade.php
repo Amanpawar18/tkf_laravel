@@ -42,6 +42,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.request-withdrawal.index')}}" class="nav-link
+                    {{(App\Helper\Common::getCurrentController() == 'RequestWithdrawalController') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Request Withdrawals
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.user.index')}}" class="nav-link
                 {{(App\Helper\Common::getCurrentController() == 'HomeController') ? 'active' : ''}}">
                 <i class="nav-icon fas fa-users"></i>

@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\ProductController;
 use App\Http\Controllers\Frontend\ProfileController;
 use App\Http\Controllers\Frontend\RazorpayPaymentController;
+use App\Http\Controllers\Frontend\RequestWithdrawalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,4 +83,5 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::post('razorpay-order-save', [RazorpayPaymentController::class, 'orderSave'])->name('razorpay.orderSave');
 
     Route::resource('address', AddressController::class);
+    Route::resource('request-withdrawal', RequestWithdrawalController::class)->only('index', 'store');
 });

@@ -85,9 +85,9 @@ class User extends Authenticatable
         return $this->hasMany(ShippingAddress::class);
     }
 
-    public function bankDetails()
+    public function requestWithdrawals()
     {
-        return $this->hasMany(BankDetail::class);
+        return $this->hasMany(RequestWithdrawal::class);
     }
 
     public function referrerUser()

@@ -17,7 +17,7 @@
     <div class="col-md-12 mb-3">
         <div class="card">
             <div class="card-header bg-transparent">
-                Update Password
+                Bank Details
             </div>
             <div class="card-body">
                 <div class="row align-items-center">
@@ -31,6 +31,12 @@
                                 <div class="col-md-8 mb-3">
                                     <input id="current_password" name="current_password" type="password" required=""
                                         class="form-control">
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label for="acc_number">Acc Number*</label>
+                                </div>
+                                <div class="col-md-8 mb-3">
+                                    <input id="acc_number" value="{{$user->acc_number}}" name="acc_number" type="text" required="" class="form-control">
                                 </div>
                                 <div class="col-md-4 mb-3">
                                     <label for="acc_holder_name">Acc Holder Name*</label>

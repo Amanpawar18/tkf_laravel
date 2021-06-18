@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\ProductVariationController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\QuestionController;
 use App\Http\Controllers\Backend\QuizTwoQuestionsController;
+use App\Http\Controllers\Backend\RequestWithdrawalController;
 use App\Http\Controllers\Backend\ResultController;
 use App\Http\Controllers\Backend\SettingsController;
 use App\Http\Controllers\Backend\ShoesController;
@@ -102,6 +103,10 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('edit-home-page-data', [HomeController::class, 'edit'])->name('home-page.edit');
     Route::post('update-home-page-data', [HomeController::class, 'update'])->name('home-page.update');
 
-    Route::get('edit-footer-data-data', [FooterDataController::class, 'edit'])->name('footer-data.edit');
-    Route::post('update-footer-data-data', [FooterDataController::class, 'update'])->name('footer-data.update');
+    Route::get('edit-footer-data', [FooterDataController::class, 'edit'])->name('footer-data.edit');
+    Route::post('update-footer-data', [FooterDataController::class, 'update'])->name('footer-data.update');
+
+    Route::get('request-withdrawal', [RequestWithdrawalController::class, 'index'])->name('request-withdrawal.index');
+    Route::get('request-withdrawal/edit/{requestWithdrawal}', [RequestWithdrawalController::class, 'edit'])->name('request-withdrawal.edit');
+    Route::post('request-withdrawal/update/{requestWithdrawal}', [RequestWithdrawalController::class, 'update'])->name('request-withdrawal.update');
 });

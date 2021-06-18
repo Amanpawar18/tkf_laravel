@@ -29,6 +29,10 @@ $routeName =Route::currentRouteName();
                         href="{{route('frontend.transactionIndex')}}">
                         Transactions
                     </a>
+                    <a class="list-group-item {{ $routeName == 'frontend.request-withdrawal.index' ? 'active' : '' }}"
+                        href="{{route('frontend.request-withdrawal.index')}}">
+                        Withdrawal Request
+                    </a>
                     <a class="list-group-item " href="#">
                         My Buddies
                     </a>

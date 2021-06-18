@@ -30,7 +30,7 @@
                         @forelse ($transactions as $key => $transaction)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $transaction->amount  }}</td>
+                            <td>₹{{ $transaction->amount  }}</td>
                             <td>{{ Str::limit($transaction->message, 40) }}</td>
                             <td>{{ $transaction->type_text }}</td>
                         </tr>
