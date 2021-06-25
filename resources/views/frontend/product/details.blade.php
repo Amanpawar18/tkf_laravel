@@ -382,42 +382,52 @@
                             <img src="{{asset('frontend/assets/images/blavkdog.jpeg')}}" class="img-fluid">
                         </div>
                         <div class="experience-caption mt-40">
-                            ” We’ve been using Venttura Bioceuticals’ products Omega+ and Nutri+ Pro for
-                            our dogs
-                            for over 3 years now and the results speak for themselves.Omega+ has made
-                            our dog coat
+                            ” We’ve been using Venttura Bioceuticals’ products Omega+ and Nutri+ Pro for our dogs
+                            for over 3 years now and the results speak for themselves.Omega+ has made our dog coat
                             extremely shiny, healthy, soft and no skin problems at all. “
-                            <h6 class="mt-1 mb-0">Ashdeen J.</h5>
+                            <h5 class="bold mt-1 mb-0">Ashdeen J.</h5>
+
+                            <div class="text-center mt-40">
+                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
+                                        aria-hidden="true"></i>Read More</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="experience-item">
                         <div class="experience-image">
-                            <img src="{{asset('frontend/assets/images/blavkdog.jpeg')}}" class="img-fluid">
+                            <img src="{{asset('frontend/assets/images/brown-dog.jpg')}}" class="img-fluid">
                         </div>
                         <div class="experience-caption mt-40">
-                            ” We’ve been using Venttura Bioceuticals’ products Omega+ and Nutri+ Pro for
-                            our dogs
-                            for over 3 years now and the results speak for themselves.Omega+ has made
-                            our dog coat
-                            extremely shiny, healthy, soft and no skin problems at all. “
-                            <h6 class="mt-1 mb-0">Ashdeen J.</h6>
+                            “Fur+ helped to promote healthy fur and improved coat condition of my dog . Also there is no
+                            excessive shedding after using this product .
+                            i can see new hairs and coat on my dog . It is the best pet care product range i have ever
+                            used ! ” .
+                            <h5 class="bold mt-1 mb-0">A. Jamshedji</h5>
+
+                            <div class="text-center mt-40">
+                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
+                                        aria-hidden="true"></i>Read More</a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="experience-item">
                         <div class="experience-image">
-                            <img src="{{asset('frontend/assets/images/blavkdog.jpeg')}}" class="img-fluid">
+                            <img src="{{asset('frontend/assets/images/furdog.jpg')}}" class="img-fluid">
                         </div>
                         <div class="experience-caption mt-40">
-                            ” We’ve been using Venttura Bioceuticals’ products Omega+ and Nutri+ Pro for
-                            our dogs
-                            for over 3 years now and the results speak for themselves.Omega+ has made
-                            our dog coat
-                            extremely shiny, healthy, soft and no skin problems at all. “
-                            <h6 class="mt-1 mb-0">Ashdeen J.</h5>
+                            “Nutri + Pro has helped in overall general health and vitality of the my dog. It helped in
+                            growth and development with multivitamin and mineral contents. We are extremely happy with
+                            these products and highly recommend them!”
+                            <h5 class="bold mt-1 mb-0"> Mr. Kulkarni</h5>
+
+                            <div class="text-center mt-40">
+                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
+                                        aria-hidden="true"></i>Read More</a>
+                            </div>
                         </div>
                     </div>
                 </div>
