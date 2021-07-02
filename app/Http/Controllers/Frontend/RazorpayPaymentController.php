@@ -52,9 +52,9 @@ class RazorpayPaymentController extends Controller
         $order = Order::create($orderData);
 
         $order->update([
-            'bill_no' => 'Bill-' . $order->id,
+            'bill_no' => 'VB/' . date("Y") . '/' . $order->id,
             'bill_date' => $order->created_at,
-            'invoice_no' => 'Invoice-' . $order->id,
+            'invoice_no' => 'VB/' . date("Y") . '/' . $order->id,
         ]);
 
         $delhiveryObject = new DelhiveryController();
