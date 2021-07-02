@@ -7,6 +7,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ContactUsController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\LoginController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\PageController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\ProductController;
@@ -84,4 +85,6 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
 
     Route::resource('address', AddressController::class);
     Route::resource('request-withdrawal', RequestWithdrawalController::class)->only('index', 'store');
+
+    Route::get('/invoice/{order}', [OrderController::class, 'invoice'])->name('order.invoice');
 });

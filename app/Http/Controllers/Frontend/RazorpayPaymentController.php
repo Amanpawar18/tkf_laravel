@@ -51,6 +51,12 @@ class RazorpayPaymentController extends Controller
 
         $order = Order::create($orderData);
 
+        $order->update([
+            'bill_no' => 'Bill-' . $order->id,
+            'bill_date' => $order->created_at,
+            'invoice_no' => 'Invoice-' . $order->id,
+        ]);
+
         $delhiveryObject = new DelhiveryController();
         $delhiveryObject->createOrder($order);
 
@@ -78,7 +84,7 @@ class RazorpayPaymentController extends Controller
                 'quantity' => $item->quantity,
                 'amount' => $item->quantity * $item->product_cost,
             ]);
-            if(Auth::user()->referrerUser && $item->product->referral_percent){
+            if (Auth::user()->referrerUser && $item->product->referral_percent) {
                 Auth::user()->giveReferralAmount($item->quantity * $item->product_cost, $item->product);
             }
             $item->delete();

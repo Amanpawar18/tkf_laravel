@@ -26,7 +26,6 @@ class OrderProduct extends Model
             $builder->whereHas('product');
             $builder->orderBy('id', 'DESC');
         });
-
     }
 
     public function order()
@@ -37,5 +36,22 @@ class OrderProduct extends Model
     public function product()
     {
         return $this->belongsTo(Product::class);
+    }
+
+
+    public function getProductNameAttribute()
+    {
+        $product = $this->product;
+        $variation = $product->productVariations()->where('id', $this->variation_id)->first();
+
+        if ($variation) {
+            $name = $product->name;
+            $name .= '(' . $variation->size . ')';
+        } else {
+
+            $name = $product->name;
+        }
+
+        return $name;
     }
 }

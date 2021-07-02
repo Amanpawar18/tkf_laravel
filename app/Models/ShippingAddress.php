@@ -37,6 +37,7 @@ class ShippingAddress extends Model
     {
         $address =  $this->address . ', ' .   $this->apartment_no . ', ';
         $address .= $this->city . ', ' .  $this->state;
+        $address .= ', Phone-No:' .$this->phone_no;
         return $address;
     }
 }

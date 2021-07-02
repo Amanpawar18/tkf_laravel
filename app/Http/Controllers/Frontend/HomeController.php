@@ -11,7 +11,7 @@ use App\Models\Newsletter;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
-use Mail, Auth;
+use Mail, Auth, PDF;
 
 class HomeController extends Controller
 {

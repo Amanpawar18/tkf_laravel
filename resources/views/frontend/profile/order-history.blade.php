@@ -36,6 +36,11 @@
                 Total: ₹{{ $orderProduct->quantity * $orderProduct->amount }}
             </div>
             <div class="col-md-3 col-sm-12 col-12 text-right">
+                <a href="{{route('frontend.order.invoice', $orderProduct->order_id)}}" target="_blank"
+                    class="btn btn-buy-now w-lg-auto w-100 m-lg-0 ">
+                    <i class="fa fa-file"></i>
+                    Invoice
+                </a>
             </div>
             <div class="col-md-3 col-sm-12 col-12 text-right">
                 <a href="https://www.delhivery.com/track/package/{{$orderProduct->order->delhivery_waybill}}"

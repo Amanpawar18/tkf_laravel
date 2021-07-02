@@ -152,6 +152,7 @@ class DelhiveryController extends Controller
             "name" => $order->shippingAddress->first_name . ' ' .  $order->shippingAddress->last_name ,
             "pin" => $order->shippingAddress->pin_code,
             "order" => "Order-id-" . $order->id,
+            "total_amount" => $order->total_amount,
         );
 
         $params = json_encode(

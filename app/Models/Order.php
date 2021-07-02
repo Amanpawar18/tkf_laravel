@@ -22,12 +22,17 @@ class Order extends Model
         'payment_status', 'stripe_payment_id',
         'address_id', 'total_amount',
         'razorpay_order_id', 'razorpay_payment_id',
-        'razorpay_signature',
+        'razorpay_signature', 'bill_no', 'bill_date',
+        'invoice_no'
     ];
 
     protected $guarded = [
         'delhivery_waybill', 'delhivery_refnum',
         'delhivery_upload_wbn'
+    ];
+
+    protected  $casts  = [
+        'bill_date' => 'datetime',
     ];
 
     protected static function boot()
