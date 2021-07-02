@@ -1,7 +1,7 @@
 @extends('backend.layout.master')
 @section('content')
 @php
-use Illuminate\Support\Facades\Route;
+use App\Models\RequestWithdrawal;
 @endphp
 <div class="content-wrapper">
     <div class="content-header" style=" padding: 7px .5rem !important;">
@@ -22,13 +22,40 @@ use Illuminate\Support\Facades\Route;
             <div class="row">
                 <div class="col-12">
                     <div class="card card-primary card-outline">
-                        <div class="card-header">
-                            <h3 class="card-title">Request Withdrawals</h3>
-                            <div class="card-tools">
-                                <div class="input-group input-group-sm" style="">
+                        <form action="" method="GET">
+                            <div class="card-header">
+                                <h3 class="card-title">Request Withdrawals</h3>
+                                <div class="card-tools">
+                                    <div class="input-group" style="">
+                                        <select name="status" id="status" class="form-control">
+                                            <option value="{{RequestWithdrawal::STATUS_PENDING}}"
+                                                {{RequestWithdrawal::STATUS_PENDING == request()->status ? 'selected' : ''}}>
+                                                Pending
+                                            </option>
+                                            <option value="{{RequestWithdrawal::STATUS_APPROVED}}"
+                                                {{RequestWithdrawal::STATUS_APPROVED == request()->status ? 'selected' : ''}}>
+                                                Approved
+                                            </option>
+                                            <option value="{{RequestWithdrawal::STATUS_PROCESSED}}"
+                                                {{RequestWithdrawal::STATUS_PROCESSED == request()->status ? 'selected' : ''}}>
+                                                Processed
+                                            </option>
+                                            <option value="{{RequestWithdrawal::STATUS_COMPLETED}}"
+                                                {{RequestWithdrawal::STATUS_COMPLETED == request()->status ? 'selected' : ''}}>
+                                                Completed
+                                            </option>
+                                            <option value="{{RequestWithdrawal::STATUS_DECLINE}}"
+                                                {{RequestWithdrawal::STATUS_DECLINE == request()->status ? 'selected' : ''}}>
+                                                Decline
+                                            </option>
+                                        </select>
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary">Filter</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                         <!-- /.card-header -->
                         <div class="card-body table-responsive p-0">
                             <table class="table table-bordered">
@@ -38,7 +65,7 @@ use Illuminate\Support\Facades\Route;
                                         <th>Amount</th>
                                         <th>User Name</th>
                                         <th>User Email</th>
-                                        <th>Bank Name</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -52,7 +79,7 @@ use Illuminate\Support\Facades\Route;
                                         <td>{{$request->amount}}</td>
                                         <td>{{$request->user->name}}</td>
                                         <td>{{$request->user->email}}</td>
-                                        <td>{{$request->bank_name}}</td>
+                                        <td>{{$request->status_text}}</td>
                                         <td>
                                             <a href="{{ route('admin.request-withdrawal.edit', $request->id) }}">
                                                 <button type="button" title="edit" class="btn btn-success btn-sm"><i

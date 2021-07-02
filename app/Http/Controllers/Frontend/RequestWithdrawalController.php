@@ -27,6 +27,16 @@ class RequestWithdrawalController extends Controller
 
             $user = Auth::user();
 
+            if(request()->amount < 500){
+                return redirect()->route('frontend.request-withdrawal.index')->withErrors(['Requested Amount should be greater than 500']);
+            }
+
+
+            if(request()->amount >= $user->wallet_balance || $user->wallet_balance - request()->amount < 0){
+                return redirect()->route('frontend.request-withdrawal.index')->withErrors(['Requested Amount is greater than wallet balance.']);
+            }
+
+
             $data = array(
                 'amount' => request()->amount,
                 'acc_holder_name' => $user->acc_holder_name,
@@ -37,6 +47,11 @@ class RequestWithdrawalController extends Controller
             );
 
             $user->requestWithdrawals()->create($data);
+
+            $user->forceFill([
+                'wallet_balance' => $user->wallet_balance - request()->amount,
+            ]);
+            $user->save();
 
             return redirect()->route('frontend.request-withdrawal.index')->with('status', 'Request submitted successfully !!');
         } else {

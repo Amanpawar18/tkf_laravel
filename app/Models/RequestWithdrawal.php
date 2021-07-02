@@ -19,7 +19,9 @@ class RequestWithdrawal extends Model
         'user_id',
         'status', 'amount',
         'acc_holder_name', 'acc_number',
-        'bank_name', 'ifsc_code', 'branch_name'
+        'bank_name', 'ifsc_code', 'branch_name',
+        'transfer_bank_name', 'transfer_transaction_id',
+        'transfer_date'
     ];
 
     public function user()
@@ -33,7 +35,7 @@ class RequestWithdrawal extends Model
         if ($this->status == self::STATUS_APPROVED) {
             $status = 'Approved';
         } else if ($this->status == self::STATUS_PROCESSED) {
-            $status = 'Process';
+            $status = 'Processed';
         } else if ($this->status == self::STATUS_COMPLETED) {
             $status = 'Completed';
         } else if ($this->status == self::STATUS_DECLINE) {
