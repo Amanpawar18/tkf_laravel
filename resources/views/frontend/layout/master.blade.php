@@ -35,6 +35,9 @@
 
 <body>
     <div id="loading-icon" class="loading-icon" style="display: none;"></div>
+    <button id="bottom-to-top">
+        <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    </button>
     <div class="main-wrapper">
         @include('frontend.layout.header')
     </div>

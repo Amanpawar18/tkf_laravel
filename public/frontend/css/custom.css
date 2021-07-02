@@ -2,18 +2,18 @@
     object-fit: contain !important;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link{
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     background-color: #d7b56d;
     color: black;
 }
 
-.small-category-badge{
+.small-category-badge {
     width: 125px !important;
     height: 145px !important;
     top: -90px !important;
 }
 
-.theme-text{
+.theme-text {
     color: #d7b56d;
 }
 
@@ -28,7 +28,6 @@
     border: 2px solid #000;
     background-color: #000; */
 }
-
 
 .btn-buy-now:hover {
     color: #000;
@@ -48,11 +47,41 @@
     background: url(../../public/images/loader.gif) center no-repeat transparent;
 }
 
-.list-group-item.active{
+.list-group-item.active {
     color: black;
     background-color: #d7b56d !important;
     border-color: #d7b56d !important;
 }
-.text-theme{
+
+.text-theme {
     color: #d7b56d !important;
+}
+
+#bottom-to-top {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Fixed/sticky position */
+    bottom: 90px;
+    /* Place the button at the bottom of the page */
+    right: 23px;
+    /* Place the button 30px from the right */
+    z-index: 99;
+    /* Make sure it does not overlap */
+    color: #000;
+    /* Remove borders */
+    outline: none;
+    /* Remove outline */
+    background-color: transparent;
+    /* Set a background color */
+    color: #d7b56d !important;
+    /* Text color */
+    cursor: pointer;
+    /* Add a mouse pointer on hover */
+    padding: 10px 15px;
+    /* Some padding */
+    border-radius: 10px;
+    /* Rounded corners */
+    font-size: 18px;
+    /* Increase font size */
 }
