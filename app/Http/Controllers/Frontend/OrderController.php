@@ -25,7 +25,7 @@ class OrderController extends Controller
             ])
         );
         // download PDF file with download method
-        return $pdf->download('invoice.pdf');
+        // return $pdf->download('invoice.pdf');
 
         return view('frontend.pages.invoice', compact('order'));
     }
