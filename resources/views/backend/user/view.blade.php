@@ -34,24 +34,68 @@ use Illuminate\Support\Facades\Route;
                         <!-- /.card-header -->
                         <div class="card-body ">
                             <div class="row">
-                                <div class="col-md-2">
+                                <div class="col-md-4">
                                     <label for="">
                                         Name
                                     </label>
-                                </div>
-                                <div class="col-md-4">
                                     <p>
                                         {{$user->name . ' ' .$user->last_name}}
                                     </p>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-4">
                                     <label for="">
                                         Email
                                     </label>
-                                </div>
-                                <div class="col-md-4">
                                     <p>
                                         {{$user->email}}
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">
+                                        Phone No.
+                                    </label>
+                                    <p>
+                                        {{$user->phone_no}}
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Pan no</label>
+                                    <p>
+                                        {{$user->pan_no}}
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Pan front image</label>
+                                    <p>
+                                        <a href="{{$user->pan_front_image_path}}" target="_blank">Click here to see
+                                            image</a>
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Pan back image</label>
+                                    <p>
+                                        <a href="{{$user->pan_back_image_path}}" target="_blank">Click here to see
+                                            image</a>
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Aadhaar no</label>
+                                    <p>
+                                        {{$user->aadhaar_no}}
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Aadhaar front image</label>
+                                    <p>
+                                        <a href="{{$user->aadhaar_front_image_path}}" target="_blank">Click here to see
+                                            image</a>
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Aadhaar back image</label>
+                                    <p>
+                                        <a href="{{$user->aadhaar_back_image_path}}" target="_blank">Click here to see
+                                            image</a>
                                     </p>
                                 </div>
                             </div>
@@ -75,7 +119,7 @@ use Illuminate\Support\Facades\Route;
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @forelse ($user->orderProducts as $orderProduct)
+                                            @forelse ($user->orderProducts()->take(5)->get() as $orderProduct)
                                             <tr>
                                                 <td scope="row">
                                                     <img src="{{$orderProduct->product->image_path}}"

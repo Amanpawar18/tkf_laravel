@@ -38,7 +38,6 @@ use Illuminate\Support\Facades\Route;
                                     <tr>
                                         <th style="width: 10px">#</th>
                                         <th>Name</th>
-                                        <th>Last Name</th>
                                         <th>Status</th>
                                         <th>Email</th>
                                         <th style="">Action</th>
@@ -52,9 +51,6 @@ use Illuminate\Support\Facades\Route;
                                     <tr>
                                         <td>{{$i++}}</td>
                                         <td>{{$user->name}}</td>
-                                        <td>
-                                            {{$user->last_name}}
-                                        </td>
                                         <td>
                                             {{ $user->status ? 'Active' : 'De-Active' }}
                                         </td>

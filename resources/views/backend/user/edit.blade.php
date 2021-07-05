@@ -1,7 +1,6 @@
 @extends('backend.layout.master')
 @section('content')
 @php
-use Illuminate\Support\Facades\Route;
 use App\Models\User;
 @endphp
 <div class="content-wrapper">
@@ -41,13 +40,6 @@ use App\Models\User;
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="last_name">Last Name</label>
-                                            <input id="last_name" type="text" required name="last_name"
-                                                class="form-control" value="{{$user->last_name ?? old('last_name')}}">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
                                             <label for="email">Email</label>
                                             <input id="email" type="email" required name="email" class="form-control"
                                                 value="{{$user->email ?? old('email')}}">
@@ -57,27 +49,26 @@ use App\Models\User;
                                         <div class="form-group">
                                             <label for="email">Status</label>
                                             <select name="status" id="status" class="form-control">
-                                                <option
-                                                    value="{{User::ACTIVE}}" {{ $user->status == User::ACTIVE ? 'selected' : '' }} ">
+                                                <option value="{{User::ACTIVE}}"
+                                                    {{ $user->status == User::ACTIVE ? 'selected' : '' }}>
                                                     ACTIVE</option>
-                                                <option
-                                                    value="{{User::HIDDEN}}" {{ $user->status == User::HIDDEN ? 'selected' : '' }} ">
+                                                <option value=" {{User::HIDDEN}}"
+                                                    {{ $user->status == User::HIDDEN ? 'selected' : '' }}>
                                                     HIDDEN</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-md-12 text-right">
-                                            <a href="{{route('admin.shoes-chart.index')}}"
-                                                class="btn btn-primary btn-sm">Go
-                                                Back</a>
-                                            <button class="btn btn-primary btn-sm" type="submit">Save</button>
-                                        </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class="col-md-12 text-right">
+                                        <a href="{{route('admin.user.index')}}" class="btn btn-primary btn-sm">Go
+                                            Back</a>
+                                        <button class="btn btn-primary btn-sm" type="submit">Save</button>
                                     </div>
                                 </div>
+                            </div>
                         </form>
 
                     </div>

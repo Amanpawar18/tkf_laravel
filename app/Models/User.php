@@ -27,6 +27,12 @@ class User extends Authenticatable
         'status',
         // 'first_name',
         'phone_no',
+        'pan_no',
+        'pan_front_image',
+        'pan_back_image',
+        'aadhaar_no',
+        'aadhaar_front_image',
+        'aadhaar_back_image',
     ];
 
     protected $guarded = [
@@ -181,5 +187,61 @@ class User extends Authenticatable
             $referrerUser->save();
         }
         return $this;
+    }
+
+    public function getPanFrontImagePathAttribute()
+    {
+        $path = asset('frontend/uploads/default_category.png');
+
+        if (
+            file_exists(public_path(env('USER_IMAGE_PATH') . $this->pan_front_image))
+            && is_file(public_path(env('USER_IMAGE_PATH') . $this->pan_front_image))
+        )
+            $path = asset(env('USER_IMAGE_PATH') . $this->pan_front_image);
+
+
+        return $path;
+    }
+
+    public function getPanBackImagePathAttribute()
+    {
+        $path = asset('frontend/uploads/default_category.png');
+
+        if (
+            file_exists(public_path(env('USER_IMAGE_PATH') . $this->pan_back_image))
+            && is_file(public_path(env('USER_IMAGE_PATH') . $this->pan_back_image))
+        )
+            $path = asset(env('USER_IMAGE_PATH') . $this->pan_back_image);
+
+
+        return $path;
+    }
+
+    public function getAadhaarFrontImagePathAttribute()
+    {
+        $path = asset('frontend/uploads/default_category.png');
+
+        if (
+            file_exists(public_path(env('USER_IMAGE_PATH') . $this->aadhaar_front_image))
+            && is_file(public_path(env('USER_IMAGE_PATH') . $this->aadhaar_front_image))
+        )
+            $path = asset(env('USER_IMAGE_PATH') . $this->aadhaar_front_image);
+
+
+        return $path;
+    }
+
+    public function getAadhaarBackImagePathAttribute()
+    {
+        $path = asset('frontend/uploads/default_category.png');
+
+        if (
+            file_exists(public_path(env('USER_IMAGE_PATH') . $this->aadhaar_back_image))
+            && is_file(public_path(env('USER_IMAGE_PATH') . $this->aadhaar_back_image))
+        )
+            $path = asset(env('USER_IMAGE_PATH') . $this->aadhaar_back_image);
+
+
+        return $path;
     }
 }
