@@ -132,6 +132,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.tds.index')}}" class="nav-link
+                    {{(App\Helper\Common::getCurrentController() == 'TdsController') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-cog"></i>
+                        <p>
+                            Tds Settings
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.settings')}}" class="nav-link
                     {{(App\Helper\Common::getCurrentController() == 'SettingsController') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-cog"></i>

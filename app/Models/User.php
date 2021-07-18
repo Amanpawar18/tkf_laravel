@@ -172,6 +172,17 @@ class User extends Authenticatable
         return true;
     }
 
+    public function createTdsTransaction($userId, $amount = 0)
+    {
+        $data['amount'] = $amount;
+        $data['user_id'] = $userId;
+        $data['period_start'] = TdsTransaction::getCurrentPeriodStart();
+        $data['period_end'] = TdsTransaction::getCurrentPeriodEnd();
+        $data['period'] =  $data['period_start'] . ' - ' . $data['period_end'] ;
+        TdsTransaction::create($data);
+        return true;
+    }
+
     public function giveReferralAmount($amount, $product)
     {
         $referrerUser = $this->referrerUser;
@@ -179,7 +190,7 @@ class User extends Authenticatable
         if ($product->referral_percent > 0) {
 
             $referralAmount = $amount * ($product->referral_percent  / 100);
-            $referrerUser->createTransaction($referrerUser->id, $referralAmount, 'Referral purchase of' . $product->title);
+            $referrerUser->createTransaction($referrerUser->id, $referralAmount, 'Referral purchase of ' . $product->name);
 
             $referrerUser->forceFill([
                 'wallet_balance' => $referrerUser->wallet_balance + $referralAmount
@@ -198,7 +209,6 @@ class User extends Authenticatable
             && is_file(public_path(env('USER_IMAGE_PATH') . $this->pan_front_image))
         )
             $path = asset(env('USER_IMAGE_PATH') . $this->pan_front_image);
-
 
         return $path;
     }
@@ -243,5 +253,14 @@ class User extends Authenticatable
 
 
         return $path;
+    }
+
+    public static function getTdsDeductionAmount($amount)
+    {
+        $tdsAmount = 0;
+        if (Setting::get('tds_percent') &&  Setting::get('tds_percent') > 0) {
+            $tdsAmount = $amount * (Setting::get('tds_percent') / 100);
+        }
+        return $tdsAmount;
     }
 }

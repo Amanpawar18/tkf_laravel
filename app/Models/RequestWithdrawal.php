@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -21,8 +22,19 @@ class RequestWithdrawal extends Model
         'acc_holder_name', 'acc_number',
         'bank_name', 'ifsc_code', 'branch_name',
         'transfer_bank_name', 'transfer_transaction_id',
-        'transfer_date'
+        'transfer_date', 'requested_amount', 'tds_amount'
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        $url = url()->current();
+        static::addGlobalScope('hasUser', function (Builder $builder) {
+            $builder->whereHas('user');
+            $builder->orderBy('id', 'DESC');
+        });
+    }
 
     public function user()
     {

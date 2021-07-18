@@ -33,6 +33,10 @@ $routeName =Route::currentRouteName();
                         href="{{route('frontend.request-withdrawal.index')}}">
                         Withdrawal Request
                     </a>
+                    <a class="list-group-item {{ $routeName == 'frontend.tds.transactionIndex' ? 'active' : '' }}"
+                        href="{{route('frontend.tds.transactionIndex')}}">
+                        Tds Transactions
+                    </a>
                     <a class="list-group-item {{ $routeName == 'frontend.profile.editBankDetails' ? 'active' : '' }}"
                         href="{{route('frontend.profile.editBankDetails')}}">
                         Edit Bank Details

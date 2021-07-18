@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Http\Controllers\Backend\TdsController;
 use App\Http\Controllers\Controller;
 use App\Models\RequestWithdrawal;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\TdsTransaction;
+use App\Models\Transaction;
+use App\Models\User;
+use Auth;
 use Illuminate\Support\Facades\Hash;
 
 class RequestWithdrawalController extends Controller
@@ -27,18 +30,23 @@ class RequestWithdrawalController extends Controller
 
             $user = Auth::user();
 
-            if(request()->amount < 500){
-                return redirect()->route('frontend.request-withdrawal.index')->withErrors(['Requested Amount should be greater than 500']);
-            }
+            // if (request()->amount < 500) {
+            //     return redirect()->route('frontend.request-withdrawal.index')->withErrors(['Requested Amount should be greater than 500']);
+            // }
 
 
-            if(request()->amount >= $user->wallet_balance || $user->wallet_balance - request()->amount < 0){
+            if (request()->amount >= $user->wallet_balance || $user->wallet_balance - request()->amount < 0) {
                 return redirect()->route('frontend.request-withdrawal.index')->withErrors(['Requested Amount is greater than wallet balance.']);
             }
 
+            $amount = request()->amount;
+            $tdsAmount = User::getTdsDeductionAmount($amount);
+            $amount -= $tdsAmount;
 
             $data = array(
-                'amount' => request()->amount,
+                'requested_amount' => request()->amount,
+                'amount' => $amount,
+                'tds_amount' => $tdsAmount,
                 'acc_holder_name' => $user->acc_holder_name,
                 'acc_number' => $user->acc_number,
                 'bank_name' => $user->bank_name,
@@ -52,6 +60,13 @@ class RequestWithdrawalController extends Controller
                 'wallet_balance' => $user->wallet_balance - request()->amount,
             ]);
             $user->save();
+
+            $user->createTransaction($user->id, $amount, $message = 'Requested Withdrawal', $type = Transaction::TYPE_DEBIT);
+
+            if ($tdsAmount > 0) {
+                $user->createTransaction($user->id, $tdsAmount, $message = 'Tds Deduction', $type = Transaction::TYPE_DEBIT);
+                $user->createTdsTransaction($user->id, $tdsAmount);
+            }
 
             return redirect()->route('frontend.request-withdrawal.index')->with('status', 'Request submitted successfully !!');
         } else {

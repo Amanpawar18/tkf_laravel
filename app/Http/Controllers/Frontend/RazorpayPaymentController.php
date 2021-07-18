@@ -58,7 +58,7 @@ class RazorpayPaymentController extends Controller
         ]);
 
         $delhiveryObject = new DelhiveryController();
-        $delhiveryObject->createOrder($order);
+        // $delhiveryObject->createOrder($order);
 
         $this->addOrderProducts($order);
         if (Auth::user()) {

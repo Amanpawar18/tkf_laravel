@@ -33,9 +33,10 @@
                     <thead>
                         <tr>
                             <th>#ID</th>
-                            <th>Amount</th>
+                            <th>Receivable Amount</th>
+                            <th>Tds Amount</th>
+                            <th>Reqeusted Amount</th>
                             <th>Bank Name</th>
-                            <th>Acc No.</th>
                             <th>Status</th>
                         </tr>
                     </thead>
@@ -43,9 +44,10 @@
                         @forelse ($requestWithdrawals as $key => $request)
                         <tr>
                             <td>{{ ++$key }}</td>
-                            <td>{{ $request->amount  }}</td>
+                            <td>₹ {{ $request->amount  }}</td>
+                            <td>₹ {{ $request->tds_amount  }}</td>
+                            <td>₹ {{ $request->requested_amount  }}</td>
                             <td>{{ $request->bank_name }}</td>
-                            <td>{{ $request->acc_number }}</td>
                             <td>{{ $request->status_text }}</td>
                         </tr>
                         @empty
@@ -93,6 +95,11 @@
                             <label for="amount">Amount</label>
                             <input name="amount" id="amount" type="number" min="1" class="form-control"
                                 max={{Auth::user()->wallet_balance}}>
+                            @if(Setting::get('tds_percent'))
+                            <small class="text-danger">
+                                {{Setting::get('tds_percent')}}% will be decucted in the amount as TDS deduction.
+                            </small>
+                            @endif
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\RequestWithdrawal;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 
 class RequestWithdrawalController extends Controller
@@ -30,6 +31,12 @@ class RequestWithdrawalController extends Controller
                 'wallet_balance' => $requestWithdrawal->user->wallet_balance + $requestWithdrawal->amount,
             ]);
             $requestWithdrawal->user->save();
+            $requestWithdrawal->user->createTransaction(
+                $requestWithdrawal->user->id,
+                $requestWithdrawal->amount,
+                $message = 'Requested Withdrawal Refund',
+                $type = Transaction::TYPE_CREDIT
+            );
         }
         return redirect()->route('admin.request-withdrawal.edit', $requestWithdrawal->id)->with('status', 'Request updated successfully !!');
     }
