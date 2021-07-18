@@ -111,7 +111,7 @@ class ImageController extends Controller
     {
         $path = public_path('frontend/uploads/images/');
         Common::deleteExistingImage($image->image, $path);
-        // $image->delete();
+        $image->delete();
         return redirect()->route('admin.image.index')->with('status', 'Image deleted successfully');
     }
 }

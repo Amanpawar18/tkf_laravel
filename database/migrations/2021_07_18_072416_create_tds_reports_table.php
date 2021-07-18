@@ -19,7 +19,7 @@ class CreateTdsReportsTable extends Migration
             $table->string('period');
             $table->string('period_start');
             $table->string('period_end');
-            $table->string('report');
+            $table->string('report')->nullable();
             $table->timestamps();
         });
     }

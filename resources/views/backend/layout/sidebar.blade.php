@@ -60,6 +60,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.tds-report.index')}}" class="nav-link
+                    {{(App\Helper\Common::getCurrentController() == 'TdsReportController') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Tds Reports
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.user.index')}}" class="nav-link
                 {{(App\Helper\Common::getCurrentController() == 'UserController') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-users"></i>

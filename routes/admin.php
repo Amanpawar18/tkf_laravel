@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\ResultController;
 use App\Http\Controllers\Backend\SettingsController;
 use App\Http\Controllers\Backend\ShoesController;
 use App\Http\Controllers\Backend\TdsController;
+use App\Http\Controllers\Backend\TdsReportController;
 use App\Http\Controllers\Backend\TdsTransactionController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
@@ -97,6 +98,7 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('pages', PageController::class);
     Route::resource('blog', BlogController::class);
     Route::resource('image', ImageController::class);
+    Route::resource('tds-report', TdsReportController::class);
 
     Route::get('contact-us-leads', [ContactUsController::class, 'index'])->name('contactUs.index');
     Route::get('contact-us-leads-view/{contactUs}', [ContactUsController::class, 'view'])->name('contactUs.view');

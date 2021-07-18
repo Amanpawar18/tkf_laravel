@@ -37,6 +37,10 @@ $routeName =Route::currentRouteName();
                         href="{{route('frontend.tds.transactionIndex')}}">
                         Tds Transactions
                     </a>
+                    <a class="list-group-item {{ $routeName == 'frontend.tds.reports' ? 'active' : '' }}"
+                        href="{{route('frontend.tds.reports')}}">
+                        Tds Reports
+                    </a>
                     <a class="list-group-item {{ $routeName == 'frontend.profile.editBankDetails' ? 'active' : '' }}"
                         href="{{route('frontend.profile.editBankDetails')}}">
                         Edit Bank Details

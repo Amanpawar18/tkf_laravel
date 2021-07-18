@@ -89,6 +89,7 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::resource('request-withdrawal', RequestWithdrawalController::class)->only('index', 'store');
 
     Route::get('tds-transaction/index', [TdsController::class, 'transactionsIndex'])->name('tds.transactionIndex');
+    Route::get('tds-reports/index', [TdsController::class, 'reports'])->name('tds.reports');
 
     Route::get('/invoice/{order}', [OrderController::class, 'invoice'])->name('order.invoice');
 });
