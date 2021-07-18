@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\ResultController;
 use App\Http\Controllers\Backend\SettingsController;
 use App\Http\Controllers\Backend\ShoesController;
 use App\Http\Controllers\Backend\TdsController;
+use App\Http\Controllers\Backend\TdsTransactionController;
 use App\Http\Controllers\Backend\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -111,6 +112,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('request-withdrawal/edit/{requestWithdrawal}', [RequestWithdrawalController::class, 'edit'])->name('request-withdrawal.edit');
     Route::post('request-withdrawal/update/{requestWithdrawal}', [RequestWithdrawalController::class, 'update'])->name('request-withdrawal.update');
 
+    Route::get('tds-transactions-index', [TdsTransactionController::class, 'transactionIndex'])->name('tds.transactionIndex');
     Route::get('tds-data', [TdsController::class, 'index'])->name('tds.index');
     Route::post('tds-update', [TdsController::class, 'update'])->name('tds.update');
+
 });

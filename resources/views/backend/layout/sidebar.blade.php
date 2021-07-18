@@ -51,13 +51,22 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.tds.transactionIndex')}}" class="nav-link
+                    {{(App\Helper\Common::getCurrentController() == 'TdsTransactionController') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Tds Transactions
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.user.index')}}" class="nav-link
-                {{(App\Helper\Common::getCurrentController() == 'HomeController') ? 'active' : ''}}">
-                <i class="nav-icon fas fa-users"></i>
-                <p>
-                    Users
-                </p>
-                </a>
+                {{(App\Helper\Common::getCurrentController() == 'UserController') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            Users
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin.orders.index')}}" class="nav-link
@@ -68,15 +77,6 @@
                         </p>
                     </a>
                 </li>
-                {{-- <li class="nav-item">
-                    <a href="{{route('admin.newsletter.index')}}" class="nav-link
-                {{(App\Helper\Common::getCurrentController() == 'NewsletterController') ? 'active' : ''}}">
-                <i class="nav-icon fas fa-list"></i>
-                <p>
-                    News Letter
-                </p>
-                </a>
-                </li> --}}
                 <li class="nav-item">
                     <a href="{{route('admin.home-page.edit')}}" class="nav-link
                     {{(App\Helper\Common::getCurrentController() == 'HomeController') ? 'active' : ''}}">

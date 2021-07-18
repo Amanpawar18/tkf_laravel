@@ -31,6 +31,11 @@ class TdsTransaction extends Model
         });
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public static function getCurrentPeriodStart()
     {
         if (Setting::get('tds_percent') && Setting::get('tds_percent') > 0 && Setting::get('tds_period')) {

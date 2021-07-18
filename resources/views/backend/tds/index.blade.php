@@ -1,8 +1,5 @@
 @extends('backend.layout.master')
 @section('content')
-@php
-use App\Models\RequestWithdrawal;
-@endphp
 <div class="content-wrapper">
     <div class="content-header" style=" padding: 7px .5rem !important;">
         <div class="container-fluid">
@@ -10,7 +7,7 @@ use App\Models\RequestWithdrawal;
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
-                        <li class="breadcrumb-item active">Request Withdrawals</a></li>
+                        <li class="breadcrumb-item active">Tds Transactions</a></li>
                     </ol>
                 </div>
 
@@ -24,31 +21,25 @@ use App\Models\RequestWithdrawal;
                     <div class="card card-primary card-outline">
                         <form action="" method="GET">
                             <div class="card-header">
-                                <h3 class="card-title">Request Withdrawals</h3>
+                                <h3 class="card-title">Tds Transactions</h3>
                                 <div class="card-tools">
                                     <div class="input-group" style="">
-                                        <select name="status" id="status" class="form-control">
-                                            <option value="{{RequestWithdrawal::STATUS_PENDING}}"
-                                                {{RequestWithdrawal::STATUS_PENDING == request()->status ? 'selected' : ''}}>
-                                                Pending
+                                        <input list="users" name="user_email" id="user_email" class="form-control"
+                                            value="{{request()->user_email}}">
+                                        <datalist id="users">
+                                            @foreach ($users as $user)
+                                            <option value="{{$user->email}}">
+                                                {{$user->name}}
                                             </option>
-                                            <option value="{{RequestWithdrawal::STATUS_APPROVED}}"
-                                                {{RequestWithdrawal::STATUS_APPROVED == request()->status ? 'selected' : ''}}>
-                                                Approved
-                                            </option>
-                                            <option value="{{RequestWithdrawal::STATUS_PROCESSED}}"
-                                                {{RequestWithdrawal::STATUS_PROCESSED == request()->status ? 'selected' : ''}}>
-                                                Processed
-                                            </option>
-                                            <option value="{{RequestWithdrawal::STATUS_COMPLETED}}"
-                                                {{RequestWithdrawal::STATUS_COMPLETED == request()->status ? 'selected' : ''}}>
-                                                Completed
-                                            </option>
-                                            <option value="{{RequestWithdrawal::STATUS_DECLINE}}"
-                                                {{RequestWithdrawal::STATUS_DECLINE == request()->status ? 'selected' : ''}}>
-                                                Decline
-                                            </option>
-                                        </select>
+                                            @endforeach
+                                        </datalist>
+                                        <input type="date" class="form-control" name="start_date"
+                                            value="{{request()->start_date}}">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-secondary" disabled type="button">to</button>
+                                        </div>
+                                        <input type="date" class="form-control" name="end_date"
+                                            value="{{request()->end_date}}">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary">Filter</button>
                                         </div>
@@ -65,28 +56,20 @@ use App\Models\RequestWithdrawal;
                                         <th>Amount</th>
                                         <th>User Name</th>
                                         <th>User Email</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Period</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @php
                                     $i = 1;
                                     @endphp
-                                    @forelse($requestWithdrawals as $request)
+                                    @forelse($transactions as $tds)
                                     <tr>
                                         <td>{{$i++}}</td>
-                                        <td>₹ {{$request->amount}}</td>
-                                        <td>{{$request->user->name}}</td>
-                                        <td>{{$request->user->email}}</td>
-                                        <td>{{$request->status_text}}</td>
-                                        <td>
-                                            <a href="{{ route('admin.request-withdrawal.edit', $request->id) }}">
-                                                <button type="button" title="edit" class="btn btn-success btn-sm"><i
-                                                        class="fas fa-eye"></i>
-                                                </button>
-                                            </a>
-                                        </td>
+                                        <td>₹ {{$tds->amount}}</td>
+                                        <td>{{$tds->user->name}}</td>
+                                        <td>{{$tds->user->email}}</td>
+                                        <td>{{$tds->period}}</td>
                                     </tr>
                                     @empty
                                     <tr>
@@ -98,11 +81,11 @@ use App\Models\RequestWithdrawal;
                                 </tbody>
                             </table>
                         </div>
-                        @if($requestWithdrawals->links())
+                        @if($transactions->links())
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-12">
-                                    {{$requestWithdrawals->links()}}
+                                    {{$transactions->appends(request()->all())->links()}}
                                 </div>
                             </div>
                         </div>
