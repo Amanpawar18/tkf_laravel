@@ -371,7 +371,7 @@
 
     @include('frontend.product.relatedProducts')
 
-    <section class="client-experience-section  text-center mt-40 font-grey font-small">
+    {{-- <section class="client-experience-section  text-center mt-40 font-grey font-small">
         <h1 class="section-title">Client Experiences</h1>
 
         <div class="experience-cards text-left">
@@ -433,7 +433,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 </div>
 <div class="modal fade" id="checkPinCodeMOdal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

@@ -22,7 +22,7 @@ class HomeController extends Controller
             return abort('403', 'Run Seeders !!');
         }
         $products = Product::orderBy('product_view_count', 'DESC')->limit(4)->get();
-        $blogs = Blog::orderBy('id', 'DESC')->get()->shuffle()->take(4);
+        $blogs = Blog::orderBy('id', 'DESC')->get()->shuffle()->take(3);
         return view('frontend.home', compact('homePageData', 'products', 'blogs'));
     }
 

@@ -98,7 +98,7 @@
         </div>
     </div>
 </section>
-
+{{--
 <section class="home-section">
     <div class="container-fluid">
         <h1 class="section-title text-center">{{$homePageData->section_four_heading}}</h1>
@@ -163,7 +163,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <section class="reward-collage">
     <img src="{{$homePageData->section_five_image_path}}" height="420px" class="object-fit-contain img-fluid">
     <div class="container-fluid">
@@ -180,7 +180,7 @@
         </div>
     </div>
 
-    <img src="{{asset('frontend/assets/images/WhatsApp-Image-2021-02-08-at-3.05.03-PM-1.jpeg')}}" class="w-100 mt-30">
+    {{-- <img src="{{asset('frontend/assets/images/WhatsApp-Image-2021-02-08-at-3.05.03-PM-1.jpeg')}}" class="w-100 mt-30"> --}}
 </section>
 @if(count($blogs))
 <section class="home-section">
