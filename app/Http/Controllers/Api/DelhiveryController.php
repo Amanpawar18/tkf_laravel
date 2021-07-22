@@ -14,11 +14,13 @@ class DelhiveryController extends Controller
     protected $token;
     protected $baseUrl;
     protected $client;
+    protected $warehouse;
 
     public function __construct()
     {
         // $this->token = env('DELHIVERY_API_TOKEN', 'e8eae4f58c53c6f8ba1215923fa2ccde7639b6d3'); //test credentials
         $this->token = env('DELHIVERY_API_TOKEN', '4de023ad94205a48513882158ca11d267145af6d');
+        $this->warehouse = env('DELHIVERY_WAREHOUSE', 'VENTTURA 0068588');
         // $this->baseUrl = 'https://staging-express.delhivery.com';
         $this->baseUrl = 'https://track.delhivery.com';
         $this->client = new Client([
@@ -142,7 +144,7 @@ class DelhiveryController extends Controller
     public function createOrderFormParams($order)
     {
         $pickup_location = array(
-            "name" => "VENTTURA 0068588"
+            "name" => $this->warehouse
         );
 
         $shipments = array(
