@@ -36,21 +36,21 @@
                                 @csrf
                                 <div class="col-md-12 mb-2">
                                     <label for="name">Name*</label>
-                                    <input id="name" name="name" type="text" required="" class="form-control">
+                                    <input id="name" name="name" type="text" required="" class="form-control" value="{{old('name')}}">
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="phone_no">Phone*</label>
-                                    <input id="phone_no" name="phone_no" type="tel" required="" class="form-control">
+                                    <input id="phone_no" name="phone_no" type="tel" required="" class="form-control" value="{{old('phone_no')}}">
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="referrer_user_code">Referral Code</label>
                                     <input id="referrer_user_code" name="referrer_user_code" type="text" autocomplete="off" required=""
                                         {{request()->referrer_user_code ? 'readonly' : ''}}
-                                        value="{{request()->referrer_user_code}}" class="form-control">
+                                        value="{{request()->referrer_user_code ?? old('referrer_user_code')}}" class="form-control">
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="email">Email*</label>
-                                    <input id="email" name="email" type="email" required="" class="form-control">
+                                    <input id="email" name="email" type="email" required="" class="form-control" value="{{old('email')}}">
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="password">Password*</label>

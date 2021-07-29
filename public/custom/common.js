@@ -130,4 +130,10 @@ $(document).ready(function () {
     $('#bottom-to-top').click(function () {
         topFunction();
     });
+
+    $(document).on("click", ".openExperienceModel", function () {
+        $("#product_id").val($(this).data('product-id'));
+        $("#order_id").val($(this).data('order-id'));
+        $('#experienceModel').modal('show');
+    });
 });

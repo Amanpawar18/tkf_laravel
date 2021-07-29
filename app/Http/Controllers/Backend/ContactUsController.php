@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class ContactUsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $leads = ContactUs::orderBy('id', 'DESC')->paginate(15);

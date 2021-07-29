@@ -10,12 +10,12 @@ class Order extends Model
 {
     use HasFactory;
 
-    const PAYMENT_COMPLETED=1;
-    const PAYMENT_FAILED=0;
-    const PAYMENT_WAITING=2;
+    const PAYMENT_COMPLETED = 1;
+    const PAYMENT_FAILED = 0;
+    const PAYMENT_WAITING = 2;
 
-    const ORDER_STATUS_REJECTED =0;
-    const ORDER_STATUS_APPROVED =1;
+    const ORDER_STATUS_REJECTED = 0;
+    const ORDER_STATUS_APPROVED = 1;
 
     protected $fillable = [
         'user_id', 'order_status',
@@ -44,9 +44,13 @@ class Order extends Model
             $builder->whereHas('user');
             $builder->orderBy('id', 'DESC');
         });
-
     }
 
+
+    public function clientExperiences()
+    {
+        return $this->hasMany(ClientExperience::class);
+    }
 
     public function orderProducts()
     {
@@ -67,9 +71,9 @@ class Order extends Model
     {
         $text = 'Approved';
 
-        if($this->order_status == self::ORDER_STATUS_APPROVED){
+        if ($this->order_status == self::ORDER_STATUS_APPROVED) {
             $text = 'Approved';
-        } elseif($this->order_status == self::ORDER_STATUS_REJECTED){
+        } elseif ($this->order_status == self::ORDER_STATUS_REJECTED) {
             $text = 'Rejected';
         }
         return $text;
@@ -79,11 +83,11 @@ class Order extends Model
     {
         $text = 'Completed';
 
-        if($this->payment_status == self::PAYMENT_COMPLETED){
+        if ($this->payment_status == self::PAYMENT_COMPLETED) {
             $text = 'Completed';
-        } elseif($this->payment_status == self::PAYMENT_FAILED){
+        } elseif ($this->payment_status == self::PAYMENT_FAILED) {
             $text = 'Failed';
-        } elseif($this->payment_status == self::PAYMENT_WAITING){
+        } elseif ($this->payment_status == self::PAYMENT_WAITING) {
             $text = 'Waiting';
         }
         return $text;
@@ -95,5 +99,4 @@ class Order extends Model
         parent::delete();
         return true;
     }
-
 }

@@ -101,13 +101,21 @@
     </div>
     <div class="col-md-6">
         <div class="form-group">
+            <label for="made_in" class="text-capitalize">Made In __ ?
+            </label>
+            <input type="text" class="form-control" name="made_in"
+                value="{{old('made_in', $product->made_in)}}" placeholder="India" required>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
             <label for="batch_no" class="text-capitalize">Batch No.
             </label>
             <input type="number" min="0" class="form-control" name="batch_no"
                 value="{{old('batch_no', $product->batch_no)}}" placeholder="Batch No." >
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
             <label for="mfg_date" class="text-capitalize">MFG. Date
             </label>
@@ -115,7 +123,7 @@
                 placeholder="Mfg. Date" >
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
             <label for="exp_date" class="text-capitalize">Exp. Date
             </label>

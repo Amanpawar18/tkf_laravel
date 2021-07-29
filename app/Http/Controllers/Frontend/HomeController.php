@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\OrderPlaceMail;
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\ClientExperience;
 use App\Models\HomePageData;
 use App\Models\Newsletter;
 use App\Models\Order;
@@ -23,7 +24,8 @@ class HomeController extends Controller
         }
         $products = Product::orderBy('product_view_count', 'DESC')->limit(4)->get();
         $blogs = Blog::orderBy('id', 'DESC')->get()->shuffle()->take(3);
-        return view('frontend.home', compact('homePageData', 'products', 'blogs'));
+        $clientExperiences = ClientExperience::get()->shuffle()->take(3);
+        return view('frontend.home', compact('homePageData', 'products', 'blogs', 'clientExperiences'));
     }
 
     public function category(Category $category)
@@ -34,7 +36,8 @@ class HomeController extends Controller
         }
         $products = Product::where('category_id', $category->id)
             ->orderBy('product_view_count', 'DESC')->take(4)->get();
-        return view('frontend.category', compact('category', 'homePageData', 'products'));
+        $clientExperiences = ClientExperience::whereCategoryId($category->id)->get()->shuffle()->take(3);
+        return view('frontend.category', compact('category', 'homePageData', 'products', 'clientExperiences'));
     }
 
     public function dashboard()

@@ -79,6 +79,8 @@ Route::group(['middleware' => 'auth', 'as' => 'frontend.'], function () {
     Route::get('edit-bank-details', [ProfileController::class, 'editBankDetails'])->name('profile.editBankDetails');
     Route::post('update-bank-details', [ProfileController::class, 'updateBankDetails'])->name('profile.updateBankDetails');
 
+    Route::post('save-experience', [OrderController::class, 'saveExperience'])->name('order.saveExperience');
+
     Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout');
     Route::get('/shipping', [CheckoutController::class, 'shipping'])->name('shipping');
 

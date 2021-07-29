@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Helper\Common;
 use App\Http\Controllers\Controller;
+use App\Models\ClientExperience;
 use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
-use PDF;
+use PDF, Auth;
 
 class OrderController extends Controller
 {
@@ -28,5 +31,30 @@ class OrderController extends Controller
         // return $pdf->download('invoice.pdf');
 
         return view('frontend.pages.invoice', compact('order'));
+    }
+
+    public function saveExperience()
+    {
+        $data = request()->except('image');
+        $data['user_id'] = Auth::id();
+        $data['category_id'] = Product::whereId(request()->product_id)->first()->category_id;
+        $experience = ClientExperience::create($data);
+        $this->uploadImage($experience);
+        return back()->with('status', 'Experience saved successfully !!');
+    }
+
+
+    public function uploadImage($experience)
+    {
+        if (request()->hasFile('image')) {
+            $imageName = time() . '.' . request()->image->extension();
+            $path = public_path('frontend/uploads/experience/');
+            request()->image->move($path, $imageName);
+            if (isset($experience->image)) {
+                Common::deleteExistingImage($experience->image, $path);
+            }
+            $experience->image = $imageName;
+            $experience->save();
+        }
     }
 }

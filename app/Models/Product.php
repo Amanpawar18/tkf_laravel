@@ -27,7 +27,7 @@ class Product extends Model
         'sale_price', 'regular_price', 'is_sale',
         'quantity', 'batch_no', 'mfg_date',
         'exp_date', 'hsn', 'sac', 'gst_rate',
-        'referral_percent'
+        'referral_percent', 'made_in'
     ];
 
     protected static function boot()
@@ -55,6 +55,11 @@ class Product extends Model
             ->saveSlugsTo('slug');
     }
 
+
+    public function clientExperiences()
+    {
+        return $this->hasMany(ClientExperience::class);
+    }
 
     public function productImages()
     {

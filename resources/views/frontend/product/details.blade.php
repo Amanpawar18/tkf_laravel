@@ -98,7 +98,14 @@
                             <li class="breadcrumb-item" aria-current="page"><a href="#">{{$product->name}}</a></li>
                         </ol>
                     </nav>
-                    <h1 class="product-title">{{$product->name}}</h1>
+                    <h1 class="product-title">
+                        {{$product->name}}
+                        @if($product->is_sale)
+                        <span class="text-danger h6">
+                            (On Sale)
+                        </span class="text-danger h6">
+                        @endif
+                    </h1>
                     <div class="product-short-description">
                         <h5 class="product-desc-main">
                             {{$product->sub_description}}
@@ -109,6 +116,29 @@
                             Refer this product and get {{$product->referral_percent}} % cashback in your wallet.
                         </p>
                         @endif
+                        <div class="col-md-12">
+                            <h3 class="product-price">
+                                @if(count($product->productVariations))
+                                @foreach ($product->productVariations as $key => $variation)
+                                <span id="price-{{$variation->id}}"
+                                    class="price {{$loop->first ? '' : 'd-none'}}">
+                                    <span class="product-Price-symbol h3 product-price">₹</span>
+                                    {{$variation->cost}}
+                                </span>
+                                @endforeach
+                                @else
+                                @if($product->is_sale)
+                                <span class=" h6 pr-1">
+                                    <del>
+                                        ₹ {{$product->regular_price}}
+                                    </del>
+                                </span>
+                                @endif
+                                {{-- <span class="product-Price-symbol h3 product-price">₹</span> --}}
+                                 ₹ {{$product->cost}}
+                                @endif
+                            </h3>
+                        </div>
                     </div>
 
                     <form class="variations_form theme-form" action="{{route('frontend.cart.store', $product->id)}}"
@@ -133,6 +163,10 @@
                                 <div class="col-md-7 mb-1 product-short-description">
                                     <p>
                                         Free delivery above ₹500
+                                        @if($product->made_in)
+                                        <br>
+                                        Made in {{$product->made_in}}
+                                        @endif
                                     </p>
                                 </div>
                                 <div class="col-md-5 mb-1 product-short-description text-right">
@@ -141,23 +175,7 @@
                                             class="text-decoration-none">Check delivery eligblity</a>
                                     </p>
                                 </div>
-                                <div class="col-md-2">
-                                    <h3 class="product-price">
-                                        @if(count($product->productVariations))
-                                        @foreach ($product->productVariations as $key => $variation)
-                                        <span id="price-{{$variation->id}}"
-                                            class="price {{$loop->first ? '' : 'd-none'}}">
-                                            <span class="product-Price-symbol h3 product-price">₹</span>
-                                            {{$variation->cost}}
-                                        </span>
-                                        @endforeach
-                                        @else
-                                        <span class="product-Price-symbol h3 product-price">₹</span>
-                                        {{$product->cost}}
-                                        @endif
-                                    </h3>
-                                </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="quantity_selector">
                                         <div class="input-group mb-3">
                                             <button class="btn decrease" type="button">-</button>
@@ -371,69 +389,34 @@
 
     @include('frontend.product.relatedProducts')
 
-    {{-- <section class="client-experience-section  text-center mt-40 font-grey font-small">
-        <h1 class="section-title">Client Experiences</h1>
 
-        <div class="experience-cards text-left">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="experience-item">
-                        <div class="experience-image">
-                            <img src="{{asset('frontend/assets/images/blavkdog.jpeg')}}" class="img-fluid">
-                        </div>
-                        <div class="experience-caption mt-40">
-                            ” We’ve been using Venttura Bioceuticals’ products Omega+ and Nutri+ Pro for our dogs
-                            for over 3 years now and the results speak for themselves.Omega+ has made our dog coat
-                            extremely shiny, healthy, soft and no skin problems at all. “
-                            <h5 class="bold mt-1 mb-0">Ashdeen J.</h5>
+    @if(count($clientExperiences))
+    <section class="home-section">
+        <div class="container-fluid">
+            <h1 class="section-title text-center">Client Experiences</h1>
 
-                            <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
-                                        aria-hidden="true"></i>Read More</a>
+            <div class="experience-cards text-left">
+                <div class="row">
+
+                    @foreach ($clientExperiences as $experience)
+                    <div class="col-md-4 mx-auto">
+                        <div class="experience-item">
+                            <div class="experience-image">
+                                <img src="{{$experience->image_path}}" class="img-fluid object-fit-contain">
+                            </div>
+                            <div class="experience-caption mt-40">
+                                ” {{$experience->description}} “
+                                <h6 class="bold mt-1 mb-0">By: {{$experience->user->name}}</h6>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="experience-item">
-                        <div class="experience-image">
-                            <img src="{{asset('frontend/assets/images/brown-dog.jpg')}}" class="img-fluid">
-                        </div>
-                        <div class="experience-caption mt-40">
-                            “Fur+ helped to promote healthy fur and improved coat condition of my dog . Also there is no
-                            excessive shedding after using this product .
-                            i can see new hairs and coat on my dog . It is the best pet care product range i have ever
-                            used ! ” .
-                            <h5 class="bold mt-1 mb-0">A. Jamshedji</h5>
+                    @endforeach
 
-                            <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
-                                        aria-hidden="true"></i>Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="experience-item">
-                        <div class="experience-image">
-                            <img src="{{asset('frontend/assets/images/furdog.jpg')}}" class="img-fluid">
-                        </div>
-                        <div class="experience-caption mt-40">
-                            “Nutri + Pro has helped in overall general health and vitality of the my dog. It helped in
-                            growth and development with multivitamin and mineral contents. We are extremely happy with
-                            these products and highly recommend them!”
-                            <h5 class="bold mt-1 mb-0"> Mr. Kulkarni</h5>
-
-                            <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
-                                        aria-hidden="true"></i>Read More</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
+    @endif
 </div>
 <div class="modal fade" id="checkPinCodeMOdal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">

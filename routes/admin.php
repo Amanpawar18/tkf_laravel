@@ -3,6 +3,7 @@
 use App\Http\Controllers\Backend\Auth\AdminAuthController;
 use App\Http\Controllers\Backend\BlogController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ClientExperienceController;
 use App\Http\Controllers\Backend\ContactUsController;
 use App\Http\Controllers\Backend\FooterDataController;
 use App\Http\Controllers\Backend\HomeController;
@@ -99,6 +100,8 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('blog', BlogController::class);
     Route::resource('image', ImageController::class);
     Route::resource('tds-report', TdsReportController::class);
+    Route::resource('client-experience', ClientExperienceController::class);
+    Route::post('status/client-experience/{clientExperience}', [ClientExperienceController::class, 'status'])->name('client-experience.status');
 
     Route::get('contact-us-leads', [ContactUsController::class, 'index'])->name('contactUs.index');
     Route::get('contact-us-leads-view/{contactUs}', [ContactUsController::class, 'view'])->name('contactUs.view');
@@ -117,5 +120,4 @@ Route::group(['middleware' => 'admin'], function () {
     Route::get('tds-transactions-index', [TdsTransactionController::class, 'transactionIndex'])->name('tds.transactionIndex');
     Route::get('tds-data', [TdsController::class, 'index'])->name('tds.index');
     Route::post('tds-update', [TdsController::class, 'update'])->name('tds.update');
-
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\ClientExperience;
 use App\Models\Product;
 use App\Models\ShoesChart;
 use Illuminate\Http\Request;
@@ -72,7 +73,7 @@ class ProductController extends Controller
             ->get();
         $product->product_view_count =  $product->product_view_count + 1;
         $product->save();
-
-        return view('frontend.product.details', compact('product', 'relatedProducts'));
+        $clientExperiences = ClientExperience::whereProductId($product->id)->get()->shuffle()->take(3);
+        return view('frontend.product.details', compact('product', 'relatedProducts', 'clientExperiences'));
     }
 }

@@ -98,72 +98,33 @@
         </div>
     </div>
 </section>
-{{--
+@if(count($clientExperiences))
 <section class="home-section">
     <div class="container-fluid">
         <h1 class="section-title text-center">{{$homePageData->section_four_heading}}</h1>
 
         <div class="experience-cards text-left">
             <div class="row">
-                <div class="col-md-4">
+
+                @foreach ($clientExperiences as $experience)
+                <div class="col-md-4 mx-auto">
                     <div class="experience-item">
                         <div class="experience-image">
-                            <img src="{{asset('frontend/assets/images/blavkdog.jpeg')}}" class="img-fluid">
+                            <img src="{{$experience->image_path}}" class="img-fluid object-fit-contain">
                         </div>
                         <div class="experience-caption mt-40">
-                            ” We’ve been using Venttura Bioceuticals’ products Omega+ and Nutri+ Pro for our dogs
-                            for over 3 years now and the results speak for themselves.Omega+ has made our dog coat
-                            extremely shiny, healthy, soft and no skin problems at all. “
-                            <h5 class="bold mt-1 mb-0">Ashdeen J.</h5>
-
-                            <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
-                                        aria-hidden="true"></i>Read More</a>
-                            </div>
+                            ” {{$experience->description}} “
+                            <h6 class="bold mt-1 mb-0">By: {{$experience->user->name}}</h6>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="experience-item">
-                        <div class="experience-image">
-                            <img src="{{asset('frontend/assets/images/brown-dog.jpg')}}" class="img-fluid">
-                        </div>
-                        <div class="experience-caption mt-40">
-                            “Fur+ helped to promote healthy fur and improved coat condition of my dog . Also there is no
-                            excessive shedding after using this product .
-                            i can see new hairs and coat on my dog . It is the best pet care product range i have ever
-                            used ! ” .
-                            <h5 class="bold mt-1 mb-0">A. Jamshedji</h5>
+                @endforeach
 
-                            <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
-                                        aria-hidden="true"></i>Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="experience-item">
-                        <div class="experience-image">
-                            <img src="{{asset('frontend/assets/images/furdog.jpg')}}" class="img-fluid">
-                        </div>
-                        <div class="experience-caption mt-40">
-                            “Nutri + Pro has helped in overall general health and vitality of the my dog. It helped in
-                            growth and development with multivitamin and mineral contents. We are extremely happy with
-                            these products and highly recommend them!”
-                            <h5 class="bold mt-1 mb-0"> Mr. Kulkarni</h5>
-
-                            <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="#" title=""><i class="fa fa-arrow-circle-right"
-                                        aria-hidden="true"></i>Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
-</section> --}}
+</section>
+@endif
 <section class="reward-collage">
     <img src="{{$homePageData->section_five_image_path}}" height="420px" class="object-fit-contain img-fluid">
     <div class="container-fluid">
@@ -180,7 +141,8 @@
         </div>
     </div>
 
-    {{-- <img src="{{asset('frontend/assets/images/WhatsApp-Image-2021-02-08-at-3.05.03-PM-1.jpeg')}}" class="w-100 mt-30"> --}}
+    {{-- <img src="{{asset('frontend/assets/images/WhatsApp-Image-2021-02-08-at-3.05.03-PM-1.jpeg')}}" class="w-100
+    mt-30"> --}}
 </section>
 @if(count($blogs))
 <section class="home-section">

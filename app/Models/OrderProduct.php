@@ -28,6 +28,11 @@ class OrderProduct extends Model
         });
     }
 
+    public function clientExperience()
+    {
+        return $this->belongsTo(ClientExperience::class, 'id', 'order_id');
+    }
+
     public function order()
     {
         return $this->belongsTo(Order::class);

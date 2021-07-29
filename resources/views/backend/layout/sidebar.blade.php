@@ -69,6 +69,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('admin.client-experience.index')}}" class="nav-link
+                    {{(App\Helper\Common::getCurrentController() == 'ClientExperienceController') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Client Experiences
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="{{route('admin.user.index')}}" class="nav-link
                 {{(App\Helper\Common::getCurrentController() == 'UserController') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-users"></i>

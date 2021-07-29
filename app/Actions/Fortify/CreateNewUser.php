@@ -4,6 +4,7 @@ namespace App\Actions\Fortify;
 
 use App\Models\Cart;
 use App\Models\User;
+use App\Rules\ReferrerUserRule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -32,7 +33,9 @@ class CreateNewUser implements CreatesNewUsers
                 Rule::unique(User::class),
             ],
             'password' => $this->passwordRules(),
+            'referrer_user_code' =>  new ReferrerUserRule()
         ])->validate();
+
 
         $user = User::create([
             'name' => $input['name'],
