@@ -40,16 +40,27 @@
                                 <h2>
                                     {{$product->name}}
                                     @if($product->is_sale)
-                                        <span class="text-danger h6">
-                                            (On Sale)
-                                        </span class="text-danger h6">
-                                        @endif
+                                    <span class="text-danger h6">
+                                        (On Sale)
+                                    </span class="text-danger h6">
+                                    @endif
                                     <small>{{$product->sub_description}}</small>
                                 </h2>
                                 <p class="small">
                                     {{$product->description}}
                                 </p>
-                                <h5>starting at <span class="product-price">₹{{$product->cost}}</span></h5>
+
+                                <h5>
+                                    starting at
+                                    @if($product->is_sale)
+                                    <span class="h6" style="margin-right:5px">
+                                        <del>
+                                            ₹{{$product->regular_price}}
+                                        </del>
+                                    </span>
+                                    @endif
+                                    <span class="product-price">₹{{$product->cost}}</span>
+                                </h5>
                             </a>
                             <a href="{{route('frontend.product.details', $product->slug)}}" class="btn btn-buy-now">Buy
                                 Now</a>
@@ -95,7 +106,7 @@
                         </div>
                         <div class="experience-caption mt-40">
                             ” {{$experience->description}} “
-                            <h6 class="bold mt-1 mb-0">By: {{$experience->user->name}}</h6>
+                            <h6 class="bold mt-1 mb-0">By: {{$experience->user_name}}</h6>
                         </div>
                     </div>
                 </div>
@@ -119,6 +130,7 @@
             </div>
         </div>
     </div>
-    {{-- <img src="{{asset('frontend/assets/images/WhatsApp-Image-2021-02-08-at-3.05.03-PM-1.jpeg')}}" class="w-100 mt-30"> --}}
+    {{-- <img src="{{asset('frontend/assets/images/WhatsApp-Image-2021-02-08-at-3.05.03-PM-1.jpeg')}}" class="w-100
+    mt-30"> --}}
 </section>
 @endsection

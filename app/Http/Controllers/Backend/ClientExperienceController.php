@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Helper\Common;
 use App\Http\Controllers\Controller;
 use App\Models\ClientExperience;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientExperienceController extends Controller
 {
@@ -14,9 +17,29 @@ class ClientExperienceController extends Controller
         return view('backend.client-experience.index', compact('experiences'));
     }
 
+    public function create()
+    {
+        $products = Product::orderBy('name')->get();
+        $clientExperience =  new ClientExperience();
+        return view('backend.client-experience.create', compact('products', 'clientExperience'));
+    }
+
     public function show(ClientExperience $clientExperience)
     {
         return view('backend.client-experience.show', compact('clientExperience'));
+    }
+
+    public function edit(ClientExperience $clientExperience)
+    {
+        $products = Product::orderBy('name')->get();
+        return view('backend.client-experience.edit', compact('clientExperience', 'products'));
+    }
+
+    public function update(ClientExperience $clientExperience)
+    {
+        $clientExperience->update(request()->except('image'));
+        $this->uploadImage($clientExperience);
+        return redirect()->route('admin.client-experience.index')->with('status', 'Client Experience updated successfully !!');
     }
 
     public function destroy(ClientExperience $clientExperience)
@@ -40,5 +63,32 @@ class ClientExperienceController extends Controller
             'status' => $clientExperience->status,
             'type' => 'success'
         ];
+    }
+
+    public function store ()
+    {
+        $data = request()->except('image');
+        $data['user_id'] = Auth::id();
+        $data['user_email'] = Auth::user()->email;
+        $data['user_name'] = Auth::user()->name;
+        $data['category_id'] = Product::whereId(request()->product_id)->first()->category_id;
+        $experience = ClientExperience::create($data);
+        $this->uploadImage($experience);
+        return redirect()->route('admin.client-experience.index')->with('status', 'Experience saved successfully !!');
+    }
+
+
+    public function uploadImage($experience)
+    {
+        if (request()->hasFile('image')) {
+            $imageName = time() . '.' . request()->image->extension();
+            $path = public_path('frontend/uploads/experience/');
+            request()->image->move($path, $imageName);
+            if (isset($experience->image)) {
+                Common::deleteExistingImage($experience->image, $path);
+            }
+            $experience->image = $imageName;
+            $experience->save();
+        }
     }
 }

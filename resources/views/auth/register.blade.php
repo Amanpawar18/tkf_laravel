@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="col-md-12 mb-2">
                                     <label for="referrer_user_code">Referral Code</label>
-                                    <input id="referrer_user_code" name="referrer_user_code" type="text" autocomplete="off" required=""
+                                    <input id="referrer_user_code" name="referrer_user_code" type="text" autocomplete="off"
                                         {{request()->referrer_user_code ? 'readonly' : ''}}
                                         value="{{request()->referrer_user_code ?? old('referrer_user_code')}}" class="form-control">
                                 </div>

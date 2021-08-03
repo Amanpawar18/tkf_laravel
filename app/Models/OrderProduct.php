@@ -30,7 +30,7 @@ class OrderProduct extends Model
 
     public function clientExperience()
     {
-        return $this->belongsTo(ClientExperience::class, 'id', 'order_id');
+        return $this->hasOne(ClientExperience::class, 'id', 'order_product_id');
     }
 
     public function order()

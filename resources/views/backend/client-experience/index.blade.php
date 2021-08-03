@@ -3,12 +3,15 @@
 <div class="content-wrapper">
     <div class="content-header" style=" padding: 7px .5rem !important;">
         <div class="container-fluid">
-            <div class="row mb-2">
+            <div class="row mb-2 align-items-center">
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-left">
                         <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}">Home</a></li>
                         <li class="breadcrumb-item active">Client Experience</a></li>
                     </ol>
+                </div>
+                <div class="col-sm-6 text-right">
+                    <a href="{{route('admin.client-experience.create')}}" class="btn btn-primary btn-sm">Add Experience</a>
                 </div>
             </div><!-- /.row -->
         </div><!-- /.container-fluid -->
@@ -46,8 +49,8 @@
                                     @foreach($experiences as $experience)
                                     <tr>
                                         <td>{{$i++}}</td>
-                                        <td>{{$experience->user->name}}</td>
-                                        <td>{{$experience->user->email}}</td>
+                                        <td>{{$experience->user_name ?? 'N/A'}}</td>
+                                        <td>{{$experience->user_email ?? 'N/A'}}</td>
                                         <td>{{$experience->product->name}}</td>
                                         <td>{{$experience->category->name}}</td>
                                         <td>
@@ -66,6 +69,11 @@
                                             <form action="{{route('admin.client-experience.destroy', $experience->id)}}"
                                                 method="post">
                                                 @csrf
+                                                <a href="{{ route('admin.client-experience.edit', $experience->id) }}">
+                                                    <button type="button" title="view" class="btn btn-success btn-sm"><i
+                                                            class="fas fa-edit"></i>
+                                                    </button>
+                                                </a>
                                                 <a href="{{ route('admin.client-experience.show', $experience->id) }}">
                                                     <button type="button" title="view" class="btn btn-primary btn-sm"><i
                                                             class="fas fa-eye"></i>

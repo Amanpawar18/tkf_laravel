@@ -15,8 +15,9 @@ class ClientExperience extends Model
 
     protected $fillable = [
         'user_id', 'product_id',
-        'order_id', 'category_id',
-        'description', 'image', 'status'
+        'order_product_id', 'category_id',
+        'description', 'image', 'status',
+        'user_name', 'user_email', 'order_id'
     ];
 
 
@@ -26,9 +27,9 @@ class ClientExperience extends Model
 
         $url = url()->current();
         static::addGlobalScope('relationScope', function (Builder $builder) {
-            $builder->whereHas('user');
+            // $builder->whereHas('user');
             $builder->whereHas('product');
-            $builder->whereHas('order');
+            // $builder->whereHas('order');
             $builder->whereHas('category');
         });
 
@@ -51,6 +52,11 @@ class ClientExperience extends Model
     }
 
     public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+    public function orderProduct()
     {
         return $this->belongsTo(OrderProduct::class);
     }

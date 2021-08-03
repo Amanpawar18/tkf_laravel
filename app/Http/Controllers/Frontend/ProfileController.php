@@ -98,7 +98,10 @@ class ProfileController extends Controller
     public function orderHistory()
     {
         $user = Auth::user();
-        $orderProducts = OrderProduct::whereUserId($user->id)->simplePaginate(10);
+        $orderProducts = OrderProduct::with('product', 'clientExperience')
+            // ->whereUserId($user->id)->first();
+            ->whereUserId($user->id)->simplePaginate(10);
+            // dd($orderProducts->id, $orderProducts->clientExperience);
         return view('frontend.profile.order-history', compact('user', 'orderProducts'));
     }
 

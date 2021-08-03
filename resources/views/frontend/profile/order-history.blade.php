@@ -29,8 +29,8 @@
                     </small>
                     @else
                     {{-- <a href="#" data-bs-target="#experienceModel" data-bs-toggle="modal">Share experience</a> --}}
-                    <a href="#" class="openExperienceModel" data-product-id="{{$orderProduct->product_id}}"
-                        data-order-id="{{$orderProduct->id}}">
+                    <a href="#" class="openExperienceModel" data-order-id="{{$orderProduct->order_id}}"
+                        data-product-id="{{$orderProduct->product_id}}" data-order-product-id="{{$orderProduct->id}}">
                         Share experience
                     </a>
                     @endif
@@ -77,6 +77,7 @@
                 <div class="modal-body px-3 py-2">
                     <input type="hidden" name="product_id" id="product_id" class="form-control">
                     <input type="hidden" name="order_id" id="order_id" class="form-control">
+                    <input type="hidden" name="order_product_id" id="order_product_id" class="form-control">
                     <div class="form-group mb-2">
                         <label for="image">Image (Buddy Image)</label>
                         <input type="file" name="image" required class="form-control">

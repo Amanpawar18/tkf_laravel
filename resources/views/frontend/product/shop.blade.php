@@ -64,10 +64,19 @@
                                         {{$product->sub_description}}
                                     </small>
                                     <h5>
-                                        starting at <strong>₹{{$product->cost}}</strong>
+                                        starting at
+                                        @if($product->is_sale)
+                                        <small style="margin-right:5px">
+                                            <del>
+                                                ₹{{$product->regular_price}}
+                                            </del>
+                                        </small>
+                                        @endif
+                                        <strong>₹{{$product->cost}}</strong>
                                     </h5>
                                 </a>
-                                <a href="{{route('frontend.product.details', $product->slug)}}" class="btn btn-buy-now">Buy Now</a>
+                                <a href="{{route('frontend.product.details', $product->slug)}}"
+                                    class="btn btn-buy-now">Buy Now</a>
                             </div>
 
                         </div>

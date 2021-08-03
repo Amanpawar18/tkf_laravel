@@ -66,6 +66,13 @@
                                 </p>
                                 <span>
                                     starting at
+                                    @if($product->is_sale)
+                                    <span class="h6" style="margin-right:5px">
+                                        <del>
+                                            ₹{{$product->regular_price}}
+                                        </del>
+                                    </span>
+                                    @endif
                                     <span class="product-price h5">
                                         ₹{{$product->cost}}
                                     </span>
@@ -114,7 +121,7 @@
                         </div>
                         <div class="experience-caption mt-40">
                             ” {{$experience->description}} “
-                            <h6 class="bold mt-1 mb-0">By: {{$experience->user->name}}</h6>
+                            <h6 class="bold mt-1 mb-0">By: {{$experience->user_name}}</h6>
                         </div>
                     </div>
                 </div>

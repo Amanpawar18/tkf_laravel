@@ -134,6 +134,7 @@ $(document).ready(function () {
     $(document).on("click", ".openExperienceModel", function () {
         $("#product_id").val($(this).data('product-id'));
         $("#order_id").val($(this).data('order-id'));
+        $("#order_product_id").val($(this).data('order-product-id'));
         $('#experienceModel').modal('show');
     });
 });
