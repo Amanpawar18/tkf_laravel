@@ -33,11 +33,11 @@ use Illuminate\Support\Facades\Route;
                             <div class="row">
                                 <div class="col-md-3 mb-3">
                                     <strong>Name:</strong>
-                                    {{$clientExperience->user->name}}
+                                    {{$clientExperience->user_name}}
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <strong>Email:</strong>
-                                    {{$clientExperience->user->email}}
+                                    {{$clientExperience->user_email}}
                                 </div>
                                 <div class="col-md-3 mb-3">
                                     <strong>Product Name:</strong>
