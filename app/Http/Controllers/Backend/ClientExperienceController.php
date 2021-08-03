@@ -69,8 +69,6 @@ class ClientExperienceController extends Controller
     {
         $data = request()->except('image');
         $data['user_id'] = Auth::id();
-        $data['user_email'] = Auth::user()->email;
-        $data['user_name'] = Auth::user()->name;
         $data['category_id'] = Product::whereId(request()->product_id)->first()->category_id;
         $experience = ClientExperience::create($data);
         $this->uploadImage($experience);
