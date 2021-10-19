@@ -27,7 +27,7 @@ class ReferrerUserRule implements Rule
     public function passes($attribute, $value)
     {
         $referrerUser = User::whereReferralCode($value)->first();
-        if ($referrerUser && $value == null) {
+        if ($referrerUser || $value == null) {
             return true;
         }
         return false;
