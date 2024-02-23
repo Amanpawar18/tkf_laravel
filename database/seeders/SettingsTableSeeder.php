@@ -19,11 +19,11 @@ class SettingsTableSeeder extends Seeder
             $data = [
                 [
                     'key' => 'website_name',
-                    'value' => 'Venttura',
+                    'value' => 'The Keshav Farm',
                 ],
                 [
                     'key' => 'website_email',
-                    'value' => 'venttura@gmail.com',
+                    'value' => 'chiragpanwar303@gmail.com',
                 ],
                 [
                     'key' => 'footer_logo',
@@ -34,14 +34,28 @@ class SettingsTableSeeder extends Seeder
                     'value' => '',
                 ],
                 [
-                    'key' => 'footer_address',
-                    'value' => 'Address :A-34, Gala No 1&amp;2,Royal Industrial Hub,Vasai - Bhiwandi
-                    Road,Opp Kaman Police Check Post, Village Poman,Vasai,<br>
-                    Thane - 401208Maharashtra<br>
-                    IndiaCell :-&nbsp;+91 9820526274<br>
-                    Care :- +91 9833103030<br>
-                    Email&nbsp;:-&nbsp;ventturain@gmail.com<br>
-                    Visit Us on&nbsp;www.venttura.in',
+                    'key' => 'facebook_link',
+                    'value' => '',
+                ],
+                [
+                    'key' => 'instagram_link',
+                    'value' => '',
+                ],
+                [
+                    'key' => 'youtube_link',
+                    'value' => '',
+                ],
+                [
+                    'key' => 'mobile_no',
+                    'value' => '+91-8385050621',
+                ],
+                [
+                    'key' => 'email',
+                    'value' => 'chiragpanwar303@gmail.com',
+                ],
+                [
+                    'key' => 'address',
+                    'value' => '422, Gautam Marg, Nirman nagar, Jaipur',
                 ]
             ];
             DB::table('settings')->insert($data);

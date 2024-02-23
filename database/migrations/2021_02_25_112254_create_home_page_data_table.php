@@ -16,27 +16,37 @@ class CreateHomePageDataTable extends Migration
         Schema::create('home_page_data', function (Blueprint $table) {
             $table->id();
 
-            $table->string('meta_title')->nullable();
-            $table->string('meta_description')->nullable();
-            $table->string('meta_keywords')->nullable();
+            $table->text('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->text('meta_keywords')->nullable();
 
-            $table->string('header_video_url')->nullable();
-            $table->string('section_one_heading')->nullable();
-            $table->string('section_one_heading_description')->nullable();
-            $table->string('read_more_link')->nullable();
+            $table->text('section_one_c1_image')->nullable();
+            $table->text('section_one_c1_heading')->nullable();
+            $table->text('section_one_c1_read_more_link')->nullable();
 
-            $table->string('section_two_heading')->nullable();
-            $table->string('section_two_heading_description')->nullable();
+            $table->text('section_one_c2_image')->nullable();
+            $table->text('section_one_c2_heading')->nullable();
+            $table->text('section_one_c2_read_more_link')->nullable();
+            
+            $table->text('section_one_hidden_cost_desc')->nullable();
+            $table->text('section_one_team_desc')->nullable();
+            $table->text('section_one_availability_desc')->nullable();
 
-            $table->string('section_three_heading')->nullable();
-            $table->string('section_three_image')->nullable();
+            $table->text('section_two_exp_years')->nullable();
+            $table->text('section_two_heading')->nullable();
+            $table->text('section_two_heading_description')->nullable();
+            $table->text('section_two_read_more_link')->nullable();
+            $table->text('section_two_exp_team_desc')->nullable();
+            $table->text('section_two_dedicated_team_desc')->nullable();
+            
+            $table->text('section_three_clients_count')->nullable();
+            $table->text('section_three_garden_count')->nullable();
+            $table->text('section_three_staff_count')->nullable();
+            $table->text('section_three_awards_count')->nullable();
+            
+            $table->text('section_four_description')->nullable();
 
-            $table->string('section_four_heading')->nullable();
-
-            $table->string('section_five_image')->nullable();
-
-            $table->string('section_six_image_one')->nullable();
-            $table->string('section_six_image_two')->nullable();
+            $table->text('section_testimonial_desc')->nullable();
 
             $table->timestamps();
         });

@@ -2,19 +2,35 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
-        integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
-        crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Gardener - Gardening Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
-        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
-        crossorigin="anonymous" />
-    <link href="{{asset('frontend/assets/css/style.css')}}" rel="stylesheet" type="text/css">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;500&display=swap" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ asset('frontend/new-theme/') }}/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="{{ asset('frontend/new-theme/') }}/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{{ asset('frontend/new-theme/') }}/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ asset('frontend/new-theme/') }}/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{ asset('frontend/new-theme/') }}/css/style.css" rel="stylesheet">
+
     <link href="{{asset('frontend/css/custom.css')}}" rel="stylesheet" type="text/css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,37 +50,39 @@
 </head>
 
 <body>
-    <div id="loading-icon" class="loading-icon" style="display: none;"></div>
-    <button id="bottom-to-top">
-        <i class="fa fa-arrow-up" aria-hidden="true"></i>
-    </button>
-    <div class="main-wrapper">
-        @include('frontend.layout.header')
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;"></div>
     </div>
+    <!-- Spinner End -->
+
+    @include('frontend.layout.header')
+
     @yield('content')
+    
     @include('frontend.layout.footer')
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square rounded-circle back-to-top"><i class="bi bi-arrow-up"></i></a>
+    
 
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous">
-    </script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
-        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
-        crossorigin="anonymous"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
-
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('frontend/new-theme/') }}/lib/wow/wow.min.js"></script>
+    <script src="{{ asset('frontend/new-theme/') }}/lib/easing/easing.min.js"></script>
+    <script src="{{ asset('frontend/new-theme/') }}/lib/waypoints/waypoints.min.js"></script>
+    <script src="{{ asset('frontend/new-theme/') }}/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="{{ asset('frontend/new-theme/') }}/lib/counterup/counterup.min.js"></script>
+    <script src="{{ asset('frontend/new-theme/') }}/lib/parallax/parallax.min.js"></script>
+    <script src="{{ asset('frontend/new-theme/') }}/lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="{{ asset('frontend/new-theme/') }}/lib/lightbox/js/lightbox.min.js"></script>
+    <!-- Template Javascript -->
+    <script src="{{ asset('frontend/new-theme/') }}/js/main.js"></script>
 
     @yield('additional_script')
     <script type="text/javascript" src="{{asset('frontend/assets/js/custom.js')}}"></script>
     <script type="text/javascript" src="{{asset('custom/common.js')}}"></script>
+
+</body>
 
 </html>

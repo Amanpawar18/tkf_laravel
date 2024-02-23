@@ -10,11 +10,6 @@ class FooterData extends Model
     use HasFactory;
 
     protected $fillable = [
-        'image_one', 'image_one_link',
-        'image_two', 'image_two_link',
-        'image_three', 'image_three_link',
-        'image_four', 'image_four_link',
-        'image_five', 'image_five_link',
         'contact_us_link', 'terms_of_use_link',
         'privacy_policy_link', 'order_link',
         'shipping_link', 'who_we_are_link',

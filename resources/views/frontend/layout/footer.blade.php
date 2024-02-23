@@ -1,119 +1,80 @@
-<hr class="m-0">
-<section class="mt-30">
-    <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-md-2 text-center">
-                <a href="{{FooterData::get('image_one_link') ?? '#'}}">
-                    <img src="{{FooterData::get('image_one_path')}}" class="img-fluid">
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-light footer mt-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-4">Our Office</h4>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>{{ Setting::get('address') }}</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>{{ Setting::get('mobile_no') }}</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>{{ Setting::get('email') }}</p>
+                <div class="d-flex pt-2">
+                    @if (Setting::get('instagram_link'))
+                    <a class="btn btn-square btn-outline-light rounded-circle me-2" href="{{ Setting::get('instagram_link') }}">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    @endif
+                    @if (Setting::get('facebook_link'))
+                    <a class="btn btn-square btn-outline-light rounded-circle me-2" href="{{ Setting::get('facebook_link') }}">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    @endif
+                    @if (Setting::get('youtube_link'))
+                    <a class="btn btn-square btn-outline-light rounded-circle me-2" href="{{ Setting::get('youtube_link') }}">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    @endif
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-4">Services</h4>
+                <a class="btn btn-link" href="{{FooterData::get('order_link') ?? '#'}}">Track Your Order</a>
+                <a class="btn btn-link" href="{{FooterData::get('shipping_link') ?? '#'}}">Shipping, Exchange, Cancellation</a></a>
+                <a class="btn btn-link" href="{{FooterData::get('contact_us_link') ?? '#'}}">Contact Us</a></a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-4">Quick Links</h4>
+                <a class="btn btn-link" href="{{FooterData::get('who_we_are_link') ?? '#'}}">
+                    About Us
+                </a>
+                <a class="btn btn-link" href="{{FooterData::get('product_faqs_link') ?? '#'}}">
+                    Products Faq's
+                </a>
+                <a class="btn btn-link" href="{{FooterData::get('terms_of_use_link') ?? '#'}}">
+                    Terms & Condition
+                </a>
+                <a class="btn btn-link" href="{{FooterData::get('privacy_policy_link') ?? '#'}}">
+                    Privacy Policy
                 </a>
             </div>
-            <div class="col-md-2 text-center">
-                <a href="{{FooterData::get('image_two_link') ?? '#'}}">
-                    <img src="{{FooterData::get('image_two_path')}}" class="img-fluid">
-                </a>
-            </div>
-            <div class="col-md-2 text-center">
-                <a href="{{FooterData::get('image_three_link') ?? '#'}}">
-                    <img src="{{FooterData::get('image_three_path')}}" class="img-fluid">
-                </a>
-            </div>
-            <div class="col-md-2 text-center">
-                <a href="{{FooterData::get('image_four_link') ?? '#'}}">
-                    <img src="{{FooterData::get('image_four_path')}}" class="img-fluid">
-                </a>
-            </div>
-            <div class="col-md-2 text-center">
-                <a href="{{FooterData::get('image_five_link') ?? '#'}}">
-                    <img src="{{FooterData::get('image_five_path')}}" class="img-fluid">
-                </a>
+            <div class="col-lg-3 col-md-6">
+                <h4 class="text-white mb-4">Newsletter</h4>
+                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                <div class="position-relative w-100">
+                    <input class="form-control bg-light border-light w-100 py-3 ps-4 pe-5" type="text"
+                        placeholder="Your email">
+                    <button type="button"
+                        class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                </div>
             </div>
         </div>
     </div>
-</section>
+</div>
+<!-- Footer End -->
 
-<div class="site-footer mt-30">
+
+<!-- Copyright Start -->
+<div class="container-fluid copyright py-4">
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-6 col-lg-3">
-                <span class="widget-title">Help</span>
-                <div class="is-divider small"></div>
-
-                <ul id="menu-help" class="menu">
-                    <li><a href="{{route('frontend.contact-us.view')}}">Contact Us</a></li>
-                    <li><a href="{{FooterData::get('terms_of_use_link') ?? '#'}}">Term of Use</a></li>
-                    <li><a href="{{FooterData::get('privacy_policy_link') ?? '#'}}">Privacy Policy</a></li>
-                </ul>
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                &copy; <a class="border-bottom" href="#">The Keshav Farm</a>, All Right Reserved.
             </div>
-            <div class="col-12 col-md-6 col-lg-3 mt-5 mt-md-0">
-                <span class="widget-title">Shopping</span>
-                <div class="is-divider small"></div>
-
-                <ul id="menu-shopping" class="menu">
-                    <li><a href="{{FooterData::get('order_link') ?? '#'}}">Track Your Order</a></li>
-                    <li><a href="{{FooterData::get('shipping_link') ?? '#'}}">Shipping, Exchange, Cancellation</a></li>
-                </ul>
-
-            </div>
-            <div class="col-12 col-md-6 col-lg-3 mt-5 mt-lg-0">
-                <span class="widget-title">Information</span>
-                <div class="is-divider small"></div>
-
-                <ul id="menu-about-us" class="menu">
-                    <li><a href="{{FooterData::get('who_we_are_link') ?? '#'}}">Who We Are</a></li>
-                    <li><a href="{{route('frontend.profile.show')}}">My Account</a></li>
-                    <li><a href="{{FooterData::get('product_faqs_link') ?? '#'}}">Products Faq’s</a></li>
-                    <li><a href="{{route('frontend.petraceuticals-schedule')}}" target="_blank">Petraceuticals
-                            Schedule</a></li>
-                    <li><a href="{{FooterData::get('science_link') ?? '#'}}">Science</a></li>
-                    <li><a href="{{FooterData::get('quality_link') ?? '#'}}">Quality</a></li>
-                    <li><a href="{{FooterData::get('buddy_club_link') ?? '#'}}">Buddy Club</a></li>
-                    <li><a href="{{FooterData::get('subscribe_link') ?? '#'}}">Subscribe</a></li>
-                    <li><a href="{{FooterData::get('affiliate_link') ?? '#'}}">Referral</a></li>
-                </ul>
-
-            </div>
-            <div id="custom_html-4"
-                class="widget_text col-12 col-md-6 col-lg-3  pb-0 widget widget_custom_html  mt-5 mt-lg-0"><span
-                    class="widget-title">Contact Us</span>
-                <div class="is-divider small"></div>
-
-                <div>
-                    @if(file_exists(public_path('frontend/uploads/home-page/' . Setting::get('footer_logo')))
-                    && is_file(public_path('frontend/uploads/home-page/' . Setting::get('footer_logo'))))
-                    <img class="img-fluid mb-30 object-fit-contain"
-                        src="{{  asset('frontend/uploads/home-page/' . Setting::get('footer_logo')) }}" alt="Logo">
-                    @else
-                    <img src="{{asset('frontend/assets/images/footer-logo.png')}}" class="img-fluid mb-30">
-                    @endif
-                    <div class="footer-address">
-                        <p>
-                            {!! Setting::get('footer_address') !!}
-                        </p>
-
-                    </div>
-
-                </div>
-
+            <div class="col-md-6 text-center text-md-end">
+                <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                Designed By <a class="border-bottom" href="https://htmlcod  ex.com">HTML Codex</a> Distributed By <a
+                    href="https://themewagon.com">ThemeWagon</a>
             </div>
         </div>
     </div>
 </div>
-<div class="copyright-footer">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-12 col-md-6">
-                <strong>All Rights Reserved Venttura</strong>
-            </div>
-            <div class="col-12 col-md-6 text-right">
-                <div class="footer-payment-nav">
-                    <i class="fa fa-cc-visa" aria-hidden="true"></i>
-                    <i class="fa fa-cc-paypal" aria-hidden="true"></i>
-                    <i class="fa fa-cc-stripe" aria-hidden="true"></i>
-                    <i class="fa fa-cc-mastercard" aria-hidden="true"></i>
-                    <i class="fa fa-money" aria-hidden="true"></i>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
+<!-- Copyright End -->

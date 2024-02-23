@@ -9,176 +9,615 @@
 {{$homePageData->meta_keywords}}
 @endsection
 @section('content')
-<div class="video-banner">
-    <iframe width="950" height="600" frameborder="0" allowfullscreen="1"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        src="{{$homePageData->header_video_url}}">
-    </iframe>
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0 wow fadeIn" data-wow-delay="0.1s">
+    <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img class="w-100" src="{{ $homePageData->section_one_image_one_path }}" alt="Image">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-8">
+                                <h1 class="display-1 text-white mb-5 animated slideInDown">
+                                    {{ $homePageData->section_one_c1_heading }}
+                                </h1>
+                                @if ($homePageData->section_one_c1_read_more_link)
+                                <a href="{{ $homePageData->section_one_c1_read_more_link }}"
+                                    class="btn btn-primary py-sm-3 px-sm-4">
+                                    Explore More
+                                </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="w-100" src="{{ $homePageData->section_one_image_two_path }}" alt="Image">
+                <div class="carousel-caption">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-7">
+                                <h1 class="display-1 text-white mb-5 animated slideInDown">
+                                    {{ $homePageData->section_one_c2_heading }}
+                                </h1>
+                                @if ($homePageData->section_one_c2_read_more_link)
+                                <a href="{{ $homePageData->section_one_c2_read_more_link }}"
+                                    class="btn btn-primary py-sm-3 px-sm-4">
+                                    Explore More
+                                </a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#header-carousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
 </div>
+<!-- Carousel End -->
 
-<section class="home-section">
-    <div class="container-fluid text-center">
-        <h1 class="section-title bold">{{$homePageData->section_one_heading}}</h1>
-        <p class="mb-0">
-            {{$homePageData->section_one_heading_description}}
-        </p>
-        <a class="btn btn-gradient-light has-right-icon mt-40" href="{{$homePageData->read_more_link}}" title="">
-            Read More
-            <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
-        </a>
-    </div>
-</section>
-<section class="home-section">
-    <div class="container-fluid">
-        <div class="text-center">
-            <h1 class="section-title">{{$homePageData->section_two_heading}}</h1>
-            <p class="mb-0">{{$homePageData->section_two_heading_description}}</p>
+
+<!-- Top Feature Start -->
+<div class="container-fluid top-feature py-5 pt-lg-0">
+    <div class="container py-5 pt-lg-0">
+        <div class="row gx-0">
+            <div class="col-lg-4 wow fadeIn" data-wow-delay="0.1s">
+                <div class="bg-white shadow d-flex align-items-center h-100 px-5" style="min-height: 160px;">
+                    <div class="d-flex">
+                        <div class="flex-shrink-0 btn-lg-square rounded-circle bg-light">
+                            <i class="fa fa-times text-primary"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h4>No Hidden Cost</h4>
+                            <span>
+                                {{ $homePageData->section_one_hidden_cost_desc }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 wow fadeIn" data-wow-delay="0.3s">
+                <div class="bg-white shadow d-flex align-items-center h-100 px-5" style="min-height: 160px;">
+                    <div class="d-flex">
+                        <div class="flex-shrink-0 btn-lg-square rounded-circle bg-light">
+                            <i class="fa fa-users text-primary"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h4>Dedicated Team</h4>
+                            <span>
+                                {{ $homePageData->section_one_team_desc }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 wow fadeIn" data-wow-delay="0.5s">
+                <div class="bg-white shadow d-flex align-items-center h-100 px-5" style="min-height: 160px;">
+                    <div class="d-flex">
+                        <div class="flex-shrink-0 btn-lg-square rounded-circle bg-light">
+                            <i class="fa fa-phone text-primary"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h4>24/7 Available</h4>
+                            <span>
+                                {{ $homePageData->section_one_availability_desc }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
+</div>
+<!-- Top Feature End -->
 
-        <div class="product-cards pt-10">
-            <div class="row">
-                @foreach ($products as $product)
-                <div class="col-md-6 col-lg-3">
-                    <div class="product-item mt-30">
-                        <a href="{{route('frontend.product.details', $product->slug)}}" class="text-decoration-none">
-                            <div class="product-image">
-                                <div class="featured-badge black small-category-badge">{{$product->category->name}}
+
+<!-- About Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-end">
+            <div class="col-lg-3 col-md-5 wow fadeInUp" data-wow-delay="0.1s">
+                <img class="img-fluid rounded" data-wow-delay="0.1s" src="img/about.jpg">
+            </div>
+            <div class="col-lg-6 col-md-7 wow fadeInUp" data-wow-delay="0.3s">
+                <h1 class="display-1 text-primary mb-0">
+                    {{ $homePageData->section_two_exp_years }}
+                </h1>
+                <p class="text-primary mb-4">Year of Experience</p>
+                <h1 class="display-5 mb-4">
+                    {{ $homePageData->section_two_heading }}
+                </h1>
+                <p class="mb-4">
+                    {{ $homePageData->section_two_heading_description }}
+                </p>
+                @if ($homePageData->section_two_read_more_link)
+                <a class="btn btn-primary py-3 px-4" href="{{$homePageData->section_two_read_more_link}}">
+                    Explore More
+                </a>
+                @endif
+            </div>
+            <div class="col-lg-3 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="row g-5">
+                    <div class="col-12 col-sm-6 col-lg-12">
+                        <div class="border-start ps-4">
+                            <i class="fa fa-award fa-3x text-primary mb-3"></i>
+                            <h4 class="mb-3">Experienced Team</h4>
+                            <span>
+                                {{ $homePageData->section_two_exp_team_desc }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-lg-12">
+                        <div class="border-start ps-4">
+                            <i class="fa fa-users fa-3x text-primary mb-3"></i>
+                            <h4 class="mb-3">Dedicated Team</h4>
+                            <span>
+                                {{ $homePageData->section_two_dedicated_team_desc }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+
+<!-- Facts Start -->
+<div class="container-fluid facts my-5 py-5" data-parallax="scroll" data-image-src="img/carousel-1.jpg">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-sm-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.1s">
+                <h1 class="display-4 text-white" data-toggle="counter-up">
+                    {{ $homePageData->section_three_clients_count }}
+                </h1>
+                <span class="fs-5 fw-semi-bold text-light">Happy Clients</span>
+            </div>
+            <div class="col-sm-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.3s">
+                <h1 class="display-4 text-white" data-toggle="counter-up">
+                    {{ $homePageData->section_three_garden_count }}
+                </h1>
+                <span class="fs-5 fw-semi-bold text-light">Garden Complated</span>
+            </div>
+            <div class="col-sm-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.5s">
+                <h1 class="display-4 text-white" data-toggle="counter-up">
+                    {{ $homePageData->section_three_staff_count }}
+                </h1>
+                <span class="fs-5 fw-semi-bold text-light">Dedicated Staff</span>
+            </div>
+            <div class="col-sm-6 col-lg-3 text-center wow fadeIn" data-wow-delay="0.7s">
+                <h1 class="display-4 text-white" data-toggle="counter-up">
+                    {{ $homePageData->section_three_awards_count }}
+                </h1>
+                <span class="fs-5 fw-semi-bold text-light">Awards Achieved</span>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Facts End -->
+
+
+<!-- Features Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                <p class="fs-5 fw-bold text-primary">Why Choosing Us!</p>
+                <h1 class="display-5 mb-4">Few Reasons Why People Choosing Us!</h1>
+                <p class="mb-4">
+                    {{ $homePageData->section_four_description }}
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-4 align-items-center">
+                    <div class="col-md-6">
+                        <div class="row g-4">
+                            <div class="col-12 wow fadeIn" data-wow-delay="0.3s">
+                                <div class="text-center rounded py-5 px-4"
+                                    style="box-shadow: 0 0 45px rgba(0,0,0,.08);">
+                                    <div class="btn-square bg-light rounded-circle mx-auto mb-4"
+                                        style="width: 90px; height: 90px;">
+                                        <i class="fa fa-check fa-3x text-primary"></i>
+                                    </div>
+                                    <h4 class="mb-0">100% Satisfaction</h4>
                                 </div>
-                                <img src="{{$product->image_path}}" class="img-fluid">
                             </div>
-                        </a>
-                        <div class="product-info">
-                            <a href="{{route('frontend.product.details', $product->slug)}}"
-                                class="text-dark text-decoration-none">
-                                <h2>
-                                    {{$product->name}}
-                                    @if($product->is_sale)
-                                    <span class="text-danger h6">
-                                        (On Sale)
-                                    </span class="text-danger h6">
-                                    @endif
-                                    <small>
-                                        {{$product->sub_description}}
-                                    </small>
-                                </h2>
-                                <p class="small">
-                                    {{$product->description}}
-                                </p>
-                                <span>
-                                    starting at
-                                    @if($product->is_sale)
-                                    <span class="h6" style="margin-right:5px">
-                                        <del>
-                                            ₹{{$product->regular_price}}
-                                        </del>
-                                    </span>
-                                    @endif
-                                    <span class="product-price h5">
-                                        ₹{{$product->cost}}
-                                    </span>
-                                </span>
-                            </a>
-                            <a href="{{route('frontend.product.details', $product->slug)}}" class="btn btn-buy-now">Buy
-                                Now</a>
-                        </div>
-
-                    </div>
-                </div>
-                @endforeach
-                <div class="col-md-12 text-center">
-                    <a href="{{route('frontend.product.shop')}}" class="btn btn-buy-now"
-                        style="width: auto; !important">View all</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="subscription-banner" @if($homePageData->section_three_image_half_path != null) style='background-image:
-    url({{$homePageData->section_three_image_half_path}})' @endif>
-    <div class="subscription-banner-container">
-        <div class="subscription-banner-form-wrapper">
-            <form>
-                <h1>{{$homePageData->section_three_heading}}</h1>
-                <input type="email" class="form-control" placeholder="Your Email">
-                <button type="submit" class="btn btn-subscribe">Subscribe Now</button>
-            </form>
-        </div>
-    </div>
-</section>
-@if(count($clientExperiences))
-<section class="home-section">
-    <div class="container-fluid">
-        <h1 class="section-title text-center">{{$homePageData->section_four_heading}}</h1>
-
-        <div class="experience-cards text-left">
-            <div class="row">
-
-                @foreach ($clientExperiences as $experience)
-                <div class="col-md-4 mx-auto">
-                    <div class="experience-item">
-                        <div class="experience-image">
-                            <img src="{{$experience->image_path}}" class="img-fluid object-fit-contain">
-                        </div>
-                        <div class="experience-caption mt-40">
-                            ” {{$experience->description}} “
-                            <h6 class="bold mt-1 mb-0">By: {{$experience->user_name}}</h6>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-
-            </div>
-        </div>
-    </div>
-</section>
-@endif
-<section class="reward-collage">
-    <img src="{{$homePageData->section_five_image_path}}" height="420px" class="object-fit-contain img-fluid">
-    <div class="container-fluid">
-
-        <div class="row mt-30">
-            <div class="col-12 col-lg-6">
-                <img src="{{$homePageData->section_six_image_one_path}}" height="410px"
-                    class="object-fit-contain img-fluid">
-            </div>
-            <div class="col-12 col-lg-6 mt-lg-0 mt-4">
-                <img src="{{$homePageData->section_six_image_two_path}}" height="410px"
-                    class="object-fit-contain img-fluid">
-            </div>
-        </div>
-    </div>
-
-    {{-- <img src="{{asset('frontend/assets/images/WhatsApp-Image-2021-02-08-at-3.05.03-PM-1.jpeg')}}" class="w-100
-    mt-30"> --}}
-</section>
-@if(count($blogs))
-<section class="home-section">
-    <div class="container-fluid">
-        <div class="blog-cards text-left">
-            <div class="row">
-                @foreach ($blogs as $blog)
-                <div class="col-lg-4 col-sm-6 col-12 mt-0 mt-md-4 text-center">
-                    <div class="blog-item">
-                        <div class="blog-image">
-                            <img src="{{$blog->banner_image_path}}" style="height: 300px;"
-                                class="img-fluid object-fit-contain">
-                        </div>
-                        <div class="blog-caption mt-40">
-                            <h6 class="bold mb-40 mt-40">{{$blog->name}}</h6>
-                            <p>
-                                {{ Str::limit($blog->meta_description, 100) }}
-                            </p>
-                            <div class="text-center mt-40">
-                                <a class="btn has-left-icon bold" href="{{route('frontend.blog.view', $blog->slug)}}"
-                                    title=""><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>Read More</a>
+                            <div class="col-12 wow fadeIn" data-wow-delay="0.5s">
+                                <div class="text-center rounded py-5 px-4"
+                                    style="box-shadow: 0 0 45px rgba(0,0,0,.08);">
+                                    <div class="btn-square bg-light rounded-circle mx-auto mb-4"
+                                        style="width: 90px; height: 90px;">
+                                        <i class="fa fa-users fa-3x text-primary"></i>
+                                    </div>
+                                    <h4 class="mb-0">Dedicated Team</h4>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-6 wow fadeIn" data-wow-delay="0.7s">
+                        <div class="text-center rounded py-5 px-4" style="box-shadow: 0 0 45px rgba(0,0,0,.08);">
+                            <div class="btn-square bg-light rounded-circle mx-auto mb-4"
+                                style="width: 90px; height: 90px;">
+                                <i class="fa fa-tools fa-3x text-primary"></i>
+                            </div>
+                            <h4 class="mb-0">Modern Equipment</h4>
+                        </div>
+                    </div>
                 </div>
-                @endforeach
             </div>
         </div>
     </div>
-</section>
-@endif
+</div>
+<!-- Features End -->
+
+
+<!-- Service Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="fs-5 fw-bold text-primary">Our Services</p>
+            <h1 class="display-5 mb-5">Services That We Offer For You</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <img class="img-fluid" src="img/service-1.jpg" alt="">
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/icon/icon-3.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Landscaping</h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                            diam sed stet.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <img class="img-fluid" src="img/service-2.jpg" alt="">
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/icon/icon-6.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Pruning plants</h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                            diam sed stet.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <img class="img-fluid" src="img/service-3.jpg" alt="">
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/icon/icon-5.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Irrigation & Drainage</h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                            diam sed stet.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <img class="img-fluid" src="img/service-4.jpg" alt="">
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/icon/icon-4.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Garden Maintenance </h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                            diam sed stet.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <img class="img-fluid" src="img/service-5.jpg" alt="">
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/icon/icon-8.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Green Technology</h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                            diam sed stet.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item rounded d-flex h-100">
+                    <div class="service-img rounded">
+                        <img class="img-fluid" src="img/service-6.jpg" alt="">
+                    </div>
+                    <div class="service-text rounded p-5">
+                        <div class="btn-square rounded-circle mx-auto mb-3">
+                            <img class="img-fluid" src="img/icon/icon-2.png" alt="Icon">
+                        </div>
+                        <h4 class="mb-3">Urban Gardening</h4>
+                        <p class="mb-4">Erat ipsum justo amet duo et elitr dolor, est duo duo eos lorem sed diam stet
+                            diam sed stet.</p>
+                        <a class="btn btn-sm" href=""><i class="fa fa-plus text-primary me-2"></i>Read More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Service End -->
+
+
+<!-- Quote Start -->
+<div class="container-fluid quote my-5 py-5" data-parallax="scroll" data-image-src="img/carousel-2.jpg">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="bg-white rounded p-4 p-sm-5 wow fadeIn" data-wow-delay="0.5s">
+                    <h1 class="display-5 text-center mb-5">Get A Free Quote</h1>
+                    <div class="row g-3">
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control bg-light border-0" id="gname"
+                                    placeholder="Gurdian Name">
+                                <label for="gname">Your Name</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control bg-light border-0" id="gmail"
+                                    placeholder="Gurdian Email">
+                                <label for="gmail">Your Email</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control bg-light border-0" id="cname"
+                                    placeholder="Child Name">
+                                <label for="cname">Your Mobile</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control bg-light border-0" id="cage"
+                                    placeholder="Child Age">
+                                <label for="cage">Service Type</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control bg-light border-0" placeholder="Leave a message here"
+                                    id="message" style="height: 100px"></textarea>
+                                <label for="message">Message</label>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button class="btn btn-primary py-3 px-4" type="submit">Submit Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Quote End -->
+
+
+<!-- Projects Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="fs-5 fw-bold text-primary">Our Projects</p>
+            <h1 class="display-5 mb-5">Some Of Our Wonderful Projects</h1>
+        </div>
+        <div class="row wow fadeInUp" data-wow-delay="0.3s">
+            <div class="col-12 text-center">
+                <ul class="list-inline rounded mb-5" id="portfolio-flters">
+                    <li class="mx-2 active" data-filter="*">All</li>
+                    <li class="mx-2" data-filter=".first">Complete Projects</li>
+                    <li class="mx-2" data-filter=".second">Ongoing Projects</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row g-4 portfolio-container">
+            <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.1s">
+                <div class="portfolio-inner rounded">
+                    <img class="img-fluid" src="img/service-1.jpg" alt="">
+                    <div class="portfolio-text">
+                        <h4 class="text-white mb-4">Landscaping</h4>
+                        <div class="d-flex">
+                            <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-1.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.3s">
+                <div class="portfolio-inner rounded">
+                    <img class="img-fluid" src="img/service-2.jpg" alt="">
+                    <div class="portfolio-text">
+                        <h4 class="text-white mb-4">Pruning plants</h4>
+                        <div class="d-flex">
+                            <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-2.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.5s">
+                <div class="portfolio-inner rounded">
+                    <img class="img-fluid" src="img/service-3.jpg" alt="">
+                    <div class="portfolio-text">
+                        <h4 class="text-white mb-4">Irrigation & Drainage</h4>
+                        <div class="d-flex">
+                            <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-3.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.1s">
+                <div class="portfolio-inner rounded">
+                    <img class="img-fluid" src="img/service-4.jpg" alt="">
+                    <div class="portfolio-text">
+                        <h4 class="text-white mb-4">Garden Maintenance</h4>
+                        <div class="d-flex">
+                            <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-4.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 portfolio-item first wow fadeInUp" data-wow-delay="0.3s">
+                <div class="portfolio-inner rounded">
+                    <img class="img-fluid" src="img/service-5.jpg" alt="">
+                    <div class="portfolio-text">
+                        <h4 class="text-white mb-4">Green Technology</h4>
+                        <div class="d-flex">
+                            <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-5.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 portfolio-item second wow fadeInUp" data-wow-delay="0.5s">
+                <div class="portfolio-inner rounded">
+                    <img class="img-fluid" src="img/service-6.jpg" alt="">
+                    <div class="portfolio-text">
+                        <h4 class="text-white mb-4">Urban Gardening</h4>
+                        <div class="d-flex">
+                            <a class="btn btn-lg-square rounded-circle mx-2" href="img/service-6.jpg"
+                                data-lightbox="portfolio"><i class="fa fa-eye"></i></a>
+                            <a class="btn btn-lg-square rounded-circle mx-2" href=""><i class="fa fa-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Projects End -->
+
+
+<!-- Team Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <p class="fs-5 fw-bold text-primary">Our Team</p>
+            <h1 class="display-5 mb-5">Dedicated & Experienced Team Members</h1>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="team-item rounded">
+                    <img class="img-fluid" src="img/team-1.jpg" alt="">
+                    <div class="team-text">
+                        <h4 class="mb-0">Doris Jordan</h4>
+                        <p class="text-primary">Landscape Designer</p>
+                        <div class="team-social d-flex">
+                            <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="team-item rounded">
+                    <img class="img-fluid" src="img/team-2.jpg" alt="">
+                    <div class="team-text">
+                        <h4 class="mb-0">Johnny Ramirez</h4>
+                        <p class="text-primary">Garden Designer</p>
+                        <div class="team-social d-flex">
+                            <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item rounded">
+                    <img class="img-fluid" src="img/team-3.jpg" alt="">
+                    <div class="team-text">
+                        <h4 class="mb-0">Diana Wagner</h4>
+                        <p class="text-primary">Senior Gardener</p>
+                        <div class="team-social d-flex">
+                            <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square rounded-circle me-2" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Team End -->
+
+
+<!-- Testimonial Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5 wow fadeInUp" data-wow-delay="0.1s">
+                <p class="fs-5 fw-bold text-primary">Testimonial</p>
+                <h1 class="display-5 mb-5">What Our Clients Say About Us!</h1>
+                <p class="mb-4">
+                    {{ $homePageData->section_testimonial_desc }}
+                </p>
+                <a class="btn btn-primary py-3 px-4" href="">See More</a>
+            </div>
+            <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="owl-carousel testimonial-carousel">
+                    <div class="testimonial-item">
+                        <img class="img-fluid rounded mb-3" src="img/testimonial-1.jpg" alt="">
+                        <p class="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem
+                            ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
+                        <h4>Client Name</h4>
+                        <span>Profession</span>
+                    </div>
+                    <div class="testimonial-item">
+                        <img class="img-fluid rounded mb-3" src="img/testimonial-2.jpg" alt="">
+                        <p class="fs-5">Dolores sed duo clita tempor justo dolor et stet lorem kasd labore dolore lorem
+                            ipsum. At lorem lorem magna ut et, nonumy et labore et tempor diam tempor erat.</p>
+                        <h4>Client Name</h4>
+                        <span>Profession</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+
 @endsection

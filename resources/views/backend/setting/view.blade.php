@@ -49,7 +49,8 @@ use Illuminate\Support\Facades\Route;
                                     <label class="text-capitalize">Website Logo</label>
                                     <div class="custom-file">
                                         <input type="file" value="{{ Setting::get('website_logo') }}"
-                                            {{ Setting::get('website_logo') ? '' : 'required' }} name="website_logo"
+                                            {{-- {{ Setting::get('website_logo') ? '' : 'required' }}  --}}
+                                            name="website_logo"
                                             class="custom-file-input" id="website_logo">
                                         <label class="custom-file-label" for="website_logo">Choose
                                             file...</label>
@@ -65,9 +66,34 @@ use Illuminate\Support\Facades\Route;
                                     </div>
                                 </div>
                                 <div class="col-md-12 my-2">
-                                    <label class="text-capitalize">Footer Adderss</label>
-                                    <textarea class="textarea form-control" name="footer_address" id=" " cols="30"
-                                        required rows="5">{{ Setting::get('footer_address') }}</textarea>
+                                    <label class="text-capitalize">Facebook Link</label>
+                                    <input type="text" value="{{ Setting::get('facebook_link') }}" name="facebook_link"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-12 my-2">
+                                    <label class="text-capitalize">Youtube Link</label>
+                                    <input type="text" value="{{ Setting::get('youtube_link') }}" name="youtube_link"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-12 my-2">
+                                    <label class="text-capitalize">Instagram Link</label>
+                                    <input type="text" value="{{ Setting::get('instagram_link') }}" name="instagram_link"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-6 my-2">
+                                    <label class="text-capitalize">Mobile no</label>
+                                    <input type="text" value="{{ Setting::get('mobile_no') }}" name="mobile_no"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-6 my-2">
+                                    <label class="text-capitalize">Email</label>
+                                    <input type="text" value="{{ Setting::get('email') }}" name="email"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-12 my-2">
+                                    <label class="text-capitalize">Adderss</label>
+                                    <textarea class="form-control" name="address" id=" " cols="30"
+                                        required rows="5">{{ Setting::get('address') }}</textarea>
                                 </div>
 
                             </div>

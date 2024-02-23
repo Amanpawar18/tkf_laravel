@@ -10,80 +10,58 @@ class HomePageData extends Model
     use HasFactory;
 
     protected $fillable = [
-        'meta_title', 'meta_description',
+        'meta_title',
+        'meta_description',
         'meta_keywords',
-        'header_video_url',
-        'section_one_heading', 'section_one_heading_description',
-        'read_more_link',
-        'section_two_heading', 'section_two_heading_description',
-        'section_three_heading', 'section_three_image',
-        'section_four_heading',
-        'section_five_image',
-        'section_six_image_one',
-        'section_six_image_two'
+
+        'section_one_c1_image',
+        'section_one_c1_heading',
+        'section_one_c1_read_more_link',
+
+        'section_one_c2_image',
+        'section_one_c2_heading',
+        'section_one_c2_read_more_link',
+        
+        'section_one_hidden_cost_desc',
+        'section_one_team_desc',
+        'section_one_availability_desc',
+
+        'section_two_exp_years',
+        'section_two_heading',
+        'section_two_heading_description',
+        'section_two_read_more_link',
+        'section_two_exp_team_desc',
+        'section_two_dedicated_team_desc',
+        
+        'section_three_clients_count',
+        'section_three_garden_count',
+        'section_three_staff_count',
+        'section_three_awards_count',
+        
+        'section_four_description',
+
+        'section_testimonial_desc',
     ];
 
-
-    public function getSectionThreeImageHalfPathAttribute()
+    public function getSectionOneImageOnePathAttribute()
     {
         $path = null;
         if (
-            file_exists(public_path('frontend/uploads/home-page/' . $this->section_three_image))
-            && is_file(public_path('frontend/uploads/home-page/' . $this->section_three_image))
+            file_exists(public_path('frontend/uploads/home-page/' . $this->section_one_c1_image))
+            && is_file(public_path('frontend/uploads/home-page/' . $this->section_one_c1_image))
         )
-            $path = 'public/frontend/uploads/home-page/' . $this->section_three_image;
+            $path = 'public/frontend/uploads/home-page/' . $this->section_one_c1_image;
         return $path;
     }
 
-
-    public function getSectionThreeImagePathAttribute()
+    public function getSectionOneImageTwoPathAttribute()
     {
-        $path = asset('frontend/assets/img/bg1.jpg');
+        $path = null;
         if (
-            file_exists(public_path('frontend/uploads/home-page/' . $this->section_three_image))
-            && is_file(public_path('frontend/uploads/home-page/' . $this->section_three_image))
+            file_exists(public_path('frontend/uploads/home-page/' . $this->section_one_c2_image))
+            && is_file(public_path('frontend/uploads/home-page/' . $this->section_one_c2_image))
         )
-            $path = asset('frontend/uploads/home-page/' . $this->section_three_image);
-
-        return $path;
-    }
-
-    public function getSectionFiveImagePathAttribute()
-    {
-        $path = asset('frontend/assets/images/Referral.png');
-        if (
-            file_exists(public_path('frontend/uploads/home-page/' . $this->section_five_image))
-            && is_file(public_path('frontend/uploads/home-page/' . $this->section_five_image))
-        )
-            $path = asset('frontend/uploads/home-page/' . $this->section_five_image);
-
-
-        return $path;
-    }
-
-    public function getSectionSixImageOnePathAttribute()
-    {
-        $path = asset('frontend/assets/images/compressed-hbom.png');
-        if (
-            file_exists(public_path('frontend/uploads/home-page/' . $this->section_six_image_one))
-            && is_file(public_path('frontend/uploads/home-page/' . $this->section_six_image_one))
-        )
-            $path = asset('frontend/uploads/home-page/' . $this->section_six_image_one);
-
-
-        return $path;
-    }
-
-    public function getSectionSixImageTwoPathAttribute()
-    {
-        $path = asset('frontend/assets/images/compressed-tk05.png');
-        if (
-            file_exists(public_path('frontend/uploads/home-page/' . $this->section_six_image_two))
-            && is_file(public_path('frontend/uploads/home-page/' . $this->section_six_image_two))
-        )
-            $path = asset('frontend/uploads/home-page/' . $this->section_six_image_two);
-
-
+            $path = 'public/frontend/uploads/home-page/' . $this->section_one_c2_image;
         return $path;
     }
 }

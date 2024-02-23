@@ -18,13 +18,13 @@ class FooterDataSeeder extends Seeder
         if (!$footerData) {
             $footerData = DB::table('footer_data')->first();
             if ($footerData == null) {
-                DB::table('footer_data')->insert([
-                    'image_one_link' => '#',
-                    'image_two_link' => '#',
-                    'image_three_link' => '#',
-                    'image_four_link' => '#',
-                    'image_five_link' => '#',
-                ]);
+                // DB::table('footer_data')->insert([
+                //     'image_one_link' => '#',
+                //     'image_two_link' => '#',
+                //     'image_three_link' => '#',
+                //     'image_four_link' => '#',
+                //     'image_five_link' => '#',
+                // ]);
             }
         }
     }

@@ -16,20 +16,13 @@ class CreateFooterDataTable extends Migration
         Schema::create('footer_data', function (Blueprint $table) {
             $table->id();
 
-            $table->string('image_one')->nullable();
-            $table->string('image_one_link')->nullable();
-
-            $table->string('image_two')->nullable();
-            $table->string('image_two_link')->nullable();
-
-            $table->string('image_three')->nullable();
-            $table->string('image_three_link')->nullable();
-
-            $table->string('image_four')->nullable();
-            $table->string('image_four_link')->nullable();
-
-            $table->string('image_five')->nullable();
-            $table->string('image_five_link')->nullable();
+            $table->string('contact_us_link')->nullable();
+            $table->string('terms_of_use_link')->nullable();
+            $table->string('privacy_policy_link')->nullable();
+            $table->string('order_link')->nullable();
+            $table->string('shipping_link')->nullable();
+            $table->string('who_we_are_link')->nullable();
+            $table->string('product_faqs_link')->nullable();
 
             $table->timestamps();
         });

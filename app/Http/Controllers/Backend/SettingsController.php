@@ -18,6 +18,7 @@ class SettingsController extends Controller
     public function update()
     {
         $fields = request()->except('_token', 'footer_logo', 'website_logo');
+        // dd($fields);
         foreach ($fields as $key => $field) {
             Setting::set($key, $field);
         }
