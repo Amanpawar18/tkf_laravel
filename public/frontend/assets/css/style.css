@@ -1,5 +1,6 @@
 body {
-    font-family: 'Lato', sans-serif;
+    font-family: cursive;
+    /* font-family: 'Lato', sans-serif; */
     color: #777;
 }
 
@@ -8,7 +9,7 @@ body {
 }
 
 .navbar-dark.bg-dark {
-    background-color: #000000 !important;
+    background-color: #007741 !important;
 }
 
 .nav-dropdown-hoverable {
@@ -153,7 +154,7 @@ body {
 }
 
 .btn-gradient-light {
-    color: #000000;
+    color: #007741;
     border: none;
     background-color: #ffffff;
     -webkit-transition: all .2s ease-in-out;
@@ -375,14 +376,14 @@ body {
 
 .btn-subscribe {
     width: 100%;
-    background-color: #000;
+    background-color: #fff;
     border: 2px solid #000;
     border-radius: 0;
     font-weight: 700;
     padding: 10px;
     margin-top: 20px;
     transition: 0.3s ease-in-out;
-    color: #e5aa61;
+    color: #007741;
     font-size: 20px;
 }
 
@@ -414,20 +415,23 @@ body {
 .subscription-banner {
     background-image: url(../images/REFER-1-1920x768.png);
     min-height: 80vh;
-    background-position: center;
-    background-size: cover;
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .subscription-banner-container {
     width: 600px;
     max-width: 100%;
-    padding-right: 100px;
-    margin-left: auto;
+    /* padding-right: 100px;
+    margin-left: auto; */
     padding-top: 100px;
+    padding-left: 100px;
+    margin-right: auto;
 }
 
 .subscription-banner-form-wrapper {
-    border: 2px solid #000;
+    /* border: 2px solid #000; */
     padding: 50px 30px 30px;
 }
 

@@ -25,7 +25,8 @@ class HomeController extends Controller
         $products = Product::orderBy('product_view_count', 'DESC')->limit(4)->get();
         $blogs = Blog::orderBy('id', 'DESC')->get()->shuffle()->take(3);
         $clientExperiences = ClientExperience::get()->shuffle()->take(3);
-        return view('frontend.home', compact('homePageData', 'products', 'blogs', 'clientExperiences'));
+        return view('frontend.home-new', compact('homePageData', 'products', 'blogs', 'clientExperiences'));
+        // return view('frontend.home', compact('homePageData', 'products', 'blogs', 'clientExperiences'));
     }
 
     public function category(Category $category)

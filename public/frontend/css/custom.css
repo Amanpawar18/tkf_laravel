@@ -3,7 +3,7 @@
 }
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    background-color: #d7b56d;
+    background-color: whitesmoke;
     color: black;
 }
 
@@ -14,25 +14,25 @@
 }
 
 .theme-text {
-    color: #d7b56d;
+    color: whitesmoke;
 }
 
 /* .btn-buy-now {
-    color: #d7b56d;
-    border: 2px solid #d7b56d;
+    color: whitesmoke;
+    border: 2px solid whitesmoke;
 } */
 
 .btn-buy-now {
     color: #000;
-    /* color: #d7b56d;
+    /* color: whitesmoke;
     border: 2px solid #000;
     background-color: #000; */
 }
 
 .btn-buy-now:hover {
     color: #000;
-    border: 2px solid #d7b56d;
-    background-color: #d7b56d;
+    border: 2px solid whitesmoke;
+    background-color: whitesmoke;
 }
 
 #loading-icon {
@@ -49,12 +49,12 @@
 
 .list-group-item.active {
     color: black;
-    background-color: #d7b56d !important;
-    border-color: #d7b56d !important;
+    background-color: whitesmoke !important;
+    border-color: whitesmoke !important;
 }
 
 .text-theme {
-    color: #d7b56d !important;
+    color: whitesmoke !important;
 }
 
 #bottom-to-top {
@@ -74,7 +74,7 @@
     /* Remove outline */
     background-color: transparent;
     /* Set a background color */
-    color: #d7b56d !important;
+    color: whitesmoke !important;
     /* Text color */
     cursor: pointer;
     /* Add a mouse pointer on hover */
