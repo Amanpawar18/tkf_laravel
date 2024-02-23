@@ -2,7 +2,7 @@
 
 @foreach ($product->productVariations as $key => $variation)
 @if($variation->quantity > 0)
-<button type="submit" id="buyNow-{{$variation->id}}" class="btn btn-buy-now w-auto m-0 buyNow shop-now-btn {{$loop->first ? '' : 'd-none'}}">
+<button type="submit" id="buyNow-{{$variation->id}}" class="btn btn-primary w-auto m-0 buyNow shop-now-btn {{$loop->first ? '' : 'd-none'}}">
     Buy Now
     <i class="fa fa-angle-right"></i>
 </button>
@@ -14,7 +14,7 @@
 @else
 
 @if($product->quantity > 0)
-<button type="submit" class="btn btn-buy-now w-auto m-0 shop-now-btn">
+<button type="submit" class="btn btn-primary w-auto m-0 shop-now-btn">
     Buy Now
     <i class="fa fa-angle-right"></i>
 </button>

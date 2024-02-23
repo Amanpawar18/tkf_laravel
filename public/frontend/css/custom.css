@@ -2,19 +2,19 @@
     object-fit: contain !important;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
-    background-color: whitesmoke;
-    color: black;
-}
-
 .small-category-badge {
     width: 125px !important;
     height: 145px !important;
     top: -90px !important;
 }
 
-.theme-text {
-    color: whitesmoke;
+.nav-pills .nav-link {
+    background-color: #529F56;
+}
+
+.form-control:disabled, .form-control:read-only {
+    background-color: #fff;
+    opacity: 1;
 }
 
 /* .btn-buy-now {
@@ -47,15 +47,6 @@
     background: url(../../public/images/loader.gif) center no-repeat transparent;
 }
 
-.list-group-item.active {
-    color: black;
-    background-color: whitesmoke !important;
-    border-color: whitesmoke !important;
-}
-
-.text-theme {
-    color: whitesmoke !important;
-}
 
 #bottom-to-top {
     display: none;

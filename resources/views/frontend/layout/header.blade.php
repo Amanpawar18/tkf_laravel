@@ -32,8 +32,8 @@
 
 
 <!-- Navbar Start -->
-<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0">
-    <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
+<nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top p-0 shadow">
+    <a href="{{ route('frontend.home') }}" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
         <h1 class="m-0">The Keshav Farm</h1>
     </a>
     <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -41,7 +41,6 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
         <div class="navbar-nav ms-auto p-4 p-lg-0">
-            <a href="index.html" class="nav-item nav-link active">Home</a>
             <a href="{{FooterData::get('who_we_are_link') ?? '#'}}" class="nav-item nav-link">About</a>
             <a href="{{route('frontend.product.shop')}}" class="nav-item nav-link">Shop</a>
             <a href="{{route('frontend.blog.index')}}" class="nav-item nav-link">Blogs</a>

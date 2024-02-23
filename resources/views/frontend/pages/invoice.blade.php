@@ -117,10 +117,11 @@
                 <td colspan="2">
                     <table>
                         <tr>
-                            <td class="title" style="vertical-align: middle">
-                                <img width="152px" height="58px" src="{{asset('images/black-logo.jpeg')}}">
+                            <td class="title float-top">
+                                <h6 style="margin-top: 0;">
+                                    The Keshav Farm
+                                </h6>
                             </td>
-
                             <td>
                                 Invoice No.: {{$order->invoice_no ?? '-'}}<br />
                                 Created: {{$order->created_at->format('d-M-Y')}}<br />
@@ -207,15 +208,8 @@
                         <tr>
                             <td style="vertical-align: middle">
                                 <strong>
-                                    GST No - 27AAECV5849H1ZW
+                                    Thank you for shopping with us.!!
                                 </strong>
-                                <br>
-                                I/ We hereby certify that my/ our registration certificate under the
-                                Maharastra Value Added Tax Act 2002 is forced on the date on which
-                                the sale of goods specified in the tax invoice which is made by me/ us
-                                and that transaction of sale covered by this Tax invoice has been
-                                effected by me/ us in our regular course of my/ our business.
-                                Venttura Bioceuticals Pvt Ltd
                                 <br>
                                 <strong>
                                     This is a Computer generated Invoice and does not require Signature.

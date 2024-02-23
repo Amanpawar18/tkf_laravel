@@ -1,70 +1,52 @@
 @extends('frontend.layout.master')
 @section('content')
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-sm-8 col-md-12 col-lg-12 text-center">
-            <h2>
-                Sign In
-            </h2>
-            <hr>
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="display-5 mb-5">Login</h1>
         </div>
-        <div class="col-sm-8 col-md-6 col-lg-5">
-            <div class="row col-md-12 mb-2">
-                <nav>
-                    <div class="nav nav-pills" id="nav-tab" role="tablist">
-                        <button class="nav-link active" id="nav-login-tab" data-bs-toggle="tab"
-                            data-bs-target="#nav-login" type="button" role="tab" aria-controls="nav-login"
-                            aria-selected="true">Login</button>
-                        <a class="nav-link text-dark" id="nav-register-tab" href="{{route('register')}}"
-                            aria-selected="true">Register</a>
-                    </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade active show" id="nav-login" role="tabpanel"
-                        aria-labelledby="nav-login-tab">
-                        <div class="row mb-3">
-                            <form action="{{route('login')}}" method="post">
-                                @csrf
-                                <div class="col-md-12 text-danger">
-                                    <p>{{session('error')}}</p>
-                                    <p class="text-success">{{session('status')}}</p>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                        <li>
-                                            {{$error}}
-                                        </li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <h5>
-                                        Registered Clients
-                                    </h5>
-                                    <p>
-                                        If you have an account with us, please login below.
-                                    </p>
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <label for="email">Email*</label>
-                                    <input id="email" name="email" type="email" value="{{old('email')}}" required=""
-                                        class="form-control">
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <label for="password">Password*</label>
-                                    <input id="password" name="password" type="password" value="{{old('password')}}"
-                                        required="" class="form-control">
-                                </div>
-                                <div class="col-md-12 mb-2 text-center">
-                                    <button class="btn btn-buy-now btn-block" type="submit">
-                                        Login
-                                    </button>
-                                </div>
-                                <div class="col-md-12 mt-2 text-center">
-                                    <a href="{{route('password.request')}}" class="mt-3">Forgot Password</a>
-                                </div>
-                            </form>
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="bg-light rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <form action="{{route('login')}}" method="post">
+                        @csrf
+                        <div class="col-md-12 text-danger">
+                            <p>{{session('error')}}</p>
+                            <p class="text-success">{{session('status')}}</p>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>
+                                    {{$error}}
+                                </li>
+                                @endforeach
+                            </ul>
                         </div>
-                    </div>
+                        <div class="row g-3">
+                            <div class="col-sm-12">
+                                <div class="form-floating">
+                                    <input name="email" type="email" value="{{old('email')}}"
+                                        class="form-control border-0" id="email" placeholder="Your Email">
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-floating">
+                                    <input name="password" type="password" value="{{old('password')}}"
+                                        class="form-control border-0" id="password" placeholder="****">
+                                    <label for="password">Password</label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="btn btn-primary py-3 px-4" type="submit">Sign In</button>
+                            </div>
+                            <div class="col-6 text-center">
+                                <a href="{{route('password.request')}}" class="mt-3">Forgot Password</a>
+                            </div>
+                            <div class="col-6 text-center">
+                                <a href="{{route('register')}}" class="mt-3">Sign Up</a>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

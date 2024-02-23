@@ -31,7 +31,7 @@
                     url</label>
                 <input type="text" name="frontend_video_url" class="form-control" id="categoryPageVideoUrlInput"
                     placeholder="Enter category title"
-                    value="{{$category->frontend_video_url ?? old('frontend_video_url')}}" required>
+                    value="{{$category->frontend_video_url ?? old('frontend_video_url')}}" >
                 <small class="text-danger">
                     Paste only video code
                 </small>

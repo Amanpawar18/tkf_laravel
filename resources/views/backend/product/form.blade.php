@@ -1,4 +1,15 @@
 <div class="row">
+    <div class="col-md-12 text-danger">
+        <p>{{session('error')}}</p>
+        <p class="text-success">{{session('status')}}</p>
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>
+                {{$error}}
+            </li>
+            @endforeach
+        </ul>
+    </div>
     <div class="col-md-6 mx-auto">
         <div class="form-group">
             <label for="productTitleInput" class="text-capitalize">Name
@@ -174,8 +185,7 @@
             <label for="categoryTitleInput" class="text-capitalize">
                 Product Images
             </label>
-            <input type="file" class="form-control" id="fileUploader"
-                {{ isset($product->productImages) && count($product->productImages) ?  '' : 'required' }} multiple
+            <input type="file" class="form-control" id="fileUploader" multiple
                 name="productImages[]">
         </div>
     </div>
@@ -189,21 +199,21 @@
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            <label for="categoryTitleInput" required class="text-capitalize">Composition</label>
+            <label for="categoryTitleInput"  class="text-capitalize">Composition</label>
             <textarea name="composition" class="form-control textarea" name="composition" id="" cols="30"
                 placeholder="Composition" rows="5">{{old('composition', $product->composition)}}</textarea>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            <label for="categoryTitleInput" required class="text-capitalize">Suggested for</label>
+            <label for="categoryTitleInput"  class="text-capitalize">Suggested for</label>
             <textarea name="suggested_for" class="form-control textarea " name="suggested_for" id="" cols="30"
                 placeholder="Suggested for" rows="5">{{old('suggested_for', $product->suggested_for)}}</textarea>
         </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">
-            <label for="categoryTitleInput" required class="text-capitalize">Direction for use</label>
+            <label for="categoryTitleInput"  class="text-capitalize">Direction for use</label>
             <textarea name="direction_for_use" class="form-control textarea" name="direction_for_use" id="" cols="30"
                 placeholder="Direction for use"
                 rows="5">{{old('direction_for_use', $product->direction_for_use)}}</textarea>
@@ -211,7 +221,7 @@
     </div>
     <div class="col-md-12">
         <div class="form-group">
-            <label for="categoryTitleInput" required class="text-capitalize">Note</label>
+            <label for="categoryTitleInput"  class="text-capitalize">Note</label>
             <input type="text" value="{{old('note', $product->note)}}" name="note" class="form-control">
         </div>
     </div>

@@ -1,76 +1,77 @@
 @extends('frontend.layout.master')
 @section('content')
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-sm-8 col-md-12 col-lg-12 text-center">
-            <h2>
-                Sign In
-            </h2>
-            <hr>
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="text-center mx-auto wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class="display-5 mb-5">Register</h1>
         </div>
-        <div class="col-sm-8 col-md-6 col-lg-5">
-            <div class="row col-md-12 mb-2">
-                <nav>
-                    <div class="nav nav-pills" id="nav-tab" role="tablist">
-                        <a class="nav-link text-dark" id="nav-login-tab" href="{{route('login')}}"
-                            aria-selected="true">Login</a>
-                        <button class="nav-link active" id="nav-register-tab" data-bs-toggle="tab"
-                            data-bs-target="#nav-register" type="button" role="tab" aria-controls="nav-register"
-                            aria-selected="true">Register</button>
-                    </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-register" role="tabpanel"
-                        aria-labelledby="nav-register-tab">
-                        <div class="row mb-3">
-                            <div class="col-md-12 text-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                    <li>
-                                        {{$error}}
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                            <form method="POST" action="{{ route('register') }}">
-                                @csrf
-                                <div class="col-md-12 mb-2">
-                                    <label for="name">Name*</label>
-                                    <input id="name" name="name" type="text" required="" class="form-control" value="{{old('name')}}">
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <label for="phone_no">Phone*</label>
-                                    <input id="phone_no" name="phone_no" type="tel" required="" class="form-control" value="{{old('phone_no')}}">
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <label for="referrer_user_code">Referral Code</label>
-                                    <input id="referrer_user_code" name="referrer_user_code" type="text" autocomplete="off"
-                                        {{request()->referrer_user_code ? 'readonly' : ''}}
-                                        value="{{request()->referrer_user_code ?? old('referrer_user_code')}}" class="form-control">
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <label for="email">Email*</label>
-                                    <input id="email" name="email" type="email" required="" class="form-control" value="{{old('email')}}">
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <label for="password">Password*</label>
-                                    <input id="password" name="password" type="password" required=""
-                                        class="form-control">
-                                    <small class="text-danger">Password has to be 8+ characters </small>
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <label for="password_confirmation">Confirm password*</label>
-                                    <input id="password_confirmation" name="password_confirmation" type="password"
-                                        required="" class="form-control">
-                                </div>
-                                <div class="col-md-12 mb-2">
-                                    <button class="btn btn-buy-now btn-block" type="submit">
-                                        Register
-                                    </button>
-                                </div>
-                            </form>
+        <div class="row justify-content-center">
+            <div class="col-lg-7">
+                <div class="bg-light rounded p-4 p-sm-5 wow fadeInUp" data-wow-delay="0.1s">
+                    <form action="{{route('register')}}" method="post">
+                        @csrf
+                        <div class="col-md-12 text-danger">
+                            <p>{{session('error')}}</p>
+                            <p class="text-success">{{session('status')}}</p>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                <li>
+                                    {{$error}}
+                                </li>
+                                @endforeach
+                            </ul>
                         </div>
-                    </div>
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input name="name" type="text" value="{{old('name')}}" class="form-control border-0"
+                                        id="name" placeholder="Your name">
+                                    <label for="name">Your name</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input name="email" type="email" value="{{old('email')}}"
+                                        class="form-control border-0" id="email" placeholder="Your Email">
+                                    <label for="email">Your Email</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input name="phone_no" type="tel" value="{{old('phone_no')}}"
+                                        class="form-control border-0" id="phone_no" placeholder="+91-****">
+                                    <label for="phone_no">Your phone_no</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input name="referrer_user_code" {{request()->referrer_user_code ? 'readonly' : ''}}
+                                    type="text" value="{{old('referrer_user_code')}}" class="form-control border-0"
+                                    id="referrer_user_code" value="{{request()->referrer_user_code ??
+                                    old('referrer_user_code')}}"
+                                    placeholder="+91-****">
+                                    <label for="referrer_user_code">Your referrer code</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input name="password" type="password" value="{{old('password')}}"
+                                        class="form-control border-0" id="password" placeholder="****">
+                                    <label for="password">Password</label>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-floating">
+                                    <input name="password_confirmation" type="password" value="{{old('password_confirmation')}}"
+                                        class="form-control border-0" id="password confirmation" placeholder="****">
+                                    <label for="password_confirmation">Confirm password</label>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <button class="btn btn-primary py-3 px-4" type="submit">Sign Up</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

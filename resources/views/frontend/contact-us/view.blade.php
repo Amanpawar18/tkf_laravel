@@ -38,7 +38,7 @@
             </div>
             <div class="col-md-6">
                 <p style="text-align: center; ">
-                    <font color="#000000">Venttura BIOceuticals Pvt Ltd&nbsp;</font>
+                    <font color="#000000">{{ Setting::get('website_name') }}</font>
                 </p>
                 <p style="text-align: center;"><b>
                         <font color="#000000">Address -&nbsp;&nbsp;</font>

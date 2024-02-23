@@ -1,12 +1,12 @@
 @extends('frontend.layout.master')
 @section('meta_title')
-Venttura Blogs
+{{ Setting::get('website_name') }} Blogs
 @endsection
 @section('meta_description')
-Venttura Blogs
+{{ Setting::get('website_name') }} Blogs
 @endsection
 @section('meta_keywords')
-Venttura Blogs
+{{ Setting::get('website_name') }} Blogs
 @endsection
 @section('content')
 <div class="container">

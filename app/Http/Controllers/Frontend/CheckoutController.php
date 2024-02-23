@@ -38,8 +38,9 @@ class CheckoutController extends Controller
         } else {
             $cartItems = Cart::where('session_id', session('userCartSessionId'))->get();
         }
-        $delhiveryObject = new DelhiveryController();
-        $isDeliveryEligible = $delhiveryObject->checkPinCode($address->pin_code);
+        // $delhiveryObject = new DelhiveryController();
+        // $isDeliveryEligible = $delhiveryObject->checkPinCode($address->pin_code);
+        $isDeliveryEligible = true;
         return view('frontend.checkout.shipping', compact('cartItems', 'address', 'isDeliveryEligible'));
     }
 

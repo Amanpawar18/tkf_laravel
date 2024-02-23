@@ -1,14 +1,19 @@
 $(document).ready(function () {
 
     $('#checkout-button').on('click', function () {
+        if ($('#spinner').length > 0) {
+            $('#spinner').addClass('show');
+            $('#spinner').removeClass('bg-white');
+            $('#spinner').css('z-index', 999)
+        }
         var subTotal = $('input[name=sub_total]').val();
         var address = $('input[name=address]').val();
         var redirectUrl = $(this).data('redirect-url');
         var razorpayUrl = $(this).data('razorpay-url');
 
         $.post(razorpayUrl, { _token: $('input[name=_token]').val(), sub_total: subTotal }, function (response) {
-            if(response){
-                razorpayInitialize(subTotal,  response, redirectUrl, address);
+            if (response) {
+                razorpayInitialize(subTotal, response, redirectUrl, address);
             }
         });
     });

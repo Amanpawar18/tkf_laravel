@@ -73,7 +73,7 @@
     </style>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/gmail.ico" type="image/x-icon">
-    <title>Venttura - Your Order is confirmed</title>
+    <title>{{ Setting::get('website_name') }} - Your Order is confirmed</title>
 </head>
 
 <body cz-shortcut-listen="true" style="font-family: arial, sans-serif; paddin: 500px;">

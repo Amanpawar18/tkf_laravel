@@ -322,7 +322,7 @@
                                         <img src="{{asset('frontend/assets/images/blavkdog.jpeg')}}" class="img-fluid">
                                     </div>
                                     <div class="experience-caption mt-40">
-                                        ” We’ve been using Venttura Bioceuticals’ products Omega+ and Nutri+ Pro for
+                                        ” We've been using Venttura Bioceuticals; products Omega+ and Nutri+ Pro for
                                         our dogs
                                         for over 3 years now and the results speak for themselves.Omega+ has made
                                         our dog coat
