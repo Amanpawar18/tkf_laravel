@@ -50,7 +50,7 @@ class HomePageData extends Model
             file_exists(public_path('frontend/uploads/home-page/' . $this->section_one_c1_image))
             && is_file(public_path('frontend/uploads/home-page/' . $this->section_one_c1_image))
         )
-            $path = 'public/frontend/uploads/home-page/' . $this->section_one_c1_image;
+            $path = '/frontend/uploads/home-page/' . $this->section_one_c1_image;
         return $path;
     }
 
@@ -61,7 +61,7 @@ class HomePageData extends Model
             file_exists(public_path('frontend/uploads/home-page/' . $this->section_one_c2_image))
             && is_file(public_path('frontend/uploads/home-page/' . $this->section_one_c2_image))
         )
-            $path = 'public/frontend/uploads/home-page/' . $this->section_one_c2_image;
+            $path = '/frontend/uploads/home-page/' . $this->section_one_c2_image;
         return $path;
     }
 }
