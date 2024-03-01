@@ -33,5 +33,9 @@ class AppServiceProvider extends ServiceProvider
         Validator::extend('referer_user', function () {
             return false;
         });
+
+        if(config('app.env') === 'production') {
+            \URL::forceScheme('https');
+        }
     }
 }
