@@ -16,7 +16,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img class="w-100" src="{{ $homePageData->section_one_image_one_path }}" alt="Image">
-                <div class="carousel-caption">
+<!--                 <div class="carousel-caption">
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-8">
@@ -32,11 +32,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
             <div class="carousel-item">
                 <img class="w-100" src="{{ $homePageData->section_one_image_two_path }}" alt="Image">
-                <div class="carousel-caption">
+<!--                 <div class="carousel-caption">
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-7">
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#header-carousel" data-bs-slide="prev">
